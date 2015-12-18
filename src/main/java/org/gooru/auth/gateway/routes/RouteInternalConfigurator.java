@@ -10,12 +10,12 @@ import io.vertx.ext.web.Router;
 
 class RouteInternalConfigurator implements RouteConfigurator {
 
-  static final Logger LOG = LoggerFactory.getLogger("org.gooru.nucleus.gateway.bootstrap.ServerVerticle");
+  static final Logger LOG = LoggerFactory.getLogger("org.gooru.auth.gateway.bootstrap.ServerVerticle");
 
   @Override
   public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
     router.route("/banner").handler(routingContext -> {
-      JsonObject result = new JsonObject().put("Organisation", "gooru.org").put("Product", "nucleus").put("purpose", "api")
+      JsonObject result = new JsonObject().put("Organisation", "gooru.org").put("Product", "auth").put("purpose", "authentication")
         .put("mission", "Honor the human right to education");
       routingContext.response().end(result.toString());
     });
