@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-
 public class RouteConfiguration implements Iterable<RouteConfigurator> {
 
   private List<RouteConfigurator> configurators = null;
   private Iterator<RouteConfigurator> internalIterator;
-  
+
   @Override
   public Iterator<RouteConfigurator> iterator() {
     Iterator<RouteConfigurator> iterator = new Iterator<RouteConfigurator>() {
@@ -23,11 +22,11 @@ public class RouteConfiguration implements Iterable<RouteConfigurator> {
       public RouteConfigurator next() {
         return internalIterator.next();
       }
-      
+
     };
     return iterator;
   }
-  
+
   public RouteConfiguration() {
     configurators = new ArrayList<RouteConfigurator>();
     // Auth should always be first one
@@ -38,6 +37,5 @@ public class RouteConfiguration implements Iterable<RouteConfigurator> {
     configurators.add(new RouteAuthenticationConfigurator());
     internalIterator = configurators.iterator();
   }
-
 
 }

@@ -20,7 +20,6 @@ class AuthPrefsMessageBusJsonResponseHolder implements AuthPrefsResponseHolder {
     if (!isAuthorized) {      
       return null;
     }
-    // TODO: Move hard coded strings out
     JsonObject jsonObject = (JsonObject)message.body();
     return jsonObject.getJsonObject(MessageConstants.MSG_KEY_PREFS);
   }
