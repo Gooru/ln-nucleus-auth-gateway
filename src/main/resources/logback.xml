@@ -23,9 +23,4 @@
     <logger name="org.gooru.auth" level="debug">
             <appender-ref ref="STDOUT"/>
     </logger>
-
-
-    <root level="info">
-        <appender-ref ref="STDOUT" />
-    </root>
 </configuration>

@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+
 public class RouteConfiguration implements Iterable<RouteConfigurator> {
 
+  
   private List<RouteConfigurator> configurators = null;
   private Iterator<RouteConfigurator> internalIterator;
 
