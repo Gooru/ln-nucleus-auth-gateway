@@ -1,6 +1,5 @@
 package org.gooru.auth.gateway.routes;
 
-import jdk.nashorn.internal.ir.RuntimeNode.Request;
 import io.vertx.core.Vertx;
 import io.vertx.core.eventbus.DeliveryOptions;
 import io.vertx.core.eventbus.EventBus;
@@ -35,7 +34,7 @@ class RouteAuthenticationConfigurator implements RouteConfigurator {
 
   private void createAccessToken(RoutingContext routingContext) {
     DeliveryOptions options =
-            new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, OperationConstants.OP_DELETE_AUTH_TOKEN);
+            new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, OperationConstants.OP_CREATE_AUTH_TOKEN);
     eb.send(MessagebusEndpoints.MBEP_AUTHENTICATION, RequestParser.getData(routingContext), options, reply -> {
       if (reply.succeeded()) {
         routingContext.response().end(reply.result().body().toString());
@@ -48,7 +47,7 @@ class RouteAuthenticationConfigurator implements RouteConfigurator {
 
   private void deleteAccessToken(RoutingContext routingContext) {
     DeliveryOptions options =
-            new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, OperationConstants.OP_CREATE_AUTH_TOKEN);
+            new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, OperationConstants.OP_DELETE_AUTH_TOKEN);
     eb.send(MessagebusEndpoints.MBEP_AUTHENTICATION, routingContext.getBodyAsJson(), options, reply -> {
       if (reply.succeeded()) {
         routingContext.response().end(reply.result().body().toString());
