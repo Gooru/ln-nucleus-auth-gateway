@@ -13,6 +13,13 @@ TODO
 
 To understand build related stuff, take a look at **BUILD_README.md**.
 
+ROUTES
+-------
+
+**Configured Routes**
+* Authentication
+* Authorization
+* User
 
 How to do stuff
 ---------------
@@ -30,3 +37,5 @@ How to do stuff
 * Apply the handle to specified route. If there is a need for separate delivery options, provide it
 * Register the RouteConfigurator in RouteConfiguration
 * That is it
+
+
