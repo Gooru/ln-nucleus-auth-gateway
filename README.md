@@ -1,13 +1,14 @@
-Nucleus Server
-================
+Nucleus auth gateway
+==================
 
-This is the HTTP server for Project Nucleus. 
+This is the HTTP server for Project Nucleus auth.
 
-This project contains just one main verticle which is responsible for spawning off of HTTP Server. This is the gateway to Nucleus components.
+This project contains just one main verticle which is responsible for spawning off of HTTP Server. This is the gateway to Nucleus auth components.
+
 
 TODO
 ----
-* Provide authorization/authentication for the end points. Based on success or failure, either provide response to caller or pass on auth data to other subsystems
+* Provide any new routes need for nucleus auth, eg : schools, school districts, states, countries
 * Provide any other throttling or gateway characteristics that we need
 
 To understand build related stuff, take a look at **BUILD_README.md**.
