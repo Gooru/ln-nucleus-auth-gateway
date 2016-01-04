@@ -31,7 +31,7 @@ public class RouteConfiguration implements Iterable<RouteConfigurator> {
 
   public RouteConfiguration() {
     configurators = new ArrayList<RouteConfigurator>();
-    // Auth should always be first one
+    configurators.add(new RouteGlobalConfigurator());
     configurators.add(new RouteAuthConfigurator());
     configurators.add(new RouteInternalConfigurator());
     configurators.add(new RouteMetricsConfigurator());

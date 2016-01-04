@@ -11,7 +11,8 @@ package org.gooru.auth.gateway.constants;
  */
 public class MessagebusEndpoints {
   public static final String MBEP_AUTHENTICATION = "org.gooru.auth.message.bus.authentication";
-
+  public static final String MBEP_AUTHORIZE = "org.gooru.auth.message.bus.authorize";
+  
   public static final String MBEP_PREFS = "org.gooru.auth.message.bus.prefs";
   public static final String MBEP_METRICS = "org.gooru.auth.message.bus.metrics";
 }
