@@ -16,7 +16,6 @@ import org.gooru.auth.gateway.constants.HttpConstants;
 import org.gooru.auth.gateway.constants.MessageConstants;
 import org.gooru.auth.gateway.constants.MessagebusEndpoints;
 import org.gooru.auth.gateway.constants.OperationConstants;
-import org.gooru.auth.gateway.constants.ParameterConstants;
 import org.gooru.auth.gateway.constants.RouteConstants;
 import org.gooru.auth.gateway.responses.auth.AuthPrefsResponseHolder;
 import org.gooru.auth.gateway.responses.auth.AuthPrefsResponseHolderBuilder;
@@ -27,8 +26,6 @@ public class RouteAuthConfigurator implements RouteConfigurator {
 
   static final Logger LOG = LoggerFactory.getLogger("org.gooru.auth.gateway.bootstrap.ServerVerticle");
 
-  private static final String TOKEN = "Token";
-
   private long mbusTimeout = 30000L;
   private EventBus eBus = null;
 
@@ -37,22 +34,7 @@ public class RouteAuthConfigurator implements RouteConfigurator {
     eBus = vertx.eventBus();
     mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30000L);
     router.route(RouteConstants.API_AUTH_ROUTE).handler(BodyHandler.create());
-    router.route(RouteConstants.API_AUTH_ROUTE).handler(this::validateClient);
     router.route(RouteConstants.API_AUTH_ROUTE).handler(this::validateAccessToken);
-  }
-
-  private void validateClient(RoutingContext routingContext) {
-    HttpServerRequest request = routingContext.request();
-    HttpServerResponse response = routingContext.response();
-    if ((request.method().name().equalsIgnoreCase(HttpMethod.POST.name()) && request.uri().contains(RouteConstants.EP_AUTH_TOKEN))) {
-      // validate client id and secret key is passing from client side
-      JsonObject data = routingContext.getBodyAsJson();
-      if (data.getString(ParameterConstants.PARAM_CLIENT_ID) == null || data.getString(ParameterConstants.PARAM_CLIENT_KEY) == null) {
-        response.setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode()).setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage())
-                .end();
-      }
-    }
-    routingContext.next();
   }
 
   private void validateAccessToken(RoutingContext routingContext) {
@@ -60,11 +42,11 @@ public class RouteAuthConfigurator implements RouteConfigurator {
     HttpServerResponse response = routingContext.response();
     if (!(request.method().name().equalsIgnoreCase(HttpMethod.POST.name()) && request.uri().contains(RouteConstants.EP_AUTH_TOKEN))) {
       String authorization = request.getHeader(HttpConstants.HEADER_AUTH);
-      if ((authorization == null || !authorization.startsWith(TOKEN))) {
+      if ((authorization == null || !authorization.startsWith(HttpConstants.TOKEN))) {
         response.setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode()).setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage())
                 .end();
       } else {
-        String token = authorization.substring(TOKEN.length()).trim();
+        String token = authorization.substring(HttpConstants.TOKEN.length()).trim();
         DeliveryOptions options =
                 new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, OperationConstants.OP_GET_AUTH_TOKEN)
                         .addHeader(MessageConstants.MSG_HEADER_TOKEN, token);

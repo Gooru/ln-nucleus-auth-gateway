@@ -1,7 +1,7 @@
 package org.gooru.auth.gateway.constants;
 
 /**
- * Created by ashish on 4/12/15.
+ * Created by gooru.
  */
 public class RouteConstants {
 
