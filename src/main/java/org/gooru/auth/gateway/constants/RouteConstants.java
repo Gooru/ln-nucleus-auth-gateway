@@ -16,8 +16,8 @@ public class RouteConstants {
   public static final String TOKEN = "token";
   public static final String AUTHORIZE = "authorize";
   public static final String USER = "user";
-  public static final String USER_ID = ":user_id";
-  public static final String USER_PREFERENCES = "preferences";
+  public static final String USER_ID = ":user\\_id";
+  public static final String USER_PREFERENCES = "prefs";
   
 
   // Misc helpers

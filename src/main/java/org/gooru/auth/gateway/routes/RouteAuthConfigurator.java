@@ -16,8 +16,8 @@ import org.gooru.auth.gateway.constants.HttpConstants;
 import org.gooru.auth.gateway.constants.MessageConstants;
 import org.gooru.auth.gateway.constants.MessagebusEndpoints;
 import org.gooru.auth.gateway.constants.RouteConstants;
-import org.gooru.auth.gateway.responses.auth.AuthPrefsResponseHolder;
-import org.gooru.auth.gateway.responses.auth.AuthPrefsResponseHolderBuilder;
+import org.gooru.auth.gateway.responses.auth.AuthResponseContextHolder;
+import org.gooru.auth.gateway.responses.auth.AuthResponseContextHolderBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,7 +38,8 @@ public class RouteAuthConfigurator implements RouteConfigurator {
   private void validateAccessToken(RoutingContext routingContext) {
     HttpServerRequest request = routingContext.request();
     HttpServerResponse response = routingContext.response();
-    if (!(request.method().name().equalsIgnoreCase(HttpMethod.POST.name()) && (request.uri().contains(RouteConstants.EP_NUCLUES_AUTH_AUTHORIZE)) || request.uri().contains(RouteConstants.EP_NUCLUES_AUTH_TOKEN))) {
+    if (!(request.method().name().equalsIgnoreCase(HttpMethod.POST.name()) && (request.uri().contains(RouteConstants.EP_NUCLUES_AUTH_AUTHORIZE)) || request
+            .uri().contains(RouteConstants.EP_NUCLUES_AUTH_TOKEN))) {
       String authorization = request.getHeader(HttpConstants.HEADER_AUTH);
       if ((authorization == null || !authorization.startsWith(HttpConstants.TOKEN))) {
         response.setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode()).setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage())
@@ -49,19 +50,20 @@ public class RouteAuthConfigurator implements RouteConfigurator {
                 new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.GET_ACCESS_TOKEN)
                         .addHeader(MessageConstants.MSG_HEADER_TOKEN, token);
         eBus.send(
-                MessagebusEndpoints.MBEP_AUTHENTICATION,
-                new JsonObject(),
+                MessagebusEndpoints.MBEP_AUTH,
+                null,
                 options,
                 reply -> {
                   if (reply.succeeded()) {
-                    AuthPrefsResponseHolder responseHolder = new AuthPrefsResponseHolderBuilder(reply.result()).build();
+                    AuthResponseContextHolder responseHolder = new AuthResponseContextHolderBuilder(reply.result()).build();
                     if (responseHolder.isAuthorized()) {
-                      if (!routingContext.request().method().equals(HttpMethod.GET) && responseHolder.isAnonymous()) {
+                      if ((!request.method().equals(HttpMethod.GET) && (request.method().equals(HttpMethod.POST) && !request.uri().contains(
+                              RouteConstants.EP_NUCLUES_AUTH_USER)))
+                              && responseHolder.isAnonymous()) {
                         routingContext.response().setStatusCode(HttpConstants.HttpStatus.FORBIDDEN.getCode())
                                 .setStatusMessage(HttpConstants.HttpStatus.FORBIDDEN.getMessage()).end();
                       } else {
-                        JsonObject prefs = responseHolder.getPreferences();
-                        routingContext.put(MessageConstants.MSG_KEY_PREFS, prefs);
+                        routingContext.put(MessageConstants.MSG_USER_CONTEXT_HOLDER, responseHolder.getUserContext());
                         routingContext.next();
                       }
                     } else {
@@ -75,7 +77,5 @@ public class RouteAuthConfigurator implements RouteConfigurator {
                 });
       }
     }
-    routingContext.next();
-
   }
 }

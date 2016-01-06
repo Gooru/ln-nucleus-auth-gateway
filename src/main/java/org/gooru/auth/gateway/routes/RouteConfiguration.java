@@ -35,8 +35,10 @@ public class RouteConfiguration implements Iterable<RouteConfigurator> {
     configurators.add(new RouteAuthConfigurator());
     configurators.add(new RouteInternalConfigurator());
     configurators.add(new RouteMetricsConfigurator());
-    configurators.add(new RouteGoogleDriveConfigurator());
     configurators.add(new RouteAuthenticationConfigurator());
+    configurators.add(new RouteAuthorizeConfigurator());
+    configurators.add(new RouteUserConfigurator());
+    configurators.add(new RouteUserPrefsConfigurator());
     internalIterator = configurators.iterator();
   }
 
