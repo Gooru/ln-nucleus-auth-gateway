@@ -15,10 +15,13 @@ public class RouteConstants {
   // Helper: Operations
   public static final String TOKEN = "token";
   public static final String AUTHORIZE = "authorize";
-  public static final String USER = "user";
+  public static final String USERS = "users";
   public static final String USER_ID = ":user\\_id";
   public static final String USER_PREFERENCES = "prefs";
-  
+  public static final String COUNTRIES = "countries";
+  public static final String STATES = "states";
+  public static final String SCHOOLS = "schools";
+  public static final String SCHOOL_DISTRICTS = "school-districts";
 
   // Misc helpers
   public static final String SEP = "/";
@@ -28,12 +31,25 @@ public class RouteConstants {
   // point instead of reusing the same
 
   public static final String EP_NUCLUES_AUTH_TOKEN = API_BASE_ROUTE + TOKEN;
-  
+
   public static final String EP_NUCLUES_AUTH_AUTHORIZE = API_BASE_ROUTE + AUTHORIZE;
-  
-  
-  public static final String EP_NUCLUES_AUTH_USER = API_BASE_ROUTE + USER;
-  public static final String EP_NUCLUES_AUTH_USER_ID = API_BASE_ROUTE + USER + SEP + USER_ID;
-  public static final String EP_NUCLUES_AUTH_USER_ID_PREFS = API_BASE_ROUTE + USER + SEP + USER_ID + SEP + USER_PREFERENCES;
+
+  public static final String EP_NUCLUES_AUTH_USER = API_BASE_ROUTE + USERS;
+  public static final String EP_NUCLUES_AUTH_USER_ID = API_BASE_ROUTE + USERS + SEP + USER_ID;
+
+  // User preference
+  public static final String EP_NUCLUES_AUTH_USER_ID_PREFS = API_BASE_ROUTE + USERS + SEP + USER_ID + SEP + USER_PREFERENCES;
+
+  // Schools
+  public static final String EP_NUCLUES_AUTH_SCHOOL = API_BASE_ROUTE + SCHOOLS;
+
+  // School districts
+  public static final String EP_NUCLUES_AUTH_SCHOOL_DISTRICTS = API_BASE_ROUTE + SCHOOL_DISTRICTS;
+
+  // States
+  public static final String EP_NUCLUES_AUTH_STATE = API_BASE_ROUTE + STATES;
+
+  // Countries
+  public static final String EP_NUCLUES_AUTH_COUNTRIES = API_BASE_ROUTE + COUNTRIES;
 
 }

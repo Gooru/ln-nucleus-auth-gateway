@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-
 public class RouteConfiguration implements Iterable<RouteConfigurator> {
 
-  
   private List<RouteConfigurator> configurators = null;
   private Iterator<RouteConfigurator> internalIterator;
 
@@ -39,6 +37,10 @@ public class RouteConfiguration implements Iterable<RouteConfigurator> {
     configurators.add(new RouteAuthorizeConfigurator());
     configurators.add(new RouteUserConfigurator());
     configurators.add(new RouteUserPrefsConfigurator());
+    configurators.add(new RouteSchoolConfigurator());
+    configurators.add(new RouteSchoolDistrictConfigurator());
+    configurators.add(new RouteStateConfigurator());
+    configurators.add(new RouteCountryConfigurator());
     internalIterator = configurators.iterator();
   }
 
