@@ -40,16 +40,4 @@ public class RouteConstants {
   // User preference
   public static final String EP_NUCLUES_AUTH_USER_ID_PREFS = API_BASE_ROUTE + USERS + SEP + USER_ID + SEP + USER_PREFERENCES;
 
-  // Schools
-  public static final String EP_NUCLUES_AUTH_SCHOOL = API_BASE_ROUTE + SCHOOLS;
-
-  // School districts
-  public static final String EP_NUCLUES_AUTH_SCHOOL_DISTRICTS = API_BASE_ROUTE + SCHOOL_DISTRICTS;
-
-  // States
-  public static final String EP_NUCLUES_AUTH_STATE = API_BASE_ROUTE + STATES;
-
-  // Countries
-  public static final String EP_NUCLUES_AUTH_COUNTRIES = API_BASE_ROUTE + COUNTRIES;
-
 }
