@@ -16,12 +16,9 @@ public class RouteConstants {
   public static final String TOKEN = "token";
   public static final String AUTHORIZE = "authorize";
   public static final String USERS = "users";
-  public static final String USER_ID = ":user\\_id";
+  public static final String USER_ID = ":userId";
   public static final String USER_PREFERENCES = "prefs";
-  public static final String COUNTRIES = "countries";
-  public static final String STATES = "states";
-  public static final String SCHOOLS = "schools";
-  public static final String SCHOOL_DISTRICTS = "school-districts";
+  
 
   // Misc helpers
   public static final String SEP = "/";
@@ -36,6 +33,8 @@ public class RouteConstants {
 
   public static final String EP_NUCLUES_AUTH_USER = API_BASE_ROUTE + USERS;
   public static final String EP_NUCLUES_AUTH_USER_ID = API_BASE_ROUTE + USERS + SEP + USER_ID;
+  public static final String EP_NUCLUES_AUTH_USERS = API_BASE_ROUTE + USERS;
+  
 
   // User preference
   public static final String EP_NUCLUES_AUTH_USER_ID_PREFS = API_BASE_ROUTE + USERS + SEP + USER_ID + SEP + USER_PREFERENCES;

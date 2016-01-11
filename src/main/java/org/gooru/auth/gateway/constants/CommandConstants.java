@@ -15,16 +15,6 @@ public class CommandConstants {
   public static final String GET_USER = "get.user";
   public static final String UPDATE_USER_PREFERENCE = "update.user.preference";
   public static final String GET_USER_PREFERENCE = "get.user.preference";
+  public static final String GET_USER_FIND = "get.user.find";
 
-  // School District command
-  public static final String LIST_SCHOOL_DISTRICT = "list.school.district";
-
-  // School command
-  public static final String LIST_SCHOOL = "list.school";
-
-  // Country command
-  public static final String LIST_COUNTRY = "list.country";
-
-  // State command
-  public static final String LIST_STATE = "list.state";
 }

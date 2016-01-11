@@ -31,6 +31,7 @@ class RouteUserConfigurator implements RouteConfigurator {
     router.post(RouteConstants.EP_NUCLUES_AUTH_USER).handler(this::createUser);
     router.put(RouteConstants.EP_NUCLUES_AUTH_USER_ID).handler(this::updateUser);
     router.get(RouteConstants.EP_NUCLUES_AUTH_USER_ID).handler(this::getUser);
+    router.get(RouteConstants.EP_NUCLUES_AUTH_USERS).handler(this::findUser);
   }
 
   private void createUser(RoutingContext routingContext) {
@@ -55,4 +56,13 @@ class RouteUserConfigurator implements RouteConfigurator {
       RouteResponseUtility.responseHandler(routingContext, reply, LOG);
     });
   }
+
+  private void findUser(RoutingContext routingContext) {
+    DeliveryOptions options =
+            new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.GET_USER_FIND);
+    eb.send(MessagebusEndpoints.MBEP_USER, RouteRequestUtility.getBodyForMessage(routingContext), options, reply -> {
+      RouteResponseUtility.responseHandler(routingContext, reply, LOG);
+    });
+  }
+
 }

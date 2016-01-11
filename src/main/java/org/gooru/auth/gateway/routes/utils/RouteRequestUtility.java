@@ -12,6 +12,7 @@ import io.vertx.ext.web.RoutingContext;
 public class RouteRequestUtility {
 
   public static final JsonObject getBodyForMessage(RoutingContext routingContext) {
+    
     JsonObject result = new JsonObject();
     JsonObject httpBody = null;
     if (!routingContext.request().method().name().equals(HttpMethod.GET.name())) {
@@ -19,7 +20,7 @@ public class RouteRequestUtility {
     }
     if (httpBody != null) {
       result.put(MessageConstants.MSG_HTTP_BODY, httpBody);
-    }
+    }    
     String userContext = routingContext.get(MessageConstants.MSG_USER_CONTEXT_HOLDER);
     if (userContext != null) {       
       result.put(MessageConstants.MSG_USER_CONTEXT_HOLDER, new JsonObject(userContext));
@@ -33,8 +34,7 @@ public class RouteRequestUtility {
       }
       result.put(MessageConstants.MSG_HTTP_PARAM, paramsAsJson);
     }
-
     return result;
   }
-
+  
 }

@@ -42,7 +42,7 @@ class RouteUserPrefsConfigurator implements RouteConfigurator {
 
   private void getUserPreference(RoutingContext routingContext) {
     DeliveryOptions options =
-            new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.UPDATE_USER_PREFERENCE);
+            new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.GET_USER_PREFERENCE);
     eb.send(MessagebusEndpoints.MBEP_USER_PREFS, RouteRequestUtility.getBodyForMessage(routingContext), options, reply -> {
       RouteResponseUtility.responseHandler(routingContext, reply, LOG);
     });

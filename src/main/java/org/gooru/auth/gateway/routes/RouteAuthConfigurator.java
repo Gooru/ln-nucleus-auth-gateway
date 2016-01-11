@@ -76,6 +76,8 @@ public class RouteAuthConfigurator implements RouteConfigurator {
                   }
                 });
       }
+    } else  { 
+      routingContext.next();
     }
   }
 }
