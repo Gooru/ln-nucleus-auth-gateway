@@ -18,7 +18,10 @@ public class RouteConstants {
   public static final String USERS = "users";
   public static final String USER_ID = ":userId";
   public static final String USER_PREFERENCES = "prefs";
-  
+  public static final String PASSWORD = "password";
+  public static final String RESET_PASSWORD = "password-reset";
+  public static final String EMAIL = "email";
+  public static final String EMAIL_CONFIRM = "email-confirmation";
 
   // Misc helpers
   public static final String SEP = "/";
@@ -34,7 +37,10 @@ public class RouteConstants {
   public static final String EP_NUCLUES_AUTH_USER = API_BASE_ROUTE + USERS;
   public static final String EP_NUCLUES_AUTH_USER_ID = API_BASE_ROUTE + USERS + SEP + USER_ID;
   public static final String EP_NUCLUES_AUTH_USERS = API_BASE_ROUTE + USERS;
-  
+  public static final String EP_NUCLUES_AUTH_RESET_PASSWORD = API_BASE_ROUTE + USERS + SEP + RESET_PASSWORD;
+  public static final String EP_NUCLUES_AUTH_PASSWORD = API_BASE_ROUTE + USERS + SEP + USER_ID + SEP + PASSWORD;
+  public static final String EP_NUCLUES_AUTH_EMAIL = API_BASE_ROUTE + USERS + SEP + USER_ID + SEP + EMAIL;
+  public static final String EP_NUCLUES_AUTH_EMAIL_CONFIRM = API_BASE_ROUTE + USERS + SEP + USER_ID + SEP + EMAIL_CONFIRM;
 
   // User preference
   public static final String EP_NUCLUES_AUTH_USER_ID_PREFS = API_BASE_ROUTE + USERS + SEP + USER_ID + SEP + USER_PREFERENCES;

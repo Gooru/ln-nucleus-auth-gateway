@@ -32,6 +32,11 @@ class RouteUserConfigurator implements RouteConfigurator {
     router.put(RouteConstants.EP_NUCLUES_AUTH_USER_ID).handler(this::updateUser);
     router.get(RouteConstants.EP_NUCLUES_AUTH_USER_ID).handler(this::getUser);
     router.get(RouteConstants.EP_NUCLUES_AUTH_USERS).handler(this::findUser);
+    router.put(RouteConstants.EP_NUCLUES_AUTH_PASSWORD).handler(this::updatePassword);
+    router.post(RouteConstants.EP_NUCLUES_AUTH_RESET_PASSWORD).handler(this::resetPassword);
+    router.put(RouteConstants.EP_NUCLUES_AUTH_EMAIL).handler(this::confirmEmailAddress);
+    router.post(RouteConstants.EP_NUCLUES_AUTH_EMAIL).handler(this::resetEmailAddress);
+    router.post(RouteConstants.EP_NUCLUES_AUTH_EMAIL_CONFIRM).handler(this::resendConfirmEmail);
   }
 
   private void createUser(RoutingContext routingContext) {
@@ -60,6 +65,46 @@ class RouteUserConfigurator implements RouteConfigurator {
   private void findUser(RoutingContext routingContext) {
     DeliveryOptions options =
             new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.GET_USER_FIND);
+    eb.send(MessagebusEndpoints.MBEP_USER, RouteRequestUtility.getBodyForMessage(routingContext), options, reply -> {
+      RouteResponseUtility.responseHandler(routingContext, reply, LOG);
+    });
+  }
+
+  private void updatePassword(RoutingContext routingContext) {
+    DeliveryOptions options =
+            new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.UPDATE_PASSWORD);
+    eb.send(MessagebusEndpoints.MBEP_USER, RouteRequestUtility.getBodyForMessage(routingContext), options, reply -> {
+      RouteResponseUtility.responseHandler(routingContext, reply, LOG);
+    });
+  }
+
+  private void resetPassword(RoutingContext routingContext) {
+    DeliveryOptions options =
+            new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.RESET_PASSWORD);
+    eb.send(MessagebusEndpoints.MBEP_USER, RouteRequestUtility.getBodyForMessage(routingContext), options, reply -> {
+      RouteResponseUtility.responseHandler(routingContext, reply, LOG);
+    });
+  }
+
+  private void confirmEmailAddress(RoutingContext routingContext) {
+    DeliveryOptions options =
+            new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.CONFIRMATION_EMAIL);
+    eb.send(MessagebusEndpoints.MBEP_USER, RouteRequestUtility.getBodyForMessage(routingContext), options, reply -> {
+      RouteResponseUtility.responseHandler(routingContext, reply, LOG);
+    });
+  }
+
+  private void resetEmailAddress(RoutingContext routingContext) {
+    DeliveryOptions options =
+            new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.RESET_EMAIL_ADDRESS);
+    eb.send(MessagebusEndpoints.MBEP_USER, RouteRequestUtility.getBodyForMessage(routingContext), options, reply -> {
+      RouteResponseUtility.responseHandler(routingContext, reply, LOG);
+    });
+  }
+
+  private void resendConfirmEmail(RoutingContext routingContext) {
+    DeliveryOptions options =
+            new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.RESEND_CONFIRMATION_EMAIL);
     eb.send(MessagebusEndpoints.MBEP_USER, RouteRequestUtility.getBodyForMessage(routingContext), options, reply -> {
       RouteResponseUtility.responseHandler(routingContext, reply, LOG);
     });
