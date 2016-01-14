@@ -14,6 +14,10 @@ public class HttpConstants {
   public static final String HEADER_REFERER = "referer";
   public static final String BASIC = "Basic";
   public static final String TOKEN = "Token";
+  // GLA 2.0
+  public static final String GOORU_SESSION_TOKEN = "Gooru-Session-Token";
+  public static final String GOORU_API_KEY = "Gooru-ApiKey";
+  public static final String SESSION_TOKEN = "sessionToken";
   
   
   public enum HttpStatus {

@@ -38,14 +38,25 @@ public class RouteAuthConfigurator implements RouteConfigurator {
   private void validateAccessToken(RoutingContext routingContext) {
     HttpServerRequest request = routingContext.request();
     HttpServerResponse response = routingContext.response();
-    if (!(request.method().name().equalsIgnoreCase(HttpMethod.POST.name()) && (request.uri().contains(RouteConstants.EP_NUCLUES_AUTH_AUTHORIZE)) || request
-            .uri().contains(RouteConstants.EP_NUCLUES_AUTH_TOKEN))) {
+    
+    if (!((request.method().name().equalsIgnoreCase(HttpMethod.POST.name())) && (request.uri().contains(RouteConstants.EP_NUCLUES_AUTH_AUTHORIZE)
+            || request.uri().contains(RouteConstants.EP_NUCLUES_AUTH_TOKEN) || request.uri().contains(
+            RouteConstants.EP_NUCLUES_AUTH_GLA_VERSION_LOGIN)))) {
       String authorization = request.getHeader(HttpConstants.HEADER_AUTH);
-      if ((authorization == null || !authorization.startsWith(HttpConstants.TOKEN))) {
+      String token = null;
+      if (authorization != null  &&  authorization.startsWith(HttpConstants.TOKEN)) {
+        token = authorization.substring(HttpConstants.TOKEN.length()).trim();
+      } else {
+        // Below logic will be support for before release-3.0
+        token = request.getHeader(HttpConstants.GOORU_SESSION_TOKEN);
+        if (token == null) {
+          token = request.getParam(HttpConstants.SESSION_TOKEN);
+        }
+      }
+      if (token == null) {
         response.setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode()).setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage())
                 .end();
       } else {
-        String token = authorization.substring(HttpConstants.TOKEN.length()).trim();
         DeliveryOptions options =
                 new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.GET_ACCESS_TOKEN)
                         .addHeader(MessageConstants.MSG_HEADER_TOKEN, token);
@@ -76,7 +87,7 @@ public class RouteAuthConfigurator implements RouteConfigurator {
                   }
                 });
       }
-    } else  { 
+    } else {
       routingContext.next();
     }
   }

@@ -9,6 +9,10 @@ public class RouteConstants {
   public static final String API_VERSION = "v1";
   public static final String API_BASE_ROUTE = "/nucleus-auth/" + API_VERSION + "/";
   public static final String API_NUCLUES_AUTH_ROUTE = "/nucleus-auth/*";
+  
+  // GLA 2.0 Authentication API base route path
+  public static final String API_GLA_VERSION_BASE_ROUTE = "/nucleus-auth/";
+  public static final String LOGIN = "login";
 
   // Helper: Entity name constants
 
@@ -30,8 +34,10 @@ public class RouteConstants {
   // we are going to have individual constant values to work with for each
   // point instead of reusing the same
 
-  public static final String EP_NUCLUES_AUTH_TOKEN = API_BASE_ROUTE + TOKEN;
+  public static final String EP_NUCLUES_AUTH_GLA_VERSION_LOGIN = API_GLA_VERSION_BASE_ROUTE + LOGIN;
 
+  public static final String EP_NUCLUES_AUTH_TOKEN = API_BASE_ROUTE + TOKEN;
+  
   public static final String EP_NUCLUES_AUTH_AUTHORIZE = API_BASE_ROUTE + AUTHORIZE;
 
   public static final String EP_NUCLUES_AUTH_USER = API_BASE_ROUTE + USERS;

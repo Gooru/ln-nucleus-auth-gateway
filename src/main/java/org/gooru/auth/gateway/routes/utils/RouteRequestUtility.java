@@ -15,7 +15,7 @@ public class RouteRequestUtility {
     
     JsonObject result = new JsonObject();
     JsonObject httpBody = null;
-    if (!routingContext.request().method().name().equals(HttpMethod.GET.name())) {
+    if (!routingContext.request().method().name().equals(HttpMethod.GET.name()) && routingContext.getBody().length() > 0) {
       httpBody = routingContext.getBodyAsJson();
     }
     if (httpBody != null) {
