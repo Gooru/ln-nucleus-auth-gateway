@@ -1,9 +1,9 @@
 package org.gooru.auth.gateway.responses.auth;
 
-import org.gooru.auth.gateway.constants.MessageConstants;
-
 import io.vertx.core.eventbus.Message;
 import io.vertx.core.json.JsonObject;
+
+import org.gooru.auth.gateway.constants.MessageConstants;
 
 class AuthMessageBusJsonResponseContextHolder implements AuthResponseContextHolder {
 
