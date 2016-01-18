@@ -26,6 +26,11 @@ public class RouteConstants {
   public static final String RESET_PASSWORD = "password-reset";
   public static final String EMAIL = "email";
   public static final String EMAIL_CONFIRM = "email-confirmation";
+  private static final String GOOGLE_DRIVE = "google-drive";
+  private static final String CALLBACK = "callback";
+  private static final String REFRESH_TOKEN = "refresh-token";
+  
+  
 
   // Misc helpers
   public static final String SEP = "/";
@@ -50,5 +55,11 @@ public class RouteConstants {
 
   // User preference
   public static final String EP_NUCLUES_AUTH_USER_ID_PREFS = API_BASE_ROUTE + USERS + SEP + USER_ID + SEP + USER_PREFERENCES;
-
+  
+  public static final String EP_NUCLUES_AUTH_GOOGLE_CONNECT_DRIVE = API_BASE_ROUTE + GOOGLE_DRIVE;
+  
+  public static final String EP_NUCLUES_AUTH_GOOGLE_DRIVE_CALLBACk = API_BASE_ROUTE + GOOGLE_DRIVE + SEP + CALLBACK;
+  
+  public static final String EP_NUCLUES_AUTH_GOOGLE_DRIVE_REFRESH_TOKEN = API_BASE_ROUTE + GOOGLE_DRIVE + SEP + REFRESH_TOKEN;
+  
 }
