@@ -136,7 +136,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYm
 
 **Response body json fields**
 
-| Key name          | Nullable | comment                            |
+| Field name          | Nullable | comment                            |
 |-------------------|----------|------------------------------------|
 | firstname         | Yes      |                                    |
 | lastname          | Yes      |                                    |
