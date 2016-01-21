@@ -184,7 +184,7 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
 curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==" -d '{"country" : "united states", "school" : "joseph", "school_district" : "Colton Joint Unified School District", "state" : "california", "gender" : "male", "grade" : ["5", "9"], "course" : [{"code" : "MA#MA6", "name" : "Math 6"}], "about_me" : "I am currently a Research Assistant"}' -X PUT http://127.0.0.1:8080/nucleus-auth/v1/users/me
 ```
 
-**Get User**
+##Get User
 **Rest API details**
 
 | Name | Summary |
@@ -211,8 +211,7 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 ```posh
 curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X GET http://127.0.0.1:8080/nucleus-auth/v1/users/me
 ```
-
-**Find user by username and email Id**
+##Find user by username and email Id
 
 **Rest API details**
 
@@ -247,7 +246,7 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X GET http://127.0.0.1:8080/nucleus-auth/v1/users?username=gooru
 ```
 
-**Forgot password**
+##Forgot password
 
 **Rest API details**
 
@@ -284,7 +283,7 @@ Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzI
 curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzIwMzkxNzY0OQ=="  -X POST -d '{"email_id" : "mygooru@gmail.com"}' http://127.0.0.1:8080/nucleus-auth/v1/users/password-reset
 ```
 
-**Reset un-authenticate user password**
+##Reset un-authenticate user password
 
 **Rest API details**
 
@@ -321,7 +320,7 @@ Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzI
 curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzIwMzkxNzY0OQ=="  -X PUT -d '{"token" : "UkVTRVRfUEFTU1dPUkRfVE9LRU46VGh1IEphbiAyMSAyMDowMzowOCBJU1QgMjAxNjoxNDUzMzg2Nzg4NTg5", "new_password" : "newgooru123"}' http://127.0.0.1:8080/nucleus-auth/v1/users/95f0da69-fb0e-401a-8c9c-37acdba55ff0/password
 ```
 
-**Reset authenticate user password**
+##Reset authenticate user password
 
 **Rest API details**
 
