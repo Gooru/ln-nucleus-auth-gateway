@@ -4,7 +4,7 @@ Features
 - Create child user account.
 - Update user account 
 - Get User
-- Find user by username and email Id.
+- Find user by username or email Id.
 - Forgot password.
 - Reset un-authenticate user password.
 - Reset authenticate user password.
@@ -184,4 +184,56 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
 curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==" -d '{"country" : "united states", "school" : "joseph", "school_district" : "Colton Joint Unified School District", "state" : "california", "gender" : "male", "grade" : ["5", "9"], "course" : [{"code" : "MA#MA6", "name" : "Math 6"}], "about_me" : "I am currently a Research Assistant"}' -X PUT http://127.0.0.1:8080/nucleus-auth/v1/users/me
 ```
 
+**Get User**
+**Rest API details**
+
+| Name | Summary |
+|------------------------|--------|
+| HTTP Method | GET |
+| End Point | /nucleus-auth/{version}/users/me |
+| Auth | Required |
+| Authorization Header | Authorization: Token [Authenticated access token]
+| Request Body Type | None |
+| Response Code | 200 Successful |
+
+
+**Response body**
+```json
+{"birth_date":"1987-11-11","created_at":"2016-01-21T11:58:11Z","email_id":"mygooru@gmail.com","firstname":"gooru","grade":["5","9"],"id":"95f0da69-fb0e-401a-8c9c-37acdba55ff0","lastname":"learning","updated_at":"2016-01-21T11:58:11Z","user_category":"teacher","username":"gooru"}
+```
+**CURL snippet**
+
+```posh
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X GET http://127.0.0.1:8080/nucleus-auth/v1/users/me
+```
+
+**Find user by username and email Id**
+
+**Rest API details**
+
+| Name | Summary |
+|------------------------|--------|
+| HTTP Method | GET |
+| End Point | /nucleus-auth/{version}/users |
+| Auth | Required |
+| Authorization Header | Authorization: Token [Authenticated access token]
+| Request Body Type | None |
+| Response Code | 200 Successful |
+
+**Request Param**
+
+| Name      | Comment  |
+|---------- |----------|
+| username  | Either  username or email id is mandatory |
+| email     | Either  username or email id is mandatory |
+
+**Response body**
+```json
+{"user_id":"95f0da69-fb0e-401a-8c9c-37acdba55ff0","username":"gooru","email_id":"mygooru@gmail.com"}
+```
+**CURL snippet**
+
+```posh
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X GET http://127.0.0.1:8080/nucleus-auth/v1/users?username=gooru
+```
 
