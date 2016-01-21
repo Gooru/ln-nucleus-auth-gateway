@@ -2,6 +2,9 @@ Features
 ----------
 - Anonymous user access Token.
 - Authenticate user access token.
+- Get access token.
+- Delete access token.
+
 
 ###Anonymous user access Token
 
@@ -32,7 +35,7 @@ Features
 
 **CURL snippet**
 
-```json
+```
 curl -i  -H "Content-Type: application/json"  -d6a97-ae15-11e5-a302-f8a963065976", "grant_type" : "anonymous"}' -X POST http://127.0.0.1:8080/nucleus-auth/v1/token
 ```
 
@@ -75,6 +78,58 @@ curl -i  -H "Content-Type: application/json"  -d6a97-ae15-11e5-a302-f8a963065976
 
 **CURL snippet**
 
-```json
+```
 curl -i  -H "Content-Type: application/json" -H "Authorization: Basic b2liZ2FuZzlAZ29vcnUub3JnOmRvbjEyMzQ=" -d '{"client_key" : "c2hlZWJhbkBnb29ydWxlYXJuaW5nLm9yZw==", "client_id" : "ba956a97-ae15-11e5-a302-f8a963065976", "grant_type" : "credential"}' -X POST http://127.0.0.1:8080/nucleus-auth/v1/token
 ```
+
+##Get access token  details 
+
+ This API response has the basic details about the user and  auth client.
+
+| Name | Summary |
+|------------------------|--------|
+| HTTP Method | GET |
+| End Point | /nucleus-auth/{version}/token |
+| Auth | Required |
+| Request Body Type | None |
+| Authorization Header | Token [access_token] |
+| Response Code | 200 Successful |
+
+**Authorization Header**
+
+```
+Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OldlZCBKYW4gMjAgMTE6NDM6MzEgSVNUIDIwMTY6MTQ1MzI3MDQxMTkxNA==
+```
+
+**Response Body**
+
+```json 
+{"user_id":"aada6abc-eb11-4550-981f-3a36a53b4907","username":"rnfu34p13","client_id":"ba956a97-ae15-11e5-a302-f8a963065976","provided_at":1453366247336,"cdn_urls":{"profile.cdn":"//profile.gooru.org.com"}}
+```
+
+**CURL snippet**
+
+```
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTQ6MjA6NDcgSVNUIDIwMTY6MTQ1MzM2NjI0NzMzNg=="  -X DELETE http://127.0.0.1:8080/nucleus-auth/v1/token
+```
+
+##Delete access token 
+
+This API used to revoke the access token  and make it invalid, it can be used for logout functionality.
+
+| Name | Summary |
+|------------------------|--------|
+| HTTP Method | DELETE |
+| End Point | /nucleus-auth/{version}/token |
+| Auth | Required |
+| Request Body Type | None |
+| Authorization Header | Token [access_token] |
+| Response Code | 204 No content |
+
+
+**CURL snippet**
+
+```
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTQ6MjA6NDcgSVNUIDIwMTY6MTQ1MzM2NjI0NzMzNg=="  -X DELETE http://127.0.0.1:8080/nucleus-auth/v1/token
+```
+
