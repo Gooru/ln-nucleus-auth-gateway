@@ -32,7 +32,7 @@ class RouteAuthenticationConfigurator implements RouteConfigurator {
     mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30000L);
     router.post(RouteConstants.EP_NUCLUES_AUTH_TOKEN).handler(this::createAccessToken);
     router.delete(RouteConstants.EP_NUCLUES_AUTH_TOKEN).handler(this::deleteAccessToken);
-
+    router.get(RouteConstants.EP_NUCLUES_AUTH_TOKEN).handler(this::getAccessToken);
   }
 
   private void createAccessToken(RoutingContext routingContext) {
@@ -52,6 +52,7 @@ class RouteAuthenticationConfigurator implements RouteConfigurator {
       options.addHeader(MessageConstants.MSG_HEADER_BASIC_AUTH, basicAuthCredentials);
     }
     eb.send(MessagebusEndpoints.MBEP_AUTHENTICATION, RouteRequestUtility.getBodyForMessage(routingContext), options, reply -> {
+      
       RouteResponseUtility.responseHandler(routingContext, reply, LOG);
     });
   }
@@ -67,4 +68,14 @@ class RouteAuthenticationConfigurator implements RouteConfigurator {
     });
   }
 
+  private void getAccessToken(RoutingContext routingContext) {
+    DeliveryOptions options =
+            new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.GET_ACCESS_TOKEN);
+    String authorization = routingContext.request().getHeader(HttpConstants.HEADER_AUTH);
+    String token = authorization.substring(HttpConstants.TOKEN.length()).trim();
+    options.addHeader(MessageConstants.MSG_HEADER_TOKEN, token);
+    eb.send(MessagebusEndpoints.MBEP_AUTHENTICATION, RouteRequestUtility.getBodyForMessage(routingContext), options, reply -> {
+      RouteResponseUtility.responseHandler(routingContext, reply, LOG);
+    });
+  }
 }
