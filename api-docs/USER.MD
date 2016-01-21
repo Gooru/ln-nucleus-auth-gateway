@@ -121,4 +121,67 @@ Location: /users/31d1de5e-88e1-440f-9ecb-b66a0ac39250
 curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==" -d '{"username" : "gooruChild" , "parent_email_id" : "mygooru@gmail.com", "password" : "mygooru123", "birth_date" : "11/12/2005", "user_category" : "student"}' -X POST http://127.0.0.1:8080/nucleus-auth/v1/users
 ```
 
+##Update user account 
+
+**Rest API details**
+
+| Name | Summary |
+|------------------------|--------|
+| HTTP Method | PUT |
+| End Point | /nucleus-auth/{version}/users/me |
+| Auth | Required |
+| Authorization Header | Authorization: Token [Authenticated access token]
+| Request Body Type | JSON |
+| Response Code | 204 No output |
+
+**Response body json fields**
+
+| Key name          | Nullable | comment                            |
+|-------------------|----------|------------------------------------|
+| firstname         | Yes      |                                    |
+| lastname          | Yes      |                                    |
+| username          | Yes      | character must be between 4 and 20 |
+| user_category     | Yes      |                                    |
+| grade             | Yes      |                                    |
+| gender            | Yes      |                                    |
+| state_id          | Yes      | If state_id not exists pass as text in state field. |
+| state             | Yes      |                                       |
+| country_id        | Yes      | If country_id not exists pass as text in country field. |
+| country           | Yes      |                                    |
+| school_id         | Yes      | If school_id not exists pass as text in school field. |
+| school            | Yes      |                                    |
+| school_district_id| Yes      | If school_district_id not exists pass as text in school district field. |
+| school            | Yes      |                                    |
+| thumbnail_path    | Yes      |                                    |
+| about_me          | Yes      |                                    |
+| course            | Yes      |                                    |
+
+
+
+
+**Authorization Token**
+```
+Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==
+```
+
+**Request Body**
+
+**sample 1**
+
+```json
+{"country" : 5, "school_id" : "5232b612-b6da-4f5a-95db-1a1cc6489e7b", "school_district_id" : "1232b612-b6da-4f5a-95db-1a1cc6489e7b", "state_id" : 4, "gender" : "male", "grade" : ["5", "9"], "course" : [{"code" : "MA#MA6", "name" : "Math 6"}], "about_me" : "I am currently a Research Assistant"}
+```
+
+**sample 2**
+
+```json
+{"country" : "united states", "school_id" : "joseph", "school_district" : "Colton Joint Unified School District", "gender" : "male", "grade" : ["5", "9"], "course" : [{"code" : "MA#MA6", "name" : "Math 6"}], "about_me" : "I am currently a Research Assistant"}
+```
+
+**CURL snippet**
+
+```posh
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==" -d '{"country" : "united states", "school" : "joseph", "school_district" : "Colton Joint Unified School District", "state" : "california", "gender" : "male", "grade" : ["5", "9"], "course" : [{"code" : "MA#MA6", "name" : "Math 6"}], "about_me" : "I am currently a Research Assistant"}' -X PUT http://127.0.0.1:8080/nucleus-auth/v1/users/me
+```
+
 
