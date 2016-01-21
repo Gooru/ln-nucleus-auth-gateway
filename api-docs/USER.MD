@@ -262,7 +262,8 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNj
 
 **Authorization Token**
 ```
-Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==
+Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzIwMzkxNzY0OQ==
+
 ```
 
 **Request Body fields**
@@ -280,5 +281,79 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA=="  -X POST -d '{"email_id" : "mygooru@gmail.com"}' http://127.0.0.1:8080/nucleus-auth/v1/users/password-reset
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzIwMzkxNzY0OQ=="  -X POST -d '{"email_id" : "mygooru@gmail.com"}' http://127.0.0.1:8080/nucleus-auth/v1/users/password-reset
+```
+
+**Reset un-authenticate user password**
+
+**Rest API details**
+
+| Name | Summary |
+|------------------------|--------|
+| HTTP Method | PUT |
+| End Point | /nucleus-auth/{version}/users/password |
+| Auth | Required |
+| Request Body Type | JSON |
+| Authorization Header | Authorization: Token [anonymous access token]
+| Response Code | 204 No content |
+
+**Authorization Token**
+```
+Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzIwMzkxNzY0OQ==
+```
+
+**Request Body fields**
+
+| Name      | Nullable | Comment  |
+|-----------|----------|----------|
+| new_password  | No       |          |
+| token     | No       |          |
+
+
+**Response body**
+```json
+{"token" : "UkVTRVRfUEFTU1dPUkRfVE9LRU46VGh1IEphbiAyMSAyMDowMzowOCBJU1QgMjAxNjoxNDUzMzg2Nzg4NTg5", "password" : "newgooru123"}
+```
+
+**CURL snippet**
+
+```posh
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzIwMzkxNzY0OQ=="  -X PUT -d '{"token" : "UkVTRVRfUEFTU1dPUkRfVE9LRU46VGh1IEphbiAyMSAyMDowMzowOCBJU1QgMjAxNjoxNDUzMzg2Nzg4NTg5", "new_password" : "newgooru123"}' http://127.0.0.1:8080/nucleus-auth/v1/users/95f0da69-fb0e-401a-8c9c-37acdba55ff0/password
+```
+
+**Reset authenticate user password**
+
+**Rest API details**
+
+| Name | Summary |
+|------------------------|--------|
+| HTTP Method | PUT |
+| End Point | /nucleus-auth/{version}/users/password |
+| Auth | Required |
+| Request Body Type | JSON |
+| Authorization Header | Authorization: Token [Authenticated access token]
+| Response Code | 204 No content |
+
+**Authorization Token**
+```
+Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw==
+```
+
+**Request Body fields**
+
+| Name         | Nullable | Comment  |
+|--------------|----------|----------|
+| old_password | No       |          |
+| new_password | No       |          |
+
+
+**Response body**
+```json
+{"new_password" : "gooru1234", "old_password" : "newgooru123"}
+```
+
+**CURL snippet**
+
+```posh
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X PUT -d '{"new_password" : "gooru1234", "old_password" : "newgooru123"}' http://127.0.0.1:8080/nucleus-auth/v1/users/95f0da69-fb0e-401a-8c9c-37acdba55ff0/password
 ```
