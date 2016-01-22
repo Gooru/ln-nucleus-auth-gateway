@@ -8,7 +8,7 @@ Features
 
 ###Anonymous user access Token
 
-   The anonymous authentication flow can be used to authenticate when the consumer already has the client id and client secret.
+   The anonymous authentication flow can be used to authenticate when the consumer already has the client id and client secret.
    This authentication flow involves passing the client id and secret. Use this authentication flow only when necessary. No refresh token will be issued.
 
 **Rest API details**
@@ -30,13 +30,14 @@ Features
 **Response Body**
 
 ```json
-{"user_id":"anonymous","client_id":"ba956a97-ae15-11e5-a302-f8a963065976","provided_at":1453203543600,"access_token":"YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MDk6MDMgSVNUIDIwMTY6MTQ1MzIwMzU0MzYwMQ==","cdn_urls":{"profile.cdn":"//profile.gooru.org.com"}}
+{"user_id":"anonymous","client_id":"ba956a97-ae15-11e5-a302-f8a963065976","provided_at":1453472200140,"cdn_urls":{"profile.cdn":"//profile.gooru.org.com"},"prefs":{"taxonomy":[{"standard_framework_code":"CSS","default_subject_code":"GUT.M"}]},"access_token":"YW5vbnltb3VzOkZyaSBKYW4gMjIgMTk6NDY6NDAgSVNUIDIwMTY6MTQ1MzQ3MjIwMDE0MA=="}
 ```
 
 **CURL snippet**
 
 ```
-curl -i  -H "Content-Type: application/json"  -d6a97-ae15-11e5-a302-f8a963065976", "grant_type" : "anonymous"}' -X POST http://127.0.0.1:8080/nucleus-auth/v1/token
+curl -i  -H "Content-Type: application/json"  -d '{"client_key" : "c2hlZWJhbkBnb29ydWxlYXJuaW5nLm9yZw==", "client_id" : "ba956a97-ae15-11e5-a302-f8a963065976", "grant_type" : "anonymous"}' -X POST http://127.0.0.1:8080/nucleus-auth/v1/token
+
 ```
 
 ###Username and password authentication flow
@@ -73,7 +74,7 @@ curl -i  -H "Content-Type: application/json"  -d6a97-ae15-11e5-a302-f8a963065976
 **Response Body**
 
 ```json
-{"user_id":"aada6abc-eb11-4550-981f-3a36a53b4907","username":"rnfu34p13","client_id":"ba956a97-ae15-11e5-a302-f8a963065976","provided_at":1453200304366,"access_token":"YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlR1ZSBKYW4gMTkgMTY6MTU6MDQgSVNUIDIwMTY6MTQ1MzIwMDMwNDM2Nw==","cdn_urls":{"profile.cdn":"//profile.gooru.org.com"}}
+{"user_id":"aada6abc-eb11-4550-981f-3a36a53b4907","username":"rnfu34p13","client_id":"ba956a97-ae15-11e5-a302-f8a963065976","provided_at":1453472820207,"prefs":{"taxonomy":[{"standard_framework_code":"CSS","default_subject_code":"GUT.M"}]},"cdn_urls":{"profile.cdn":"//profile.gooru.org.com"},"access_token":"YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OkZyaSBKYW4gMjIgMTk6NTc6MDAgSVNUIDIwMTY6MTQ1MzQ3MjgyMDIwNw=="}
 ```
 
 **CURL snippet**
