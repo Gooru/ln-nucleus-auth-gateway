@@ -74,7 +74,7 @@ curl -i  -H "Content-Type: application/json"  -d '{"client_key" : "c2hlZWJhbkBnb
 **Response Body**
 
 ```json
-{"user_id":"aada6abc-eb11-4550-981f-3a36a53b4907","username":"rnfu34p13","client_id":"ba956a97-ae15-11e5-a302-f8a963065976","provided_at":1453200304366,"access_token":"YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlR1ZSBKYW4gMTkgMTY6MTU6MDQgSVNUIDIwMTY6MTQ1MzIwMDMwNDM2Nw==","cdn_urls":{"profile.cdn":"//profile.gooru.org.com"}}
+{"user_id":"aada6abc-eb11-4550-981f-3a36a53b4907","username":"rnfu34p13","client_id":"ba956a97-ae15-11e5-a302-f8a963065976","provided_at":1453472820207,"prefs":{"taxonomy":[{"standard_framework_code":"CSS","default_subject_code":"GUT.M"}]},"cdn_urls":{"profile.cdn":"//profile.gooru.org.com"},"access_token":"YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OkZyaSBKYW4gMjIgMTk6NTc6MDAgSVNUIDIwMTY6MTQ1MzQ3MjgyMDIwNw=="}
 ```
 
 **CURL snippet**
