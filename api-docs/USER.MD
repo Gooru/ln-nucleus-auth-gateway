@@ -272,7 +272,7 @@ Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzI
 | email_id  | No       |          |
 
 
-**Response body**
+**Request body**
 ```json
 {"email_id":"mygooru@gmail.com"}
 ```
@@ -290,7 +290,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | PUT |
-| End Point | /nucleus-auth/{version}/users/password |
+| End Point | /nucleus-auth/{version}/users/{user_id}/password |
 | Auth | Required |
 | Request Body Type | JSON |
 | Authorization Header | Authorization: Token [anonymous access token]
@@ -309,7 +309,7 @@ Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzI
 | token     | No       |          |
 
 
-**Response body**
+**Request body**
 ```json
 {"token" : "UkVTRVRfUEFTU1dPUkRfVE9LRU46VGh1IEphbiAyMSAyMDowMzowOCBJU1QgMjAxNjoxNDUzMzg2Nzg4NTg5", "password" : "newgooru123"}
 ```
@@ -327,7 +327,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | PUT |
-| End Point | /nucleus-auth/{version}/users/password |
+| End Point | /nucleus-auth/{version}/users/me/password |
 | Auth | Required |
 | Request Body Type | JSON |
 | Authorization Header | Authorization: Token [Authenticated access token]
@@ -346,7 +346,7 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 | new_password | No       |          |
 
 
-**Response body**
+**Request body**
 ```json
 {"new_password" : "gooru1234", "old_password" : "newgooru123"}
 ```
@@ -354,5 +354,43 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X PUT -d '{"new_password" : "gooru1234", "old_password" : "newgooru123"}' http://127.0.0.1:8080/nucleus-auth/v1/users/95f0da69-fb0e-401a-8c9c-37acdba55ff0/password
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X PUT -d '{"new_password" : "gooru1234", "old_password" : "newgooru123"}' http://127.0.0.1:8080/nucleus-auth/v1/users/me/password
 ```
+
+##Confirm email
+
+**Rest API details**
+
+| Name | Summary |
+|------------------------|--------|
+| HTTP Method | POST |
+| End Point | /nucleus-auth/{version}/users/me/email |
+| Auth | Required |
+| Request Body Type | JSON |
+| Authorization Header | Authorization: Token [Authenticate access token]
+| Response Code | 200 Successful |
+
+**Authorization Token**
+```
+Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw==
+
+```
+
+**Request Body fields**
+
+| Name      | Nullable | Comment  |
+|---------- |----------|----------|
+| email_id  | No       |          |
+
+
+**Request body**
+```json
+{"email_id":"mygooru@gooru.org"}
+```
+
+**CURL snippet**
+
+```posh
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X POST -d '{"email_id" : "mygooru@gooru.org"}' http://127.0.0.1:8080/nucleus-auth/v1/users/me/email
+```
+
