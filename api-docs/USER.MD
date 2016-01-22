@@ -394,3 +394,66 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X POST -d '{"email_id" : "mygooru@gooru.org"}' http://127.0.0.1:8080/nucleus-auth/v1/users/me/email
 ```
 
+##Resend confirmation email.
+
+**Rest API details**
+
+| Name | Summary |
+|------------------------|--------|
+| HTTP Method | POST |
+| End Point | /nucleus-auth/{version}/users/me/email-confirmation |
+| Auth | Required |
+| Request Body Type | JSON |
+| Authorization Header | Authorization: Token [Authenticate access token]
+| Response Code | 200 Successful |
+
+**Authorization Token**
+
+```
+Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw==
+
+```
+
+**CURL snippet**
+
+```posh
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X POST  http://127.0.0.1:8080/nucleus-auth/v1/users/me/email-confirmation
+```
+
+##Update user email.
+
+**Rest API details**
+
+| Name | Summary |
+|------------------------|--------|
+| HTTP Method | PUT |
+| End Point | /nucleus-auth/{version}/users/{user_id}/email |
+| Auth | Required |
+| Request Body Type | JSON |
+| Authorization Header | Authorization: Token [anonymous access token]
+| Response Code | 204 No content |
+
+**Authorization Token**
+
+```
+Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzIwMzkxNzY0OQ==
+```
+
+**Request Body fields**
+
+| Name      | Nullable | Comment  |
+|---------- |----------|----------|
+| token  | No       |          |
+
+
+**Request Body **
+
+```json
+{"token" : "RU1BSUxfQ09ORklSTV9UT0tFTjpGcmkgSmFuIDIyIDExOjM3OjU3IElTVCAyMDE2OjE0NTM0NDI4NzcwNjk="}
+```
+
+**CURL snippet**
+
+```posh
+curl -i  -H "Content-Type: application/json" -H "AuthoriIwMzkxNzY0OQ==" -d '{"token" : "RU1BSUxfQ09ORklSTV9UT0tFTjpGcmkgSmFuIDIyIDEzOjIyOjQ5IElTVCAyMDE2OjE0NTM0NDkxNjk5NTE="}'  -X PUT  http://127.0.0.1:8080/nucleus-auth/v1/users/95f0da69-fb0e-401a-8c9c-37acdba55ff0/email
+```
