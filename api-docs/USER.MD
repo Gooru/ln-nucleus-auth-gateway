@@ -446,7 +446,7 @@ Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzI
 | token  | No       |          |
 
 
-**Request Body **
+**Request Body**
 
 ```json
 {"token" : "RU1BSUxfQ09ORklSTV9UT0tFTjpGcmkgSmFuIDIyIDExOjM3OjU3IElTVCAyMDE2OjE0NTM0NDI4NzcwNjk="}
