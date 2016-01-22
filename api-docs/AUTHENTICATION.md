@@ -30,7 +30,7 @@ Features
 **Response Body**
 
 ```json
-{"user_id":"anonymous","client_id":"ba956a97-ae15-11e5-a302-f8a963065976","provided_at":1453472200140,"cdn_urls":{"profile.cdn":"//profile.gooru.org.com"},"prefs":{"taxonomy":[{"standard_framework_code":"CSS","default_subject_code":"GUT.M"}]},"access_token":"YW5vbnltb3VzOkZyaSBKYW4gMjIgMTk6NDY6NDAgSVNUIDIwMTY6MTQ1MzQ3MjIwMDE0MA=="}
+{"user_id":"anonymous","client_id":"ba956a97-ae15-11e5-a302-f8a963065976","provided_at":1453472200140,"cdn_urls":{"profile.cdn":"//profile.gooru.org.com"},"prefs":{"taxonomy":[{"standard_framework_code":"CSS","default_subject_code":"GUT.M"}]}}
 ```
 
 **CURL snippet**
