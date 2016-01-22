@@ -36,7 +36,8 @@ Features
 **CURL snippet**
 
 ```
-curl -i  -H "Content-Type: application/json"  -d6a97-ae15-11e5-a302-f8a963065976", "grant_type" : "anonymous"}' -X POST http://127.0.0.1:8080/nucleus-auth/v1/token
+curl -i  -H "Content-Type: application/json"  -d '{"client_key" : "c2hlZWJhbkBnb29ydWxlYXJuaW5nLm9yZw==", "client_id" : "ba956a97-ae15-11e5-a302-f8a963065976", "grant_type" : "anonymous"}' -X POST http://127.0.0.1:8080/nucleus-auth/v1/token
+
 ```
 
 ###Username and password authentication flow
