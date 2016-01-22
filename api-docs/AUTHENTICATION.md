@@ -8,7 +8,7 @@ Features
 
 ###Anonymous user access Token
 
-   The anonymous authentication flow can be used to authenticate when the consumer already has the client id and client secret.
+   The anonymous authentication flow can be used to authenticate when the consumer already has the client id and client secret.
    This authentication flow involves passing the client id and secret. Use this authentication flow only when necessary. No refresh token will be issued.
 
 **Rest API details**
@@ -30,7 +30,7 @@ Features
 **Response Body**
 
 ```json
-{"user_id":"anonymous","client_id":"ba956a97-ae15-11e5-a302-f8a963065976","provided_at":1453472200140,"cdn_urls":{"profile.cdn":"//profile.gooru.org.com"},"prefs":{"taxonomy":[{"standard_framework_code":"CSS","default_subject_code":"GUT.M"}]}}
+{"user_id":"anonymous","client_id":"ba956a97-ae15-11e5-a302-f8a963065976","provided_at":1453472200140,"cdn_urls":{"profile.cdn":"//profile.gooru.org.com"},"prefs":{"taxonomy":[{"standard_framework_code":"CSS","default_subject_code":"GUT.M"}]},"access_token":"YW5vbnltb3VzOkZyaSBKYW4gMjIgMTk6NDY6NDAgSVNUIDIwMTY6MTQ1MzQ3MjIwMDE0MA=="}
 ```
 
 **CURL snippet**
