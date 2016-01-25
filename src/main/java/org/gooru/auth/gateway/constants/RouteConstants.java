@@ -9,10 +9,11 @@ public class RouteConstants {
   public static final String API_VERSION = "v1";
   public static final String API_BASE_ROUTE = "/nucleus-auth/" + API_VERSION + "/";
   public static final String API_NUCLUES_AUTH_ROUTE = "/nucleus-auth/*";
-  
+
   // GLA 2.0 Authentication API base route path
   public static final String API_GLA_VERSION_BASE_ROUTE = "/nucleus-auth/";
   public static final String LOGIN = "login";
+  public static final String ANONYMOUS = "anonymous";
 
   // Helper: Entity name constants
 
@@ -29,8 +30,6 @@ public class RouteConstants {
   private static final String GOOGLE_DRIVE = "google-drive";
   private static final String CALLBACK = "callback";
   private static final String REFRESH_TOKEN = "refresh-token";
-  
-  
 
   // Misc helpers
   public static final String SEP = "/";
@@ -40,9 +39,11 @@ public class RouteConstants {
   // point instead of reusing the same
 
   public static final String EP_NUCLUES_AUTH_GLA_VERSION_LOGIN = API_GLA_VERSION_BASE_ROUTE + LOGIN;
+  
+  public static final String EP_NUCLUES_AUTH_GLA_VERSION_ANONYMOUS_LOGIN = API_GLA_VERSION_BASE_ROUTE + LOGIN + SEP + ANONYMOUS;
 
   public static final String EP_NUCLUES_AUTH_TOKEN = API_BASE_ROUTE + TOKEN;
-  
+
   public static final String EP_NUCLUES_AUTH_AUTHORIZE = API_BASE_ROUTE + AUTHORIZE;
 
   public static final String EP_NUCLUES_AUTH_USER = API_BASE_ROUTE + USERS;
@@ -55,11 +56,11 @@ public class RouteConstants {
 
   // User preference
   public static final String EP_NUCLUES_AUTH_USER_ID_PREFS = API_BASE_ROUTE + USERS + SEP + USER_ID + SEP + USER_PREFERENCES;
-  
+
   public static final String EP_NUCLUES_AUTH_GOOGLE_CONNECT_DRIVE = API_BASE_ROUTE + GOOGLE_DRIVE;
-  
+
   public static final String EP_NUCLUES_AUTH_GOOGLE_DRIVE_CALLBACk = API_BASE_ROUTE + GOOGLE_DRIVE + SEP + CALLBACK;
-  
+
   public static final String EP_NUCLUES_AUTH_GOOGLE_DRIVE_REFRESH_TOKEN = API_BASE_ROUTE + GOOGLE_DRIVE + SEP + REFRESH_TOKEN;
-  
+
 }

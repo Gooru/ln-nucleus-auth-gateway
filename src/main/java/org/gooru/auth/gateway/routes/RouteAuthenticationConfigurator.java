@@ -38,8 +38,7 @@ class RouteAuthenticationConfigurator implements RouteConfigurator {
   private void createAccessToken(RoutingContext routingContext) {
     HttpServerRequest request = routingContext.request();
     String authorization = request.getHeader(HttpConstants.HEADER_AUTH);
-    DeliveryOptions options =
-            new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.CREATE_ACCESS_TOKEN);
+    DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout);
     String host = request.getHeader(HttpConstants.HEADER_HOST);
     String referer = request.getHeader(HttpConstants.HEADER_REFERER);
     if (host != null) {
@@ -50,9 +49,12 @@ class RouteAuthenticationConfigurator implements RouteConfigurator {
     if (authorization != null && authorization.startsWith(HttpConstants.BASIC)) {
       String basicAuthCredentials = authorization.substring(HttpConstants.BASIC.length()).trim();
       options.addHeader(MessageConstants.MSG_HEADER_BASIC_AUTH, basicAuthCredentials);
+      options.addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.CREATE_ACCESS_TOKEN);
+    } else {
+      options.addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.ANONYMOUS_CREATE_ACCESS_TOKEN);
     }
     eb.send(MessagebusEndpoints.MBEP_AUTHENTICATION, RouteRequestUtility.getBodyForMessage(routingContext), options, reply -> {
-      
+
       RouteResponseUtility.responseHandler(routingContext, reply, LOG);
     });
   }
