@@ -41,7 +41,8 @@ public class RouteAuthConfigurator implements RouteConfigurator {
     
     if (!((request.method().name().equalsIgnoreCase(HttpMethod.POST.name())) && (request.uri().contains(RouteConstants.EP_NUCLUES_AUTH_AUTHORIZE)
             || request.uri().contains(RouteConstants.EP_NUCLUES_AUTH_TOKEN) || request.uri().contains(
-            RouteConstants.EP_NUCLUES_AUTH_GLA_VERSION_LOGIN)))) {
+            RouteConstants.EP_NUCLUES_AUTH_GLA_VERSION_LOGIN))) && !(request.method().name().equalsIgnoreCase(HttpMethod.GET.name()) && request.uri().contains(RouteConstants.EP_NUCLUES_AUTH_GOOGLE_DRIVE_CALLBACK))) {
+      
       String authorization = request.getHeader(HttpConstants.HEADER_AUTH);
       String token = null;
       if (authorization != null  &&  authorization.startsWith(HttpConstants.TOKEN)) {
@@ -67,6 +68,7 @@ public class RouteAuthConfigurator implements RouteConfigurator {
                 reply -> {
                   if (reply.succeeded()) {
                     AuthResponseContextHolder responseHolder = new AuthResponseContextHolderBuilder(reply.result()).build();
+
                     if (responseHolder.isAuthorized()) {
                       if ((!request.method().equals(HttpMethod.GET) && (request.method().equals(HttpMethod.POST) && !request.uri().contains(
                               RouteConstants.EP_NUCLUES_AUTH_USER)))
@@ -74,6 +76,7 @@ public class RouteAuthConfigurator implements RouteConfigurator {
                         routingContext.response().setStatusCode(HttpConstants.HttpStatus.FORBIDDEN.getCode())
                                 .setStatusMessage(HttpConstants.HttpStatus.FORBIDDEN.getMessage()).end();
                       } else {
+
                         routingContext.put(MessageConstants.MSG_USER_CONTEXT_HOLDER, responseHolder.getUserContext());
                         routingContext.next();
                       }
