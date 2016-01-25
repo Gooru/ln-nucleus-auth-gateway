@@ -30,7 +30,7 @@ class RouteGoogleDriveConfigurator implements RouteConfigurator {
     eb = vertx.eventBus();
     mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30L);
     router.post(RouteConstants.EP_NUCLUES_AUTH_GOOGLE_CONNECT_DRIVE).handler(this::connectGoogleDrive);
-    router.post(RouteConstants.EP_NUCLUES_AUTH_GOOGLE_DRIVE_CALLBACk).handler(this::googleDriveCallback);
+    router.post(RouteConstants.EP_NUCLUES_AUTH_GOOGLE_DRIVE_CALLBACK).handler(this::googleDriveCallback);
     router.get(RouteConstants.EP_NUCLUES_AUTH_GOOGLE_DRIVE_REFRESH_TOKEN).handler(this::googleDriveRefreshToken);
   }
   
