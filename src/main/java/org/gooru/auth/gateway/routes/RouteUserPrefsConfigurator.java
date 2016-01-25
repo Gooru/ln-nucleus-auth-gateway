@@ -9,6 +9,7 @@ import io.vertx.ext.web.RoutingContext;
 
 import org.gooru.auth.gateway.constants.CommandConstants;
 import org.gooru.auth.gateway.constants.ConfigConstants;
+import org.gooru.auth.gateway.constants.HttpConstants;
 import org.gooru.auth.gateway.constants.MessageConstants;
 import org.gooru.auth.gateway.constants.MessagebusEndpoints;
 import org.gooru.auth.gateway.constants.RouteConstants;
@@ -35,6 +36,9 @@ class RouteUserPrefsConfigurator implements RouteConfigurator {
   private void updateUserPreference(RoutingContext routingContext) {
     DeliveryOptions options =
             new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.UPDATE_USER_PREFERENCE);
+    String authorization = routingContext.request().getHeader(HttpConstants.HEADER_AUTH);
+    String token = authorization.substring(HttpConstants.TOKEN.length()).trim();
+    options.addHeader(MessageConstants.MSG_HEADER_TOKEN, token);
     eb.send(MessagebusEndpoints.MBEP_USER_PREFS, RouteRequestUtility.getBodyForMessage(routingContext), options, reply -> {
       RouteResponseUtility.responseHandler(routingContext, reply, LOG);
     });
