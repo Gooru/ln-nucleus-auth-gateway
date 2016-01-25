@@ -9,7 +9,7 @@ Features
 - Reset un-authenticate user password.
 - Reset authenticate user password.
 - Change email address.
-- Confirm email.
+- Confirm email address.
 - Resend confirmation email.
 
 
@@ -395,7 +395,7 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X POST -d '{"email_id" : "mygooru@gooru.org"}' http://127.0.0.1:8080/nucleus-auth/v1/users/me/email
 ```
 
-##Update user email.
+##Confirm  email address.
 
 **Rest API details**
 
