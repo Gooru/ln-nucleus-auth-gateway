@@ -8,9 +8,10 @@ Features
 - Forgot password.
 - Reset un-authenticate user password.
 - Reset authenticate user password.
+- Change email address.
 - Confirm email.
 - Resend confirmation email.
-- Update user email.
+
 
 
 ###Create user account
@@ -357,7 +358,7 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X PUT -d '{"new_password" : "gooru1234", "old_password" : "newgooru123"}' http://127.0.0.1:8080/nucleus-auth/v1/users/me/password
 ```
 
-##Confirm email
+##Change  email address
 
 **Rest API details**
 
@@ -392,32 +393,6 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 
 ```posh
 curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X POST -d '{"email_id" : "mygooru@gooru.org"}' http://127.0.0.1:8080/nucleus-auth/v1/users/me/email
-```
-
-##Resend confirmation email.
-
-**Rest API details**
-
-| Name | Summary |
-|------------------------|--------|
-| HTTP Method | POST |
-| End Point | /nucleus-auth/{version}/users/me/email-confirmation |
-| Auth | Required |
-| Request Body Type | JSON |
-| Authorization Header | Authorization: Token [Authenticate access token]
-| Response Code | 200 Successful |
-
-**Authorization Token**
-
-```
-Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw==
-
-```
-
-**CURL snippet**
-
-```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X POST  http://127.0.0.1:8080/nucleus-auth/v1/users/me/email-confirmation
 ```
 
 ##Update user email.
@@ -457,3 +432,31 @@ Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzI
 ```posh
 curl -i  -H "Content-Type: application/json" -H "AuthoriIwMzkxNzY0OQ==" -d '{"token" : "RU1BSUxfQ09ORklSTV9UT0tFTjpGcmkgSmFuIDIyIDEzOjIyOjQ5IElTVCAyMDE2OjE0NTM0NDkxNjk5NTE="}'  -X PUT  http://127.0.0.1:8080/nucleus-auth/v1/users/95f0da69-fb0e-401a-8c9c-37acdba55ff0/email
 ```
+
+
+##Resend confirmation email.
+
+**Rest API details**
+
+| Name | Summary |
+|------------------------|--------|
+| HTTP Method | POST |
+| End Point | /nucleus-auth/{version}/users/me/email-confirmation |
+| Auth | Required |
+| Request Body Type | JSON |
+| Authorization Header | Authorization: Token [Authenticate access token]
+| Response Code | 200 Successful |
+
+**Authorization Token**
+
+```
+Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw==
+
+```
+
+**CURL snippet**
+
+```posh
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X POST  http://127.0.0.1:8080/nucleus-auth/v1/users/me/email-confirmation
+```
+
