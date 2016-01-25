@@ -430,7 +430,7 @@ Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzI
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "AuthoriIwMzkxNzY0OQ==" -d '{"token" : "RU1BSUxfQ09ORklSTV9UT0tFTjpGcmkgSmFuIDIyIDEzOjIyOjQ5IElTVCAyMDE2OjE0NTM0NDkxNjk5NTE="}'  -X PUT  http://127.0.0.1:8080/nucleus-auth/v1/users/95f0da69-fb0e-401a-8c9c-37acdba55ff0/email
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzIwMzkxNzY0OQ==" -d '{"token" : "RU1BSUxfQ09ORklSTV9UT0tFTjpNb24gSmFuIDI1IDEyOjE3OjU2IElTVCAyMDE2OjE0NTM3MDQ0NzYxNjE="}'  -X PUT  http://127.0.0.1:8080/nucleus-auth/v1/users/95f0da69-fb0e-401a-8c9c-37acdba55ff0/email
 ```
 
 
