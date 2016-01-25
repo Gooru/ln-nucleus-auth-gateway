@@ -170,7 +170,7 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
 **sample 1**
 
 ```json
-{"country" : 5, "school_id" : "5232b612-b6da-4f5a-95db-1a1cc6489e7b", "school_district_id" : "1232b612-b6da-4f5a-95db-1a1cc6489e7b", "state_id" : 4, "gender" : "male", "grade" : ["5", "9"], "course" : [{"code" : "MA#MA6", "name" : "Math 6"}], "about_me" : "I am currently a Research Assistant"}
+{"country" : "1032b612-b6da-4f5a-95db-1a1cc6489e7b", "school_id" : "5232b612-b6da-4f5a-95db-1a1cc6489e7b", "school_district_id" : "1232b612-b6da-4f5a-95db-1a1cc6489e7b", "state_id" : "9232b612-b6da-4f5a-95db-1a1cc6489e7b", "gender" : "male", "grade" : ["5", "9"], "course" : [{"code" : "MA#MA6", "name" : "Math 6"}], "about_me" : "I am currently a Research Assistant"}
 ```
 
 **sample 2**
