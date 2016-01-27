@@ -62,5 +62,7 @@ public class RouteConstants {
   public static final String EP_NUCLUES_AUTH_GOOGLE_DRIVE_CALLBACK = API_BASE_ROUTE + GOOGLE_DRIVE + SEP + CALLBACK;
   
   public static final String EP_NUCLUES_AUTH_GOOGLE_DRIVE_REFRESH_TOKEN = API_BASE_ROUTE + GOOGLE_DRIVE + SEP + REFRESH_TOKEN;
+  
+  public static final long DEFAULT_TIMEOUT = 30000L;
 
 }

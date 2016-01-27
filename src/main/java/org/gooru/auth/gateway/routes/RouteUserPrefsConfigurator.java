@@ -23,12 +23,12 @@ class RouteUserPrefsConfigurator implements RouteConfigurator {
   static final Logger LOG = LoggerFactory.getLogger("org.gooru.auth.gateway.bootstrap.ServerVerticle");
 
   private EventBus eb = null;
-  private long mbusTimeout = 30000L;
+  private long mbusTimeout;
 
   @Override
   public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
     eb = vertx.eventBus();
-    mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30000L);
+    mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, RouteConstants.DEFAULT_TIMEOUT);
     router.put(RouteConstants.EP_NUCLUES_AUTH_USER_ID_PREFS).handler(this::updateUserPreference);
     router.get(RouteConstants.EP_NUCLUES_AUTH_USER_ID_PREFS).handler(this::getUserPreference);
   }

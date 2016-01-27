@@ -25,13 +25,13 @@ public class RouteAuthConfigurator implements RouteConfigurator {
 
   static final Logger LOG = LoggerFactory.getLogger("org.gooru.auth.gateway.bootstrap.ServerVerticle");
 
-  private long mbusTimeout = 30000L;
+  private long mbusTimeout;
   private EventBus eBus = null;
 
   @Override
   public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
     eBus = vertx.eventBus();
-    mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30000L);
+    mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, RouteConstants.DEFAULT_TIMEOUT);
     router.route(RouteConstants.API_NUCLUES_AUTH_ROUTE).handler(this::validateAccessToken);
   }
 

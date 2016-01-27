@@ -24,12 +24,12 @@ class RouteAuthenticationGLAVersionConfigurator implements RouteConfigurator {
   static final Logger LOG = LoggerFactory.getLogger("org.gooru.auth.gateway.bootstrap.ServerVerticle");
 
   private EventBus eb = null;
-  private long mbusTimeout = 30000L;
+  private long mbusTimeout;
 
   @Override
   public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
     eb = vertx.eventBus();
-    mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, 30000L);
+    mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, RouteConstants.DEFAULT_TIMEOUT);
     router.post(RouteConstants.EP_NUCLUES_AUTH_GLA_VERSION_ANONYMOUS_LOGIN).handler(this::anonymousCreateAccessToken);
     router.post(RouteConstants.EP_NUCLUES_AUTH_GLA_VERSION_LOGIN).handler(this::createAccessToken);
 
