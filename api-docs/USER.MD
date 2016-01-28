@@ -176,7 +176,7 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
 **sample 2**
 
 ```json
-{"country" : "united states", "school_id" : "joseph", "school_district" : "Colton Joint Unified School District", "gender" : "male", "grade" : ["5", "9"], "course" : [{"code" : "MA#MA6", "name" : "Math 6"}], "about_me" : "I am currently a Research Assistant"}
+{ "country": "united states", "school": "joseph", "school_district": "Colton Joint Unified School District", "state" : "Califorina", "gender": "male", "grade": [ "5", "9" ], "course": [ { "code": "MA#MA6", "name": "Math 6" } ], "about_me": "I am currently a Research Assistant" }
 ```
 
 **CURL snippet**
