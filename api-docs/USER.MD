@@ -221,7 +221,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNj
 | HTTP Method | GET |
 | End Point | /nucleus-auth/{version}/users |
 | Auth | Required |
-| Authorization Header | Authorization: Token [Authenticated access token]
+| Authorization Header | Authorization: Token [anonymous access token]
 | Request Body Type | None |
 | Response Code | 200 Successful |
 
