@@ -1,12 +1,12 @@
 Features
 ----------
-- Anonymous user access Token.
-- Authenticate user access token.
+- Generate anonymous user access Token.
+- Generate authenticate user access token.
 - Get access token.
 - Delete access token.
 
 
-###Anonymous user access Token
+###Generate anonymous user access Token
 
    The anonymous authentication flow can be used to authenticate when the consumer already has the client id and client secret.
    This authentication flow involves passing the client id and secret. Use this authentication flow only when necessary. No refresh token will be issued.
