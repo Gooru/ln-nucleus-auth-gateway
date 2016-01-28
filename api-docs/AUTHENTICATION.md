@@ -17,7 +17,7 @@ Features
 |------------------------|--------|
 | HTTP Method | POST |
 | End Point | /nucleus-auth/{version}/token |
-| Auth | Not Required |
+| Auth | client key and id is needed |
 | Request Body Type | JSON |
 | Response Code | 200 Successful |
 
@@ -53,7 +53,7 @@ curl -i  -H "Content-Type: application/json"  -d '{"client_key" : "c2hlZWJhbkBnb
 |------------------------|--------|
 | HTTP Method | POST |
 | End Point | /nucleus-auth/{version}/token |
-| Auth | Not Required |
+| Auth | client key and id is needed |
 | Request Body Type | JSON |
 | Authorization Header | Build a string of the form username:password and Base64 encode the string |
 | Response Code | 200 Successful |
