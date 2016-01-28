@@ -8,7 +8,7 @@ Features
 
 ###Anonymous user access Token
 
-   The anonymous authentication flow can be used to authenticate when the consumer already has the client id and client secret.
+   The anonymous authentication flow can be used to authenticate when the consumer already has the client id and client secret.
    This authentication flow involves passing the client id and secret. Use this authentication flow only when necessary. No refresh token will be issued.
 
 **Rest API details**
