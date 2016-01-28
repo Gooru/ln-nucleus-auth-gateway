@@ -116,7 +116,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYm
 
 ##Delete access token 
 
-This API used to revoke the access token  and make it invalid, it can be used for logout functionality.
+It will revoke the access given to an application and make it invalid, it will be used for logout functionality.
 
 | Name | Summary |
 |------------------------|--------|
