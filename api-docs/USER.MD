@@ -443,7 +443,6 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3
 | HTTP Method | POST |
 | End Point | /nucleus-auth/{version}/users/me/email-confirmation |
 | Auth | Required |
-| Request Body Type | JSON |
 | Authorization Header | Authorization: Token [Authenticate access token]
 | Response Code | 200 Successful |
 
