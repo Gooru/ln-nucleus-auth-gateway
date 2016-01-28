@@ -1,16 +1,16 @@
 Features
 ----------
-- Create user account.
-- Create child user account.
+- Create user account
+- Create child user account
 - Update user account 
-- Get User
-- Find user by username or email Id.
-- Forgot password.
-- Reset un-authenticate user password.
+- Fetch user details
+- Find user by username or email Id
+- Forgot password
+- Reset un-authenticate user password
 - Reset authenticate user password.
-- Change email address.
-- Confirm email address.
-- Resend confirmation email.
+- Change email address
+- Confirm email address
+- Resend confirmation email
 
 
 
@@ -185,7 +185,7 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
 curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==" -d '{"country" : "united states", "school" : "joseph", "school_district" : "Colton Joint Unified School District", "state" : "california", "gender" : "male", "grade" : ["5", "9"], "course" : [{"code" : "MA#MA6", "name" : "Math 6"}], "about_me" : "I am currently a Research Assistant"}' -X PUT http://127.0.0.1:8080/nucleus-auth/v1/users/me
 ```
 
-##Get User
+##Fetch user details
 **Rest API details**
 
 | Name | Summary |
