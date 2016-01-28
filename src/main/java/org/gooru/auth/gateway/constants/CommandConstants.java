@@ -9,6 +9,7 @@ public class CommandConstants {
   public static final String CONNECT_GOOGLE_DRIVE = "google.drive.connect";
   public static final String GOOGLE_DRIVE_CALLBACK = "google.drive.callback";
   public static final String GOOGLE_DRIVE_REFRESH_TOKEN = "google.drive.refresh.token";
+  public static final String GOOGLE_DRIVE_DELETE_REFRESH_TOKEN = "google.drive.delete.refresh.token";
 
   // Authorize command
   public static final String AUTHORIZE = "authorize";

@@ -32,6 +32,7 @@ class RouteGoogleDriveConfigurator implements RouteConfigurator {
     router.post(RouteConstants.EP_NUCLUES_AUTH_GOOGLE_CONNECT_DRIVE).handler(this::connectGoogleDrive);
     router.get(RouteConstants.EP_NUCLUES_AUTH_GOOGLE_DRIVE_CALLBACK).handler(this::googleDriveCallback);
     router.get(RouteConstants.EP_NUCLUES_AUTH_GOOGLE_DRIVE_REFRESH_TOKEN).handler(this::googleDriveRefreshToken);
+    router.delete(RouteConstants.EP_NUCLUES_AUTH_GOOGLE_DRIVE_REFRESH_TOKEN).handler(this::deleteDriveRefreshToken);
   }
   
   private void connectGoogleDrive(RoutingContext context){
@@ -57,5 +58,13 @@ class RouteGoogleDriveConfigurator implements RouteConfigurator {
       RouteResponseUtility.responseHandler(context, reply, LOG);
     });
   }
-  
+
+  private void deleteDriveRefreshToken(RoutingContext context){
+    DeliveryOptions options =
+            new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.GOOGLE_DRIVE_DELETE_REFRESH_TOKEN);
+    eb.send(MessagebusEndpoints.MBEP_GOOGLE_DRIVE, RouteRequestUtility.getBodyForMessage(context), options, reply -> {
+      RouteResponseUtility.responseHandler(context, reply, LOG);
+    });
+  }
+
 }
