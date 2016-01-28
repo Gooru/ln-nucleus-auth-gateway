@@ -1,16 +1,16 @@
 Features
 ----------
-- Create user account.
-- Create child user account.
+- Create user account
+- Create child user account
 - Update user account 
-- Get User
-- Find user by username or email Id.
-- Forgot password.
-- Reset un-authenticate user password.
+- Fetch user details
+- Find user by username or email Id
+- Forgot password
+- Reset un-authenticate user password
 - Reset authenticate user password.
-- Change email address.
-- Confirm email address.
-- Resend confirmation email.
+- Change email address
+- Confirm email address
+- Resend confirmation email
 
 
 
@@ -176,7 +176,7 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
 **sample 2**
 
 ```json
-{"country" : "united states", "school_id" : "joseph", "school_district" : "Colton Joint Unified School District", "gender" : "male", "grade" : ["5", "9"], "course" : [{"code" : "MA#MA6", "name" : "Math 6"}], "about_me" : "I am currently a Research Assistant"}
+{ "country": "united states", "school": "joseph", "school_district": "Colton Joint Unified School District", "state" : "Califorina", "gender": "male", "grade": [ "5", "9" ], "course": [ { "code": "MA#MA6", "name": "Math 6" } ], "about_me": "I am currently a Research Assistant" }
 ```
 
 **CURL snippet**
@@ -185,7 +185,7 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
 curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==" -d '{"country" : "united states", "school" : "joseph", "school_district" : "Colton Joint Unified School District", "state" : "california", "gender" : "male", "grade" : ["5", "9"], "course" : [{"code" : "MA#MA6", "name" : "Math 6"}], "about_me" : "I am currently a Research Assistant"}' -X PUT http://127.0.0.1:8080/nucleus-auth/v1/users/me
 ```
 
-##Get User
+##Fetch user details
 **Rest API details**
 
 | Name | Summary |
@@ -221,7 +221,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNj
 | HTTP Method | GET |
 | End Point | /nucleus-auth/{version}/users |
 | Auth | Required |
-| Authorization Header | Authorization: Token [Authenticated access token]
+| Authorization Header | Authorization: Token [anonymous access token]
 | Request Body Type | None |
 | Response Code | 200 Successful |
 
@@ -443,7 +443,6 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3
 | HTTP Method | POST |
 | End Point | /nucleus-auth/{version}/users/me/email-confirmation |
 | Auth | Required |
-| Request Body Type | JSON |
 | Authorization Header | Authorization: Token [Authenticate access token]
 | Response Code | 200 Successful |
 

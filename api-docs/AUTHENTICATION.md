@@ -1,14 +1,14 @@
 Features
 ----------
-- Anonymous user access Token.
-- Authenticate user access token.
+- Generate anonymous user access Token.
+- Generate authenticate user access token.
 - Get access token.
 - Delete access token.
 
 
-###Anonymous user access Token
+###Generate anonymous user access Token
 
-   The anonymous authentication flow can be used to authenticate when the consumer already has the client id and client secret.
+   The anonymous authentication flow can be used to authenticate when the consumer already has the client id and client secret.
    This authentication flow involves passing the client id and secret. Use this authentication flow only when necessary. No refresh token will be issued.
 
 **Rest API details**
@@ -17,7 +17,7 @@ Features
 |------------------------|--------|
 | HTTP Method | POST |
 | End Point | /nucleus-auth/{version}/token |
-| Auth | Not Required |
+| Auth | client key and id is needed |
 | Request Body Type | JSON |
 | Response Code | 200 Successful |
 
@@ -53,7 +53,7 @@ curl -i  -H "Content-Type: application/json"  -d '{"client_key" : "c2hlZWJhbkBnb
 |------------------------|--------|
 | HTTP Method | POST |
 | End Point | /nucleus-auth/{version}/token |
-| Auth | Not Required |
+| Auth | client key and id is needed |
 | Request Body Type | JSON |
 | Authorization Header | Build a string of the form username:password and Base64 encode the string |
 | Response Code | 200 Successful |
@@ -116,7 +116,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYm
 
 ##Delete access token 
 
-This API used to revoke the access token  and make it invalid, it can be used for logout functionality.
+It will revoke the access given to an application and make it invalid, it will be used for logout functionality.
 
 | Name | Summary |
 |------------------------|--------|
