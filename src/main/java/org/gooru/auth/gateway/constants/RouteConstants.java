@@ -7,11 +7,11 @@ public class RouteConstants {
 
   // Helper constants
   public static final String API_VERSION = "v1";
-  public static final String API_BASE_ROUTE = "/nucleus-auth/" + API_VERSION + "/";
-  public static final String API_NUCLUES_AUTH_ROUTE = "/nucleus-auth/*";
+  public static final String API_BASE_ROUTE = "/api/nucleus-auth/" + API_VERSION + "/";
+  public static final String API_NUCLUES_AUTH_ROUTE = "/api/nucleus-auth/*";
 
   // GLA 2.0 Authentication API base route path
-  public static final String API_GLA_VERSION_BASE_ROUTE = "/nucleus-auth/";
+  public static final String API_GLA_VERSION_BASE_ROUTE = "/api/nucleus-auth/";
   public static final String LOGIN = "login";
   public static final String ANONYMOUS = "anonymous";
 
