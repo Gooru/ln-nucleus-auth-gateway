@@ -11,7 +11,7 @@ Features
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | PUT |
-| End Point | /nucleus-auth/{version}/users/me/prefs |
+| End Point | /api/nucleus-auth/{version}/users/me/prefs |
 | Auth | Required |
 | Authorization Header | Authorization: Token [Authenticated access token]
 | Request Body Type | JSON |
@@ -40,7 +40,7 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3Ok1vbiBKYW4gMjUgMTE6MTg6MDUgSVNUIDIwMTY6MTQ1MzcwMDg4NTQzMA==" -d '{"standard_preference": [{"subject": "MA", "standard_framework_code" : "TEXAS"}], "profile_visibility": true}' -X PUT http://127.0.0.1:8080/nucleus-auth/v1/users/me/prefs
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3Ok1vbiBKYW4gMjUgMTE6MTg6MDUgSVNUIDIwMTY6MTQ1MzcwMDg4NTQzMA==" -d '{"standard_preference": [{"subject": "MA", "standard_framework_code" : "TEXAS"}], "profile_visibility": true}' -X PUT http://127.0.0.1:8080/api/nucleus-auth/v1/users/me/prefs
 ```
 
 ###Get user preference
@@ -50,7 +50,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYm
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | GET |
-| End Point | /nucleus-auth/{version}/users/me/prefs |
+| End Point | /api/nucleus-auth/{version}/users/me/prefs |
 | Auth | Required |
 | Authorization Header | Authorization: Token [Authenticated access token]
 | Request Body Type | JSON |
@@ -70,7 +70,7 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA=="  -X GET http://127.0.0.1:8080/nucleus-auth/v1/users/me/prefs
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA=="  -X GET http://127.0.0.1:8080/api/nucleus-auth/v1/users/me/prefs
 ```
 
 
