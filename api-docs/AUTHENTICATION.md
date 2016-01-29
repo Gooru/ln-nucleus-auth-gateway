@@ -16,7 +16,7 @@ Features
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | POST |
-| End Point | /nucleus-auth/{version}/token |
+| End Point | /api/nucleus-auth/{version}/token |
 | Auth | client key and id is needed |
 | Request Body Type | JSON |
 | Response Code | 200 Successful |
@@ -36,7 +36,7 @@ Features
 **CURL snippet**
 
 ```
-curl -i  -H "Content-Type: application/json"  -d '{"client_key" : "c2hlZWJhbkBnb29ydWxlYXJuaW5nLm9yZw==", "client_id" : "ba956a97-ae15-11e5-a302-f8a963065976", "grant_type" : "anonymous"}' -X POST http://127.0.0.1:8080/nucleus-auth/v1/token
+curl -i  -H "Content-Type: application/json"  -d '{"client_key" : "c2hlZWJhbkBnb29ydWxlYXJuaW5nLm9yZw==", "client_id" : "ba956a97-ae15-11e5-a302-f8a963065976", "grant_type" : "anonymous"}' -X POST http://127.0.0.1:8080/api/nucleus-auth/v1/token
 
 ```
 
@@ -52,7 +52,7 @@ curl -i  -H "Content-Type: application/json"  -d '{"client_key" : "c2hlZWJhbkBnb
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | POST |
-| End Point | /nucleus-auth/{version}/token |
+| End Point | /api/nucleus-auth/{version}/token |
 | Auth | client key and id is needed |
 | Request Body Type | JSON |
 | Authorization Header | Build a string of the form username:password and Base64 encode the string |
@@ -80,7 +80,7 @@ curl -i  -H "Content-Type: application/json"  -d '{"client_key" : "c2hlZWJhbkBnb
 **CURL snippet**
 
 ```
-curl -i  -H "Content-Type: application/json" -H "Authorization: Basic b2liZ2FuZzlAZ29vcnUub3JnOmRvbjEyMzQ=" -d '{"client_key" : "c2hlZWJhbkBnb29ydWxlYXJuaW5nLm9yZw==", "client_id" : "ba956a97-ae15-11e5-a302-f8a963065976", "grant_type" : "credential"}' -X POST http://127.0.0.1:8080/nucleus-auth/v1/token
+curl -i  -H "Content-Type: application/json" -H "Authorization: Basic b2liZ2FuZzlAZ29vcnUub3JnOmRvbjEyMzQ=" -d '{"client_key" : "c2hlZWJhbkBnb29ydWxlYXJuaW5nLm9yZw==", "client_id" : "ba956a97-ae15-11e5-a302-f8a963065976", "grant_type" : "credential"}' -X POST http://127.0.0.1:8080/api/nucleus-auth/v1/token
 ```
 
 ##Get access token  details 
@@ -90,7 +90,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Basic b2liZ2FuZz
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | GET |
-| End Point | /nucleus-auth/{version}/token |
+| End Point | /api/nucleus-auth/{version}/token |
 | Auth | Required |
 | Request Body Type | None |
 | Authorization Header | Token [access_token] |
@@ -111,7 +111,7 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OldlZCBKYW4
 **CURL snippet**
 
 ```
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTQ6MjA6NDcgSVNUIDIwMTY6MTQ1MzM2NjI0NzMzNg=="  -X GET http://127.0.0.1:8080/nucleus-auth/v1/token
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTQ6MjA6NDcgSVNUIDIwMTY6MTQ1MzM2NjI0NzMzNg=="  -X GET http://127.0.0.1:8080/api/nucleus-auth/v1/token
 ```
 
 ##Delete access token 
@@ -121,7 +121,7 @@ It will revoke the access given to an application and make it invalid, it will b
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | DELETE |
-| End Point | /nucleus-auth/{version}/token |
+| End Point | /api/nucleus-auth/{version}/token |
 | Auth | Required |
 | Request Body Type | None |
 | Authorization Header | Token [access_token] |
@@ -131,6 +131,6 @@ It will revoke the access given to an application and make it invalid, it will b
 **CURL snippet**
 
 ```
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTQ6MjA6NDcgSVNUIDIwMTY6MTQ1MzM2NjI0NzMzNg=="  -X DELETE http://127.0.0.1:8080/nucleus-auth/v1/token
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTQ6MjA6NDcgSVNUIDIwMTY6MTQ1MzM2NjI0NzMzNg=="  -X DELETE http://127.0.0.1:8080/api/nucleus-auth/v1/token
 ```
 
