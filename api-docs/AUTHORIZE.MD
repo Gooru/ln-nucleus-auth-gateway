@@ -11,7 +11,7 @@ Features
 | End Point | /api/nucleus-auth/{version}/authorize |
 | Auth | Not Required |
 | Request Body Type | JSON |
-| Response Code | 302 Found |
+| Response Code | 200 Successful |
 
 **Response body json fields**
 
@@ -38,10 +38,10 @@ Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MDk6MDMgSVNUIDIwMTY6MTQ1MzI
 {"client_key" : "c2hlZWJhbkBnb29ydWxlYXJuaW5nLm9yZw==", "grant_type" : "google", "client_id" : "ba956a97-ae15-11e5-a302-f8a963065976", "return_url" : "http://www.gooru.org", "user" : {"firstname" : "gooru", "lastname" : "my",  "identity_id" : "sheeban@gooru.org"}}
 ```
 
-**Location Header**
+**Response Body**
 
-```
-Location: http://www.gooru.org?access_token=MzA4ZjQ4NjUtNjIwYS00MjVmLTllMTgtYmJkODczMTdiMDI5OkZyaSBKYW4gMjIgMTU6NDY6MDYgSVNUIDIwMTY6MTQ1MzQ1Nzc2NjA0Nw==
+```json
+{"user_id":"93660b52-6fc6-4bf9-828d-3434ea87fd03","username":"goorumy","client_id":"ba956a97-ae15-11e5-a302-f8a963065976","provided_at":1454148793345,"cdn_urls":{"profile.cdn":"//profile.gooru.org.com"},"prefs":{"taxonomy":[{"standard_framework_code":"CSS","default_subject_code":"GUT.M"}]},"access_token":"OTM2NjBiNTItNmZjNi00YmY5LTgyOGQtMzQzNGVhODdmZDAzOlNhdCBKYW4gMzAgMTU6NDM6MTMgSVNUIDIwMTY6MTQ1NDE0ODc5MzM0Ng=="}
 ```
 
 **CURL snippet**
