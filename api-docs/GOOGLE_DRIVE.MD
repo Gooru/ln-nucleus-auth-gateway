@@ -28,7 +28,7 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
 
 | Field name          | Nullable | comment                            |
 |---------------------|----------|------------------------------------|
-| callbackUrl | No   | This is url where API will redirect after successfully obtained refresh token  |
+| callback_url | No   | This is url where API will redirect after successfully obtained refresh token  |
 
 
 
@@ -36,7 +36,7 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
 **Request Body**
 
 ```json
-{"callbackUrl":"http://www.gooru.org/#settings"}
+{"callback_url":"http://www.gooru.org/#settings"}
 ```
 
 **CURL snippet**
