@@ -21,7 +21,7 @@ Features
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | POST |
-| End Point | /nucleus-auth/{version}/users |
+| End Point | /api/nucleus-auth/{version}/users |
 | Auth | Required |
 | Authorization Header | Authorization: Token [anonymous access token]
 | Request Body Type | JSON |
@@ -66,7 +66,7 @@ Location: /users/95f0da69-fb0e-401a-8c9c-37acdba55ff0
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==" -d '{"firstname" : "gooru", "lastname" : "learning", "username" : "gooru", "email_id" : "mygooru@gmail.com", "password" : "mygooru123", "birth_date" : "11/12/1987", "user_category" : "teacher", "gender" : "male", "grade" : ["5", "9"]}' -X POST http://127.0.0.1:8080/nucleus-auth/v1/users
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==" -d '{"firstname" : "gooru", "lastname" : "learning", "username" : "gooru", "email_id" : "mygooru@gmail.com", "password" : "mygooru123", "birth_date" : "11/12/1987", "user_category" : "teacher", "gender" : "male", "grade" : ["5", "9"]}' -X POST http://127.0.0.1:8080/api/nucleus-auth/v1/users
 ```
 
 ###Create child user account
@@ -76,7 +76,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYm
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | POST |
-| End Point | /nucleus-auth/{version}/users |
+| End Point | /api/nucleus-auth/{version}/users |
 | Auth | Required |
 | Authorization Header | Authorization: Token [anonymous access token]
 | Request Body Type | JSON |
@@ -119,7 +119,7 @@ Location: /users/31d1de5e-88e1-440f-9ecb-b66a0ac39250
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==" -d '{"username" : "gooruChild" , "parent_email_id" : "mygooru@gmail.com", "password" : "mygooru123", "birth_date" : "11/12/2005", "user_category" : "student"}' -X POST http://127.0.0.1:8080/nucleus-auth/v1/users
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==" -d '{"username" : "gooruChild" , "parent_email_id" : "mygooru@gmail.com", "password" : "mygooru123", "birth_date" : "11/12/2005", "user_category" : "student"}' -X POST http://127.0.0.1:8080/api/nucleus-auth/v1/users
 ```
 
 ##Update user account 
@@ -129,7 +129,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYm
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | PUT |
-| End Point | /nucleus-auth/{version}/users/me |
+| End Point | /api/nucleus-auth/{version}/users/me |
 | Auth | Required |
 | Authorization Header | Authorization: Token [Authenticated access token]
 | Request Body Type | JSON |
@@ -182,7 +182,7 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==" -d '{"country" : "united states", "school" : "joseph", "school_district" : "Colton Joint Unified School District", "state" : "california", "gender" : "male", "grade" : ["5", "9"], "course" : [{"code" : "MA#MA6", "name" : "Math 6"}], "about_me" : "I am currently a Research Assistant"}' -X PUT http://127.0.0.1:8080/nucleus-auth/v1/users/me
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==" -d '{"country" : "united states", "school" : "joseph", "school_district" : "Colton Joint Unified School District", "state" : "california", "gender" : "male", "grade" : ["5", "9"], "course" : [{"code" : "MA#MA6", "name" : "Math 6"}], "about_me" : "I am currently a Research Assistant"}' -X PUT http://127.0.0.1:8080/api/nucleus-auth/v1/users/me
 ```
 
 ##Fetch user details
@@ -191,7 +191,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYm
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | GET |
-| End Point | /nucleus-auth/{version}/users/me |
+| End Point | /api/nucleus-auth/{version}/users/me |
 | Auth | Required |
 | Authorization Header | Authorization: Token [Authenticated access token]
 | Request Body Type | None |
@@ -210,7 +210,7 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X GET http://127.0.0.1:8080/nucleus-auth/v1/users/me
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X GET http://127.0.0.1:8080/api/nucleus-auth/v1/users/me
 ```
 ##Find user by username and email Id
 
@@ -219,7 +219,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNj
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | GET |
-| End Point | /nucleus-auth/{version}/users |
+| End Point | /api/nucleus-auth/{version}/users |
 | Auth | Required |
 | Authorization Header | Authorization: Token [anonymous access token]
 | Request Body Type | None |
@@ -244,7 +244,7 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X GET http://127.0.0.1:8080/nucleus-auth/v1/users?username=gooru
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X GET http://127.0.0.1:8080/api/nucleus-auth/v1/users?username=gooru
 ```
 
 ##Forgot password
@@ -254,7 +254,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNj
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | POST |
-| End Point | /nucleus-auth/{version}/users/password-reset |
+| End Point | /api/nucleus-auth/{version}/users/password-reset |
 | Auth | Required |
 | Request Body Type | JSON |
 | Authorization Header | Authorization: Token [anonymous access token]
@@ -281,7 +281,7 @@ Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzI
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzIwMzkxNzY0OQ=="  -X POST -d '{"email_id" : "mygooru@gmail.com"}' http://127.0.0.1:8080/nucleus-auth/v1/users/password-reset
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzIwMzkxNzY0OQ=="  -X POST -d '{"email_id" : "mygooru@gmail.com"}' http://127.0.0.1:8080/api/nucleus-auth/v1/users/password-reset
 ```
 
 ##Reset un-authenticate user password
@@ -291,7 +291,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | PUT |
-| End Point | /nucleus-auth/{version}/users/{user_id}/password |
+| End Point | /api/nucleus-auth/{version}/users/{user_id}/password |
 | Auth | Required |
 | Request Body Type | JSON |
 | Authorization Header | Authorization: Token [anonymous access token]
@@ -318,7 +318,7 @@ Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzI
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzIwMzkxNzY0OQ=="  -X PUT -d '{"token" : "UkVTRVRfUEFTU1dPUkRfVE9LRU46VGh1IEphbiAyMSAyMDowMzowOCBJU1QgMjAxNjoxNDUzMzg2Nzg4NTg5", "new_password" : "newgooru123"}' http://127.0.0.1:8080/nucleus-auth/v1/users/95f0da69-fb0e-401a-8c9c-37acdba55ff0/password
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzIwMzkxNzY0OQ=="  -X PUT -d '{"token" : "UkVTRVRfUEFTU1dPUkRfVE9LRU46VGh1IEphbiAyMSAyMDowMzowOCBJU1QgMjAxNjoxNDUzMzg2Nzg4NTg5", "new_password" : "newgooru123"}' http://127.0.0.1:8080/api/nucleus-auth/v1/users/95f0da69-fb0e-401a-8c9c-37acdba55ff0/password
 ```
 
 ##Reset authenticate user password
@@ -328,7 +328,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | PUT |
-| End Point | /nucleus-auth/{version}/users/me/password |
+| End Point | /api/nucleus-auth/{version}/users/me/password |
 | Auth | Required |
 | Request Body Type | JSON |
 | Authorization Header | Authorization: Token [Authenticated access token]
@@ -355,7 +355,7 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X PUT -d '{"new_password" : "gooru1234", "old_password" : "newgooru123"}' http://127.0.0.1:8080/nucleus-auth/v1/users/me/password
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X PUT -d '{"new_password" : "gooru1234", "old_password" : "newgooru123"}' http://127.0.0.1:8080/api/nucleus-auth/v1/users/me/password
 ```
 
 ##Change  email address
@@ -365,7 +365,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNj
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | POST |
-| End Point | /nucleus-auth/{version}/users/me/email |
+| End Point | /api/nucleus-auth/{version}/users/me/email |
 | Auth | Required |
 | Request Body Type | JSON |
 | Authorization Header | Authorization: Token [Authenticate access token]
@@ -392,7 +392,7 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X POST -d '{"email_id" : "mygooru@gooru.org"}' http://127.0.0.1:8080/nucleus-auth/v1/users/me/email
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X POST -d '{"email_id" : "mygooru@gooru.org"}' http://127.0.0.1:8080/api/nucleus-auth/v1/users/me/email
 ```
 
 ##Confirm  email address.
@@ -402,7 +402,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNj
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | PUT |
-| End Point | /nucleus-auth/{version}/users/{user_id}/email |
+| End Point | /api/nucleus-auth/{version}/users/{user_id}/email |
 | Auth | Required |
 | Request Body Type | JSON |
 | Authorization Header | Authorization: Token [anonymous access token]
@@ -430,7 +430,7 @@ Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzI
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzIwMzkxNzY0OQ==" -d '{"token" : "RU1BSUxfQ09ORklSTV9UT0tFTjpNb24gSmFuIDI1IDEyOjE3OjU2IElTVCAyMDE2OjE0NTM3MDQ0NzYxNjE="}'  -X PUT  http://127.0.0.1:8080/nucleus-auth/v1/users/95f0da69-fb0e-401a-8c9c-37acdba55ff0/email
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzIwMzkxNzY0OQ==" -d '{"token" : "RU1BSUxfQ09ORklSTV9UT0tFTjpNb24gSmFuIDI1IDEyOjE3OjU2IElTVCAyMDE2OjE0NTM3MDQ0NzYxNjE="}'  -X PUT  http://127.0.0.1:8080/api/nucleus-auth/v1/users/95f0da69-fb0e-401a-8c9c-37acdba55ff0/email
 ```
 
 
@@ -441,7 +441,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | POST |
-| End Point | /nucleus-auth/{version}/users/me/email-confirmation |
+| End Point | /api/nucleus-auth/{version}/users/me/email-confirmation |
 | Auth | Required |
 | Authorization Header | Authorization: Token [Authenticate access token]
 | Response Code | 200 Successful |
@@ -456,6 +456,6 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X POST  http://127.0.0.1:8080/nucleus-auth/v1/users/me/email-confirmation
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X POST  http://127.0.0.1:8080/api/nucleus-auth/v1/users/me/email-confirmation
 ```
 

@@ -13,7 +13,7 @@ Features
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | POST |
-| End Point | /nucleus-auth/{version}/google-drive |
+| End Point | /api/nucleus-auth/{version}/google-drive |
 | Auth | Required |
 | Authorization Header | Authorization: Token [Authenticated access token]
 | Request Body Type | JSON |
@@ -42,7 +42,7 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3Ok1vbiBKYW4gMjUgMTE6MTg6MDUgSVNUIDIwMTY6MTQ1MzcwMDg4NTQzMA==" -d '{"callback_url":"http://localhost:8080/nucleus-auth/v1/google-drive/callback"}' -X POST http://localhost:8080/nucleus-auth/v1/google-drive
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3Ok1vbiBKYW4gMjUgMTE6MTg6MDUgSVNUIDIwMTY6MTQ1MzcwMDg4NTQzMA==" -d '{"callback_url":"http://localhost:8080/api/nucleus-auth/v1/google-drive/callback"}' -X POST http://localhost:8080/api/nucleus-auth/v1/google-drive
 ```
 
 ###Google authenticate callback
@@ -52,7 +52,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYm
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | GET |
-| End Point | /nucleus-auth/{version}/google-drive/callback |
+| End Point | /api/nucleus-auth/{version}/google-drive/callback |
 | Auth | Not required |
 | Response Code | 302 Moved Permanently |
 
@@ -72,7 +72,7 @@ This API will be called by the google OAuth service.
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | GET |
-| End Point | /nucleus-auth/{version}/google-drive/refresh-token |
+| End Point | /api/nucleus-auth/{version}/google-drive/refresh-token |
 | Auth | Required |
 | Authorization Header | Authorization: Token [Authenticated access token]
 | Response Code | 200 Successful |
@@ -89,7 +89,7 @@ none
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3Ok1vbiBKYW4gMjUgMTE6MTg6MDUgSVNUIDIwMTY6MTQ1MzcwMDg4NTQzMA=="  -X GET http://localhost:8080/nucleus-auth/v1/google-drive/refresh-token
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3Ok1vbiBKYW4gMjUgMTE6MTg6MDUgSVNUIDIwMTY6MTQ1MzcwMDg4NTQzMA=="  -X GET http://localhost:8080/api/nucleus-auth/v1/google-drive/refresh-token
 ```
 
 **Request Response**
@@ -106,7 +106,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYm
 | Name | Summary |
 |------------------------|--------|
 | HTTP Method | DELETE |
-| End Point | /nucleus-auth/{version}/google-drive/refresh-token |
+| End Point | /api/nucleus-auth/{version}/google-drive/refresh-token |
 | Auth | Required |
 | Authorization Header | Authorization: Token [Authenticated access token]
 | Request Body Type | JSON |
@@ -123,7 +123,7 @@ none
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3Ok1vbiBKYW4gMjUgMTE6MTg6MDUgSVNUIDIwMTY6MTQ1MzcwMDg4NTQzMA=="  -X DELETE http://localhost:8080/nucleus-auth/v1/google-drive/refresh-token
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3Ok1vbiBKYW4gMjUgMTE6MTg6MDUgSVNUIDIwMTY6MTQ1MzcwMDg4NTQzMA=="  -X DELETE http://localhost:8080/api/nucleus-auth/v1/google-drive/refresh-token
 ```
 
 
