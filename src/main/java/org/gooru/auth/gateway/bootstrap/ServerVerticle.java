@@ -3,7 +3,6 @@ package org.gooru.auth.gateway.bootstrap;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.http.HttpServer;
 import io.vertx.ext.web.Router;
-
 import org.gooru.auth.gateway.constants.ConfigConstants;
 import org.gooru.auth.gateway.routes.RouteConfiguration;
 import org.gooru.auth.gateway.routes.RouteConfigurator;
@@ -12,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Starts the HTTP gateway for auth.
- * 
+ * <p>
  * This class is the HTTP gateway for auth. It starts HTTP server on port
  * specified in configuration file, registers the routes and corresponding
  * handlers. One interesting thing it does is to have a timer thread which keeps
@@ -20,7 +19,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ServerVerticle extends AbstractVerticle {
 
-  static final Logger LOG = LoggerFactory.getLogger(ServerVerticle.class);
+  private static final Logger LOG = LoggerFactory.getLogger(ServerVerticle.class);
 
   @Override
   public void start() throws Exception {
@@ -45,9 +44,9 @@ public class ServerVerticle extends AbstractVerticle {
         // us blocked on other threads that we may have spawned, so we need to
         // use
         // brute force here
-            LOG.error("Not able to start HTTP Server", result.cause());
-            Runtime.getRuntime().halt(1);
-          }
-        });
+        LOG.error("Not able to start HTTP Server", result.cause());
+        Runtime.getRuntime().halt(1);
+      }
+    });
   }
 }

@@ -7,13 +7,7 @@ import io.vertx.core.http.HttpServerRequest;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
-
-import org.gooru.auth.gateway.constants.CommandConstants;
-import org.gooru.auth.gateway.constants.ConfigConstants;
-import org.gooru.auth.gateway.constants.HttpConstants;
-import org.gooru.auth.gateway.constants.MessageConstants;
-import org.gooru.auth.gateway.constants.MessagebusEndpoints;
-import org.gooru.auth.gateway.constants.RouteConstants;
+import org.gooru.auth.gateway.constants.*;
 import org.gooru.auth.gateway.routes.utils.RouteRequestUtility;
 import org.gooru.auth.gateway.routes.utils.RouteResponseUtility;
 import org.slf4j.Logger;
@@ -21,7 +15,7 @@ import org.slf4j.LoggerFactory;
 
 class RouteAuthenticationGLAVersionConfigurator implements RouteConfigurator {
 
-  static final Logger LOG = LoggerFactory.getLogger("org.gooru.auth.gateway.bootstrap.ServerVerticle");
+  private static final Logger LOG = LoggerFactory.getLogger("org.gooru.auth.gateway.bootstrap.ServerVerticle");
 
   private EventBus eb = null;
   private long mbusTimeout;
@@ -38,8 +32,7 @@ class RouteAuthenticationGLAVersionConfigurator implements RouteConfigurator {
   private void anonymousCreateAccessToken(RoutingContext routingContext) {
     HttpServerRequest request = routingContext.request();
     DeliveryOptions options =
-            new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP,
-                    CommandConstants.ANONYMOUS_CREATE_ACCESS_TOKEN);
+      new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.ANONYMOUS_CREATE_ACCESS_TOKEN);
     String host = request.getHeader(HttpConstants.HEADER_HOST);
     String referer = request.getHeader(HttpConstants.HEADER_REFERER);
     if (host != null) {
@@ -51,15 +44,14 @@ class RouteAuthenticationGLAVersionConfigurator implements RouteConfigurator {
     if (apiKey != null) {
       options.addHeader(MessageConstants.MSG_HEADER_API_KEY, apiKey);
     }
-    eb.send(MessagebusEndpoints.MBEP_GLA_VERSION_AUTHENTICATION, RouteRequestUtility.getBodyForMessage(routingContext), options, reply -> {
-      RouteResponseUtility.responseHandler(routingContext, reply, LOG);
-    });
+    eb.send(MessagebusEndpoints.MBEP_GLA_VERSION_AUTHENTICATION, RouteRequestUtility.getBodyForMessage(routingContext), options,
+      reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
   }
 
   private void createAccessToken(RoutingContext routingContext) {
     HttpServerRequest request = routingContext.request();
     DeliveryOptions options =
-            new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.CREATE_ACCESS_TOKEN);
+      new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.CREATE_ACCESS_TOKEN);
     String host = request.getHeader(HttpConstants.HEADER_HOST);
     String referer = request.getHeader(HttpConstants.HEADER_REFERER);
     if (host != null) {
@@ -71,9 +63,8 @@ class RouteAuthenticationGLAVersionConfigurator implements RouteConfigurator {
     if (apiKey != null) {
       options.addHeader(MessageConstants.MSG_HEADER_API_KEY, apiKey);
     }
-    eb.send(MessagebusEndpoints.MBEP_GLA_VERSION_AUTHENTICATION, RouteRequestUtility.getBodyForMessage(routingContext), options, reply -> {
-      RouteResponseUtility.responseHandler(routingContext, reply, LOG);
-    });
+    eb.send(MessagebusEndpoints.MBEP_GLA_VERSION_AUTHENTICATION, RouteRequestUtility.getBodyForMessage(routingContext), options,
+      reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
   }
 
 }

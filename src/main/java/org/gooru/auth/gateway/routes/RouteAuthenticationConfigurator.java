@@ -7,13 +7,7 @@ import io.vertx.core.http.HttpServerRequest;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
-
-import org.gooru.auth.gateway.constants.CommandConstants;
-import org.gooru.auth.gateway.constants.ConfigConstants;
-import org.gooru.auth.gateway.constants.HttpConstants;
-import org.gooru.auth.gateway.constants.MessageConstants;
-import org.gooru.auth.gateway.constants.MessagebusEndpoints;
-import org.gooru.auth.gateway.constants.RouteConstants;
+import org.gooru.auth.gateway.constants.*;
 import org.gooru.auth.gateway.routes.utils.RouteRequestUtility;
 import org.gooru.auth.gateway.routes.utils.RouteResponseUtility;
 import org.slf4j.Logger;
@@ -21,7 +15,7 @@ import org.slf4j.LoggerFactory;
 
 class RouteAuthenticationConfigurator implements RouteConfigurator {
 
-  static final Logger LOG = LoggerFactory.getLogger("org.gooru.auth.gateway.bootstrap.ServerVerticle");
+  private static final Logger LOG = LoggerFactory.getLogger("org.gooru.auth.gateway.bootstrap.ServerVerticle");
 
   private EventBus eb = null;
   private long mbusTimeout;
@@ -53,31 +47,27 @@ class RouteAuthenticationConfigurator implements RouteConfigurator {
     } else {
       options.addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.ANONYMOUS_CREATE_ACCESS_TOKEN);
     }
-    eb.send(MessagebusEndpoints.MBEP_AUTHENTICATION, RouteRequestUtility.getBodyForMessage(routingContext), options, reply -> {
-
-      RouteResponseUtility.responseHandler(routingContext, reply, LOG);
-    });
+    eb.send(MessagebusEndpoints.MBEP_AUTHENTICATION, RouteRequestUtility.getBodyForMessage(routingContext), options,
+      reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
   }
 
   private void deleteAccessToken(RoutingContext routingContext) {
     DeliveryOptions options =
-            new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.DELETE_ACCESS_TOKEN);
+      new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.DELETE_ACCESS_TOKEN);
     String authorization = routingContext.request().getHeader(HttpConstants.HEADER_AUTH);
     String token = authorization.substring(HttpConstants.TOKEN.length()).trim();
     options.addHeader(MessageConstants.MSG_HEADER_TOKEN, token);
-    eb.send(MessagebusEndpoints.MBEP_AUTHENTICATION, RouteRequestUtility.getBodyForMessage(routingContext), options, reply -> {
-      RouteResponseUtility.responseHandler(routingContext, reply, LOG);
-    });
+    eb.send(MessagebusEndpoints.MBEP_AUTHENTICATION, RouteRequestUtility.getBodyForMessage(routingContext), options,
+      reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
   }
 
   private void getAccessToken(RoutingContext routingContext) {
     DeliveryOptions options =
-            new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.GET_ACCESS_TOKEN);
+      new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.GET_ACCESS_TOKEN);
     String authorization = routingContext.request().getHeader(HttpConstants.HEADER_AUTH);
     String token = authorization.substring(HttpConstants.TOKEN.length()).trim();
     options.addHeader(MessageConstants.MSG_HEADER_TOKEN, token);
-    eb.send(MessagebusEndpoints.MBEP_AUTHENTICATION, RouteRequestUtility.getBodyForMessage(routingContext), options, reply -> {
-      RouteResponseUtility.responseHandler(routingContext, reply, LOG);
-    });
+    eb.send(MessagebusEndpoints.MBEP_AUTHENTICATION, RouteRequestUtility.getBodyForMessage(routingContext), options,
+      reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
   }
 }

@@ -2,17 +2,16 @@ package org.gooru.auth.gateway.responses.auth.transformers;
 
 import io.vertx.core.eventbus.Message;
 import io.vertx.core.json.JsonObject;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import org.gooru.auth.gateway.constants.MessageConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class HttpResponseTransformer implements ResponseTransformer {
-  static final Logger LOG = LoggerFactory.getLogger(ResponseTransformer.class);
-  private Message<Object> message;
+  private static final Logger LOG = LoggerFactory.getLogger(ResponseTransformer.class);
+  private final Message<Object> message;
   private boolean transformed = false;
   private Map<String, String> headers;
   private int httpStatus;
@@ -58,7 +57,7 @@ public class HttpResponseTransformer implements ResponseTransformer {
 
   private void processTransformation() {
     JsonObject messageBody = (JsonObject) message.body();
-    
+
     // First initialize the http status
     this.httpStatus = messageBody.getInteger(MessageConstants.MSG_HTTP_STATUS);
 

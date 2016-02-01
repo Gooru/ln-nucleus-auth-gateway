@@ -4,15 +4,14 @@ import io.vertx.core.MultiMap;
 import io.vertx.core.http.HttpMethod;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
+import org.gooru.auth.gateway.constants.MessageConstants;
 
 import java.util.Map.Entry;
 
-import org.gooru.auth.gateway.constants.MessageConstants;
-
 public class RouteRequestUtility {
 
-  public static final JsonObject getBodyForMessage(RoutingContext routingContext) {
-    
+  public static JsonObject getBodyForMessage(RoutingContext routingContext) {
+
     JsonObject result = new JsonObject();
     JsonObject httpBody = null;
     if (!routingContext.request().method().name().equals(HttpMethod.GET.name()) && routingContext.getBody().length() > 0) {
@@ -20,9 +19,9 @@ public class RouteRequestUtility {
     }
     if (httpBody != null) {
       result.put(MessageConstants.MSG_HTTP_BODY, httpBody);
-    }    
+    }
     String userContext = routingContext.get(MessageConstants.MSG_USER_CONTEXT_HOLDER);
-    if (userContext != null) {       
+    if (userContext != null) {
       result.put(MessageConstants.MSG_USER_CONTEXT_HOLDER, new JsonObject(userContext));
     }
 
@@ -36,5 +35,5 @@ public class RouteRequestUtility {
     }
     return result;
   }
-  
+
 }

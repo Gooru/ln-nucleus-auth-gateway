@@ -4,14 +4,13 @@ import io.vertx.core.AsyncResult;
 import io.vertx.core.eventbus.Message;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.RoutingContext;
-
-import java.util.Map;
-
 import org.gooru.auth.gateway.constants.HttpConstants;
 import org.gooru.auth.gateway.responses.auth.transformers.ResponseTransformer;
 import org.gooru.auth.gateway.responses.auth.transformers.ResponseTransformerBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Map;
 
 public class HttpServerResponseWriter implements ResponseWriter {
   static final Logger LOG = LoggerFactory.getLogger(ResponseWriter.class);
@@ -32,16 +31,13 @@ public class HttpServerResponseWriter implements ResponseWriter {
     // Then set the headers
     Map<String, String> headers = transformer.transformedHeaders();
     if (headers != null && !headers.isEmpty()) {
-      for (String headerName : headers.keySet()) {
-        // Never accept content-length from others, we do that
-        if (!headerName.equalsIgnoreCase(HttpConstants.HEADER_CONTENT_LENGTH)) {
-          response.putHeader(headerName, headers.get(headerName));
-        }
-      }
+      // Never accept content-length from others, we do that
+      headers.keySet().stream().filter(headerName -> !headerName.equalsIgnoreCase(HttpConstants.HEADER_CONTENT_LENGTH))
+             .forEach(headerName -> response.putHeader(headerName, headers.get(headerName)));
     }
     // Then it is turn of the body to be set and ending the response
     final String responseBody =
-            ((transformer.transformedBody() != null) && (!transformer.transformedBody().isEmpty())) ? transformer.transformedBody().toString() : null;
+      ((transformer.transformedBody() != null) && (!transformer.transformedBody().isEmpty())) ? transformer.transformedBody().toString() : null;
     if (responseBody != null) {
       response.putHeader(HttpConstants.HEADER_CONTENT_LENGTH, Integer.toString(responseBody.length()));
       response.end(responseBody);

@@ -2,12 +2,11 @@ package org.gooru.auth.gateway.responses.auth;
 
 import io.vertx.core.eventbus.Message;
 import io.vertx.core.json.JsonObject;
-
 import org.gooru.auth.gateway.constants.MessageConstants;
 
 class AuthMessageBusJsonResponseContextHolder implements AuthResponseContextHolder {
 
-  private Message<Object> message;
+  private final Message<Object> message;
   private boolean isAuthorized = false;
 
   @Override
@@ -37,10 +36,7 @@ class AuthMessageBusJsonResponseContextHolder implements AuthResponseContextHold
   public boolean isAnonymous() {
     JsonObject jsonObject = (JsonObject) message.body();
     String userId = jsonObject.getString(MessageConstants.MSG_USER_ID);
-    if (userId != null && !userId.isEmpty() && !userId.equalsIgnoreCase(MessageConstants.MSG_USER_ANONYMOUS)) {
-      return false;
-    }
-    return true;
+    return !(userId != null && !userId.isEmpty() && !userId.equalsIgnoreCase(MessageConstants.MSG_USER_ANONYMOUS));
   }
 
 }

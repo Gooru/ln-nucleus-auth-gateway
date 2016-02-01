@@ -6,7 +6,6 @@ package org.gooru.auth.gateway.constants;
  * are for gateway, and each end point would be defined in their own component
  * as well. This means that if there is any change here, there must be a
  * corresponding change in the consumer as well.
- *
  */
 public class MessagebusEndpoints {
   public static final String MBEP_AUTH = "org.gooru.auth.message.bus.auth";
