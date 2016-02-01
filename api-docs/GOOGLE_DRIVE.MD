@@ -42,7 +42,7 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3Ok1vbiBKYW4gMjUgMTE6MTg6MDUgSVNUIDIwMTY6MTQ1MzcwMDg4NTQzMA==" -d '{{"callbackUrl":"http://localhost:8080/nucleus-auth/v1/google-drive/callback"}}' -X POST http://localhost:8080/nucleus-auth/v1/google-drive
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3Ok1vbiBKYW4gMjUgMTE6MTg6MDUgSVNUIDIwMTY6MTQ1MzcwMDg4NTQzMA==" -d '{"callback_url":"http://localhost:8080/nucleus-auth/v1/google-drive/callback"}' -X POST http://localhost:8080/nucleus-auth/v1/google-drive
 ```
 
 ###Google authenticate callback
