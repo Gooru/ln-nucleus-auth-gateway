@@ -7,13 +7,7 @@ import io.vertx.core.http.HttpServerRequest;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
-
-import org.gooru.auth.gateway.constants.CommandConstants;
-import org.gooru.auth.gateway.constants.ConfigConstants;
-import org.gooru.auth.gateway.constants.HttpConstants;
-import org.gooru.auth.gateway.constants.MessageConstants;
-import org.gooru.auth.gateway.constants.MessagebusEndpoints;
-import org.gooru.auth.gateway.constants.RouteConstants;
+import org.gooru.auth.gateway.constants.*;
 import org.gooru.auth.gateway.routes.utils.RouteRequestUtility;
 import org.gooru.auth.gateway.routes.utils.RouteResponseUtility;
 import org.slf4j.Logger;
@@ -21,7 +15,7 @@ import org.slf4j.LoggerFactory;
 
 class RouteAuthorizeConfigurator implements RouteConfigurator {
 
-  static final Logger LOG = LoggerFactory.getLogger("org.gooru.auth.gateway.bootstrap.ServerVerticle");
+  private static final Logger LOG = LoggerFactory.getLogger("org.gooru.auth.gateway.bootstrap.ServerVerticle");
 
   private EventBus eb = null;
   private long mbusTimeout;
@@ -45,9 +39,8 @@ class RouteAuthorizeConfigurator implements RouteConfigurator {
       options.addHeader(MessageConstants.MSG_HEADER_REQUEST_DOMAIN, referer);
     }
 
-    eb.send(MessagebusEndpoints.MBEP_AUTHORIZE, RouteRequestUtility.getBodyForMessage(routingContext), options, reply -> {
-      RouteResponseUtility.responseHandler(routingContext, reply, LOG);
-    });
+    eb.send(MessagebusEndpoints.MBEP_AUTHORIZE, RouteRequestUtility.getBodyForMessage(routingContext), options,
+      reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
   }
 
 }
