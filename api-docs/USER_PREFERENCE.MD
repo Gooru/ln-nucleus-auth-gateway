@@ -64,7 +64,7 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
 **Request Body**
 
 ```json
-{"created_at":"2016-01-21T15:23:05Z","profile_visiblity":false,"standard_preference":{"taxonomy":[{"subject":"MA","standard_framework_code":"TEXAS"}],"profile_visibility":true},"updated_at":"2016-01-21T15:26:19Z","user_id":"aada6abc-eb11-4550-981f-3a36a53b4907"}
+{"created_at":"2016-01-21T15:23:05Z","profile_visibility":false,"standard_preference":{"taxonomy":[{"subject":"MA","standard_framework_code":"TEXAS"}],"profile_visibility":true},"updated_at":"2016-01-21T15:26:19Z","user_id":"aada6abc-eb11-4550-981f-3a36a53b4907"}
 ```
 
 **CURL snippet**
