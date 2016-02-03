@@ -23,7 +23,7 @@ Features
 
 **Request Body**
 
-```json
+```javascript
 {"client_key" : "c2hlZWJhbkBnb29ydWxlYXJuaW5nLm9yZw==", "client_id" : "ba956a97-ae15-11e5-a302-f8a963065976", "grant_type" : "anonymous"}
 ```
 
