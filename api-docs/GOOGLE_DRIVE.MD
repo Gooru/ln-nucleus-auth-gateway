@@ -12,7 +12,7 @@ Features
 
 | Name | Summary |
 |------------------------|--------|
-| HTTP Method | POST |
+| HTTP Method | GET |
 | End Point | /api/nucleus-auth/{version}/google-drive |
 | Auth | Required |
 | Authorization Header | Authorization: Token [Authenticated access token]
@@ -29,15 +29,6 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
 | Field name          | Nullable | comment                            |
 |---------------------|----------|------------------------------------|
 | callback_url | No   | This is url where API will redirect after successfully obtained refresh token  |
-
-
-
-
-**Request Body**
-
-```json
-{"callback_url":"http://www.gooru.org/#settings"}
-```
 
 **CURL snippet**
 
@@ -75,16 +66,13 @@ This API will be called by the google OAuth service.
 | End Point | /api/nucleus-auth/{version}/google-drive/refresh-token |
 | Auth | Required |
 | Authorization Header | Authorization: Token [Authenticated access token]
+| Request Body | None |
 | Response Code | 200 Successful |
 
 **Authorization Token**
 ```
 Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==
 ```
-
-
-**Request Body**
-none
 
 **CURL snippet**
 
@@ -94,7 +82,9 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYm
 
 **Request Response**
 ```
-{"refresh_token": "1/4VmKupKHy4aMSpoMnsFM-WLD-i4scxrC0GBPeCOtu2U"}
+{
+    "refresh_token": "1/4VmKupKHy4aMSpoMnsFM-WLD-i4scxrC0GBPeCOtu2U"
+}
 ```
 
 
@@ -109,16 +99,13 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYm
 | End Point | /api/nucleus-auth/{version}/google-drive/refresh-token |
 | Auth | Required |
 | Authorization Header | Authorization: Token [Authenticated access token]
-| Request Body Type | JSON |
-| Response Code | 204 NO Content |
+| Request Body  | None |
+| Response Code | 204 N0 content |
 
 **Authorization Token**
 ```
 Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==
 ```
-
-**Request Body**
-none
 
 **CURL snippet**
 
