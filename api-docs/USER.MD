@@ -48,7 +48,17 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
 **Request Body**
 
 ```json
-{"firstname" : "gooru", "lastname" : "learning", "username" : "gooru", "email_id" : "mygooru@gmail.com", "password" : "mygooru123", "birth_date" : "11/12/1987", "user_category" : "teacher", "gender" : "male", "grade" : ["5", "9"]}
+{
+    "firstname": "gooru",
+    "lastname": "learning",
+    "username": "gooru",
+    "email_id": "mygooru@gmail.com",
+    "password": "mygooru123",
+    "birth_date": "11/12/1987",
+    "user_category": "teacher",
+    "gender": "male",
+    "grade": ["5", "9"]
+}
 ```
 
 **Location Header**
@@ -60,7 +70,16 @@ Location: /users/95f0da69-fb0e-401a-8c9c-37acdba55ff0
 **Response Body**
 
 ```json
-{"user_id":"95f0da69-fb0e-401a-8c9c-37acdba55ff0","username":"gooru","client_id":"ba956a97-ae15-11e5-a302-f8a963065976","provided_at":1453377491783,"cdn_urls":{"profile.cdn":"//profile.gooru.org.com"},"access_token":"OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="}
+{
+    "user_id": "95f0da69-fb0e-401a-8c9c-37acdba55ff0",
+    "username": "gooru",
+    "client_id": "ba956a97-ae15-11e5-a302-f8a963065976",
+    "provided_at": 1453377491783,
+    "cdn_urls": {
+        "profile.cdn": "//profile.gooru.org.com"
+    },
+    "access_token": "OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="
+}
 ```
 
 **CURL snippet**
@@ -101,7 +120,13 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
 **Request Body**
 
 ```json
-{"username" : "gooruChild" , "parent_email_id" : "mygooru@gmail.com", "password" : "mygooru123", "birth_date" : "11/12/2005", "user_category" : "student"}
+{
+    "username": "gooruChild",
+    "parent_email_id": "mygooru@gmail.com",
+    "password": "mygooru123",
+    "birth_date": "11/12/2005",
+    "user_category": "student"
+}
 ```
 
 **Location Header**
@@ -113,7 +138,16 @@ Location: /users/31d1de5e-88e1-440f-9ecb-b66a0ac39250
 **Response Body**
 
 ```json
-{"user_id":"31d1de5e-88e1-440f-9ecb-b66a0ac39250","username":"gooruChild","client_id":"ba956a97-ae15-11e5-a302-f8a963065976","provided_at":1453379506086,"cdn_urls":{"profile.cdn":"//profile.gooru.org.com"},"access_token":"MzFkMWRlNWUtODhlMS00NDBmLTllY2ItYjY2YTBhYzM5MjUwOlRodSBKYW4gMjEgMTg6MDE6NDYgSVNUIDIwMTY6MTQ1MzM3OTUwNjA4Ng=="}
+{
+    "user_id": "31d1de5e-88e1-440f-9ecb-b66a0ac39250",
+    "username": "gooruChild",
+    "client_id": "ba956a97-ae15-11e5-a302-f8a963065976",
+    "provided_at": 1453379506086,
+    "cdn_urls": {
+        "profile.cdn": "//profile.gooru.org.com"
+    },
+    "access_token": "MzFkMWRlNWUtODhlMS00NDBmLTllY2ItYjY2YTBhYzM5MjUwOlRodSBKYW4gMjEgMTg6MDE6NDYgSVNUIDIwMTY6MTQ1MzM3OTUwNjA4Ng=="
+}
 ```
 
 **CURL snippet**
@@ -158,8 +192,6 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYm
 | course            | Yes      |                                    |
 
 
-
-
 **Authorization Token**
 ```
 Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==
@@ -170,13 +202,37 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
 **sample 1**
 
 ```json
-{"country" : "1032b612-b6da-4f5a-95db-1a1cc6489e7b", "school_id" : "5232b612-b6da-4f5a-95db-1a1cc6489e7b", "school_district_id" : "1232b612-b6da-4f5a-95db-1a1cc6489e7b", "state_id" : "9232b612-b6da-4f5a-95db-1a1cc6489e7b", "gender" : "male", "grade" : ["5", "9"], "course" : [{"code" : "MA#MA6", "name" : "Math 6"}], "about_me" : "I am currently a Research Assistant"}
+{
+    "country_id": "1032b612-b6da-4f5a-95db-1a1cc6489e7b",
+    "school_id": "5232b612-b6da-4f5a-95db-1a1cc6489e7b",
+    "school_district_id": "1232b612-b6da-4f5a-95db-1a1cc6489e7b",
+    "state_id": "9232b612-b6da-4f5a-95db-1a1cc6489e7b",
+    "gender": "male",
+    "grade": ["5", "9"],
+    "course": [{
+        "code": "MA#MA6",
+        "name": "Math 6"
+    }],
+    "about_me": "I am currently a Research Assistant"
+}
 ```
 
 **sample 2**
 
 ```json
-{ "country": "united states", "school": "joseph", "school_district": "Colton Joint Unified School District", "state" : "Califorina", "gender": "male", "grade": [ "5", "9" ], "course": [ { "code": "MA#MA6", "name": "Math 6" } ], "about_me": "I am currently a Research Assistant" }
+{
+    "country": "united states",
+    "school": "joseph",
+    "school_district": "Colton Joint Unified School District",
+    "state": "Califorina",
+    "gender": "male",
+    "grade": ["5", "9"],
+    "course": [{
+        "code": "MA#MA6",
+        "name": "Math 6"
+    }],
+    "about_me": "I am currently a Research Assistant"
+}
 ```
 
 **CURL snippet**
@@ -205,7 +261,18 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 
 **Response body**
 ```json
-{"birth_date":"1987-11-11","created_at":"2016-01-21T11:58:11Z","email_id":"mygooru@gmail.com","firstname":"gooru","grade":["5","9"],"id":"95f0da69-fb0e-401a-8c9c-37acdba55ff0","lastname":"learning","updated_at":"2016-01-21T11:58:11Z","user_category":"teacher","username":"gooru"}
+{
+    "birth_date": "1987-11-11",
+    "created_at": "2016-01-21T11:58:11Z",
+    "email_id": "mygooru@gmail.com",
+    "firstname": "gooru",
+    "grade": ["5", "9"],
+    "id": "95f0da69-fb0e-401a-8c9c-37acdba55ff0",
+    "lastname": "learning",
+    "updated_at": "2016-01-21T11:58:11Z",
+    "user_category": "teacher",
+    "username": "gooru"
+}
 ```
 **CURL snippet**
 
@@ -239,7 +306,11 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 
 **Response body**
 ```json
-{"user_id":"95f0da69-fb0e-401a-8c9c-37acdba55ff0","username":"gooru","email_id":"mygooru@gmail.com"}
+{
+    "user_id": "95f0da69-fb0e-401a-8c9c-37acdba55ff0",
+    "username": "gooru",
+    "email_id": "mygooru@gmail.com"
+}
 ```
 **CURL snippet**
 
@@ -275,7 +346,9 @@ Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzI
 
 **Request body**
 ```json
-{"email_id":"mygooru@gmail.com"}
+{
+    "email_id": "mygooru@gmail.com"
+}
 ```
 
 **CURL snippet**
@@ -312,7 +385,10 @@ Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzI
 
 **Request body**
 ```json
-{"token" : "UkVTRVRfUEFTU1dPUkRfVE9LRU46VGh1IEphbiAyMSAyMDowMzowOCBJU1QgMjAxNjoxNDUzMzg2Nzg4NTg5", "password" : "newgooru123"}
+{
+    "token": "UkVTRVRfUEFTU1dPUkRfVE9LRU46VGh1IEphbiAyMSAyMDowMzowOCBJU1QgMjAxNjoxNDUzMzg2Nzg4NTg5",
+    "password": "newgooru123"
+}
 ```
 
 **CURL snippet**
@@ -349,7 +425,10 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 
 **Request body**
 ```json
-{"new_password" : "gooru1234", "old_password" : "newgooru123"}
+{
+    "new_password": "gooru1234",
+    "old_password": "newgooru123"
+}
 ```
 
 **CURL snippet**
@@ -386,7 +465,9 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 
 **Request body**
 ```json
-{"email_id":"mygooru@gooru.org"}
+{
+    "email_id": "mygooru@gooru.org"
+}
 ```
 
 **CURL snippet**
@@ -424,7 +505,9 @@ Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzI
 **Request Body**
 
 ```json
-{"token" : "RU1BSUxfQ09ORklSTV9UT0tFTjpGcmkgSmFuIDIyIDExOjM3OjU3IElTVCAyMDE2OjE0NTM0NDI4NzcwNjk="}
+{
+    "token": "RU1BSUxfQ09ORklSTV9UT0tFTjpGcmkgSmFuIDIyIDExOjM3OjU3IElTVCAyMDE2OjE0NTM0NDI4NzcwNjk="
+}
 ```
 
 **CURL snippet**
