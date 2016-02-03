@@ -66,7 +66,6 @@ curl -i  -H "Content-Type: application/json"  -d '{"client_key" : "c2hlZWJhbkBnb
 
 ```
 Authorization: Basic b2liZ2FuZzlAZ29vcnUub3JnOmRvbjEyMzQ=
-
 ```
 
 **Request Body**
