@@ -64,9 +64,7 @@ curl -i  -H "Content-Type: application/json"  -d '{"client_key" : "c2hlZWJhbkBnb
 - Base64 encode the string
 - Supply an "Authorization" header with content "Basic " followed by the encoded string. For example, the string "gooru:mygooru123" encodes to "Z29vcnU6bXlnb29ydTEyMw==" in base64
 
-```
-Authorization: Basic b2liZ2FuZzlAZ29vcnUub3JnOmRvbjEyMzQ=
-```
+```Authorization: Basic Z29vcnU6bXlnb29ydTEyMw==```
 
 **Request Body**
 
