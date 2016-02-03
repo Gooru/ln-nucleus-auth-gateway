@@ -53,8 +53,12 @@ Features
 
 **CURL snippet**
 
-```
-curl -i  -H "Content-Type: application/json"  -d '{"client_key" : "c2hlZWJhbkBnb29ydWxlYXJuaW5nLm9yZw==", "client_id" : "ba956a97-ae15-11e5-a302-f8a963065976", "grant_type" : "anonymous"}' -X POST http://127.0.0.1:8080/api/nucleus-auth/v1/token
+```json
+curl -i  -H "Content-Type: application/json"  -d '{
+    "client_key": "c2hlZWJhbkBnb29ydWxlYXJuaW5nLm9yZw==",
+    "client_id": "ba956a97-ae15-11e5-a302-f8a963065976",
+    "grant_type": "anonymous"
+}' -X POST http://nucleus.gooru.org/api/nucleus-auth/v1/token
 
 ```
 
@@ -118,7 +122,11 @@ curl -i  -H "Content-Type: application/json"  -d '{"client_key" : "c2hlZWJhbkBnb
 **CURL snippet**
 
 ```
-curl -i  -H "Content-Type: application/json" -H "Authorization: Basic b2liZ2FuZzlAZ29vcnUub3JnOmRvbjEyMzQ=" -d '{"client_key" : "c2hlZWJhbkBnb29ydWxlYXJuaW5nLm9yZw==", "client_id" : "ba956a97-ae15-11e5-a302-f8a963065976", "grant_type" : "credential"}' -X POST http://127.0.0.1:8080/api/nucleus-auth/v1/token
+curl -i  -H "Content-Type: application/json" -H "Authorization: Basic b2liZ2FuZzlAZ29vcnUub3JnOmRvbjEyMzQ=" -d '{
+    "client_key": "c2hlZWJhbkBnb29ydWxlYXJuaW5nLm9yZw==",
+    "client_id": "ba956a97-ae15-11e5-a302-f8a963065976",
+    "grant_type": "credential"
+}' -X POST http://nucleus.gooru.org/api/nucleus-auth/v1/token
 ```
 
 ##Get access token  details 
@@ -156,8 +164,8 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OldlZCBKYW4
 
 **CURL snippet**
 
-```
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTQ6MjA6NDcgSVNUIDIwMTY6MTQ1MzM2NjI0NzMzNg=="  -X GET http://127.0.0.1:8080/api/nucleus-auth/v1/token
+```posh
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTQ6MjA6NDcgSVNUIDIwMTY6MTQ1MzM2NjI0NzMzNg==" -X GET http://nucleus.gooru.org/api/nucleus-auth/v1/token
 ```
 
 ##Delete access token 
@@ -177,6 +185,6 @@ It will revoke the access given to an application and make it invalid, it will b
 **CURL snippet**
 
 ```
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTQ6MjA6NDcgSVNUIDIwMTY6MTQ1MzM2NjI0NzMzNg=="  -X DELETE http://127.0.0.1:8080/api/nucleus-auth/v1/token
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTQ6MjA6NDcgSVNUIDIwMTY6MTQ1MzM2NjI0NzMzNg=="  -X DELETE http://nucleus.gooru.org/api/nucleus-auth/v1/token
 ```
 
