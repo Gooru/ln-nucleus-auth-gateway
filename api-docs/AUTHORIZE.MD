@@ -72,5 +72,5 @@ Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MDk6MDMgSVNUIDIwMTY6MTQ1MzI
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MDk6MDMgSVNUIDIwMTY6MTQ1MzIwMzU0MzYwMQ==" -d '{"client_key" : "c2hlZWJhbkBnb29ydWxlYXJuaW5nLm9yZw==", "grant_type" : "google", "client_id" : "ba956a97-ae15-11e5-a302-f8a963065976", "return_url" : "http://www.gooru.org", "user" : {"firstname" : "gooru", "lastname" : "my",  "identity_id" : "sheeban@gooru.org"}}' -X POST http://127.0.0.1:8080/api/nucleus-auth/v1/authorize
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MDk6MDMgSVNUIDIwMTY6MTQ1MzIwMzU0MzYwMQ==" -d '{"client_key" : "c2hlZWJhbkBnb29ydWxlYXJuaW5nLm9yZw==", "grant_type" : "google", "client_id" : "ba956a97-ae15-11e5-a302-f8a963065976", "return_url" : "http://www.gooru.org", "user" : {"firstname" : "gooru", "lastname" : "my",  "identity_id" : "sheeban@gooru.org"}}' -X POST http://nucleus.gooru.org/api/nucleus-auth/v1/authorize
 ```
