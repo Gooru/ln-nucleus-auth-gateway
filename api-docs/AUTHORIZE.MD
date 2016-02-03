@@ -35,13 +35,38 @@ Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MDk6MDMgSVNUIDIwMTY6MTQ1MzI
 **Request Body**
 
 ```json
-{"client_key" : "c2hlZWJhbkBnb29ydWxlYXJuaW5nLm9yZw==", "grant_type" : "google", "client_id" : "ba956a97-ae15-11e5-a302-f8a963065976", "return_url" : "http://www.gooru.org", "user" : {"firstname" : "gooru", "lastname" : "my",  "identity_id" : "sheeban@gooru.org"}}
+{
+    "client_key": "c2hlZWJhbkBnb29ydWxlYXJuaW5nLm9yZw==",
+    "grant_type": "google",
+    "client_id": "ba956a97-ae15-11e5-a302-f8a963065976",
+    "return_url": "http://www.gooru.org",
+    "user": {
+        "firstname": "gooru",
+        "lastname": "my",
+        "identity_id": "sheeban@gooru.org"
+    }
+}
 ```
 
 **Response Body**
 
 ```json
-{"user_id":"93660b52-6fc6-4bf9-828d-3434ea87fd03","username":"goorumy","client_id":"ba956a97-ae15-11e5-a302-f8a963065976","provided_at":1454148793345,"cdn_urls":{"profile.cdn":"//profile.gooru.org.com"},"prefs":{"taxonomy":[{"standard_framework_code":"CSS","default_subject_code":"GUT.M"}]},"access_token":"OTM2NjBiNTItNmZjNi00YmY5LTgyOGQtMzQzNGVhODdmZDAzOlNhdCBKYW4gMzAgMTU6NDM6MTMgSVNUIDIwMTY6MTQ1NDE0ODc5MzM0Ng=="}
+{
+    "user_id": "93660b52-6fc6-4bf9-828d-3434ea87fd03",
+    "username": "goorumy",
+    "client_id": "ba956a97-ae15-11e5-a302-f8a963065976",
+    "provided_at": 1454148793345,
+    "cdn_urls": {
+        "profile.cdn": "//profile.gooru.org.com"
+    },
+    "prefs": {
+        "taxonomy": [{
+            "standard_framework_code": "CSS",
+            "default_subject_code": "GUT.M"
+        }]
+    },
+    "access_token": "OTM2NjBiNTItNmZjNi00YmY5LTgyOGQtMzQzNGVhODdmZDAzOlNhdCBKYW4gMzAgMTU6NDM6MTMgSVNUIDIwMTY6MTQ1NDE0ODc5MzM0Ng=="
+}
 ```
 
 **CURL snippet**
