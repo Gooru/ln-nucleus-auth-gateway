@@ -85,7 +85,20 @@ Location: /users/95f0da69-fb0e-401a-8c9c-37acdba55ff0
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==" -d '{"firstname" : "gooru", "lastname" : "learning", "username" : "gooru", "email_id" : "mygooru@gmail.com", "password" : "mygooru123", "birth_date" : "11/12/1987", "user_category" : "teacher", "gender" : "male", "grade" : ["5", "9"]}' -X POST http://nucleus.gooru.org/api/nucleus-auth/v1/users
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==" -d '{
+    "firstname": "gooru",
+    "lastname": "learning",
+    "username": "gooru",
+    "email_id": "mygooru@gmail.com",
+    "password": "mygooru123",
+    "birth_date": "11/12/1987",
+    "user_category": "teacher",
+    "gender": "male",
+    "grade": [
+        "5",
+        "9"
+    ]
+}' -X POST http://nucleus.gooru.org/api/nucleus-auth/v1/users
 ```
 
 ###Create child user account
@@ -153,7 +166,13 @@ Location: /users/31d1de5e-88e1-440f-9ecb-b66a0ac39250
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==" -d '{"username" : "gooruChild" , "parent_email_id" : "mygooru@gmail.com", "password" : "mygooru123", "birth_date" : "11/12/2005", "user_category" : "student"}' -X POST http://nucleus.gooru.org/api/nucleus-auth/v1/users
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==" -d '{
+    "username": "gooruChild",
+    "parent_email_id": "mygooru@gmail.com",
+    "password": "mygooru123",
+    "birth_date": "11/12/2005",
+    "user_category": "student"
+}' -X POST http://nucleus.gooru.org/api/nucleus-auth/v1/users
 ```
 
 ##Update user account 
@@ -238,7 +257,24 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==" -d '{"country" : "united states", "school" : "joseph", "school_district" : "Colton Joint Unified School District", "state" : "california", "gender" : "male", "grade" : ["5", "9"], "course" : [{"code" : "MA#MA6", "name" : "Math 6"}], "about_me" : "I am currently a Research Assistant"}' -X PUT http://nucleus.gooru.org/api/nucleus-auth/v1/users/me
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==" -d '{
+    "country": "united states",
+    "school": "joseph",
+    "school_district": "Colton Joint Unified School District",
+    "state": "california",
+    "gender": "male",
+    "grade": [
+        "5",
+        "9"
+    ],
+    "course": [
+        {
+            "code": "MA#MA6",
+            "name": "Math 6"
+        }
+    ],
+    "about_me": "I am currently a Research Assistant"
+}' -X PUT http://nucleus.gooru.org/api/nucleus-auth/v1/users/me
 ```
 
 ##Fetch user details
@@ -354,7 +390,9 @@ Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzI
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzIwMzkxNzY0OQ=="  -X POST -d '{"email_id" : "mygooru@gmail.com"}' http://nucleus.gooru.org/api/nucleus-auth/v1/users/password-reset
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzIwMzkxNzY0OQ=="  -X POST -d '{
+    "email_id": "mygooru@gmail.com"
+}' http://nucleus.gooru.org/api/nucleus-auth/v1/users/password-reset
 ```
 
 ##Reset un-authenticate user password
@@ -394,7 +432,10 @@ Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzI
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzIwMzkxNzY0OQ=="  -X PUT -d '{"token" : "UkVTRVRfUEFTU1dPUkRfVE9LRU46VGh1IEphbiAyMSAyMDowMzowOCBJU1QgMjAxNjoxNDUzMzg2Nzg4NTg5", "new_password" : "newgooru123"}' http://nucleus.gooru.org/api/nucleus-auth/v1/users/95f0da69-fb0e-401a-8c9c-37acdba55ff0/password
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzIwMzkxNzY0OQ=="  -X PUT -d '{
+    "token": "UkVTRVRfUEFTU1dPUkRfVE9LRU46VGh1IEphbiAyMSAyMDowMzowOCBJU1QgMjAxNjoxNDUzMzg2Nzg4NTg5",
+    "password": "newgooru123"
+}' http://nucleus.gooru.org/api/nucleus-auth/v1/users/95f0da69-fb0e-401a-8c9c-37acdba55ff0/password
 ```
 
 ##Reset authenticate user password
@@ -434,7 +475,10 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X PUT -d '{"new_password" : "gooru1234", "old_password" : "newgooru123"}' http://nucleus.gooru.org/api/nucleus-auth/v1/users/me/password
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X PUT -d '{
+    "new_password": "gooru1234",
+    "old_password": "newgooru123"
+}' http://nucleus.gooru.org/api/nucleus-auth/v1/users/me/password
 ```
 
 ##Change  email address
@@ -473,7 +517,9 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X POST -d '{"email_id" : "mygooru@gooru.org"}' http://nucleus.gooru.org/api/nucleus-auth/v1/users/me/email
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X POST -d '{
+    "email_id": "mygooru@gooru.org"
+}' http://nucleus.gooru.org/api/nucleus-auth/v1/users/me/email
 ```
 
 ##Confirm  email address.
@@ -513,7 +559,9 @@ Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzI
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzIwMzkxNzY0OQ==" -d '{"token" : "RU1BSUxfQ09ORklSTV9UT0tFTjpNb24gSmFuIDI1IDEyOjE3OjU2IElTVCAyMDE2OjE0NTM3MDQ0NzYxNjE="}'  -X PUT  http://nucleus.gooru.org/api/nucleus-auth/v1/users/95f0da69-fb0e-401a-8c9c-37acdba55ff0/email
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MTU6MTcgSVNUIDIwMTY6MTQ1MzIwMzkxNzY0OQ==" -d '{
+    "token": "RU1BSUxfQ09ORklSTV9UT0tFTjpGcmkgSmFuIDIyIDExOjM3OjU3IElTVCAyMDE2OjE0NTM0NDI4NzcwNjk="
+}'  -X PUT  http://nucleus.gooru.org/api/nucleus-auth/v1/users/95f0da69-fb0e-401a-8c9c-37acdba55ff0/email
 ```
 
 

@@ -48,7 +48,15 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3Ok1vbiBKYW4gMjUgMTE6MTg6MDUgSVNUIDIwMTY6MTQ1MzcwMDg4NTQzMA==" -d '{"standard_preference": [{"subject": "MA", "standard_framework_code" : "TEXAS"}], "profile_visibility": true}' -X PUT http://nucleus.gooru.org/api/nucleus-auth/v1/users/me/prefs
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3Ok1vbiBKYW4gMjUgMTE6MTg6MDUgSVNUIDIwMTY6MTQ1MzcwMDg4NTQzMA==" -d '{
+    "standard_preference": [
+        {
+            "subject": "MA",
+            "standard_framework_code": "TEXAS"
+        }
+    ],
+    "profile_visibility": true
+}' -X PUT http://nucleus.gooru.org/api/nucleus-auth/v1/users/me/prefs
 ```
 
 ###Get user preference
