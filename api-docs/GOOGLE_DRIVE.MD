@@ -100,7 +100,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYm
 | Auth | Required |
 | Authorization Header | Authorization: Token [Authenticated access token]
 | Request Body  | None |
-| Response Code | 204 N0 content |
+| Response Code | 204 No content |
 
 **Authorization Token**
 ```
