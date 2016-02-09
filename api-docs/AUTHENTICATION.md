@@ -121,7 +121,7 @@ curl -i  -H "Content-Type: application/json"  -d '{
 
 **CURL snippet**
 
-```
+```posh
 curl -i  -H "Content-Type: application/json" -H "Authorization: Basic b2liZ2FuZzlAZ29vcnUub3JnOmRvbjEyMzQ=" -d '{
     "client_key": "c2hlZWJhbkBnb29ydWxlYXJuaW5nLm9yZw==",
     "client_id": "ba956a97-ae15-11e5-a302-f8a963065976",
@@ -184,7 +184,7 @@ It will revoke the access given to an application and make it invalid, it will b
 
 **CURL snippet**
 
-```
+```posh
 curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTQ6MjA6NDcgSVNUIDIwMTY6MTQ1MzM2NjI0NzMzNg=="  -X DELETE http://nucleus.gooru.org/api/nucleus-auth/v1/token
 ```
 
