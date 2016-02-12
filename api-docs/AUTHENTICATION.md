@@ -44,7 +44,7 @@ Features
     "prefs": {
         "taxonomy": {
              "K12.LA": "0dbd23e0-05ef-11e5-bfe7-22000abfab1d",
-            "K12.SC": "c6869092-bfdb-11e3-a253-12313f070480"
+             "K12.SC": "c6869092-bfdb-11e3-a253-12313f070480"
          }
     },
     "access_token": "YW5vbnltb3VzOkZyaSBKYW4gMjIgMTk6NDY6NDAgSVNUIDIwMTY6MTQ1MzQ3MjIwMDE0MA=="
