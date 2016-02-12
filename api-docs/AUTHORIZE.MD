@@ -60,10 +60,10 @@ Authorization: Token YW5vbnltb3VzOlR1ZSBKYW4gMTkgMTc6MDk6MDMgSVNUIDIwMTY6MTQ1MzI
         "profile.cdn": "//profile.gooru.org.com"
     },
     "prefs": {
-        "taxonomy": [{
-            "standard_framework_code": "CSS",
-            "default_subject_code": "GUT.M"
-        }]
+        "taxonomy": {
+            "K12.LA": "0dbd23e0-05ef-11e5-bfe7-22000abfab1d",
+            "K12.SC": "c6869092-bfdb-11e3-a253-12313f070480"
+        }
     },
     "access_token": "OTM2NjBiNTItNmZjNi00YmY5LTgyOGQtMzQzNGVhODdmZDAzOlNhdCBKYW4gMzAgMTU6NDM6MTMgSVNUIDIwMTY6MTQ1NDE0ODc5MzM0Ng=="
 }
