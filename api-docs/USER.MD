@@ -1,7 +1,6 @@
 Features
 ----------
 - Create user account
-- Create child user account
 - Update user account 
 - Fetch user details
 - Find user by username or email Id
@@ -101,79 +100,6 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYm
 }' -X POST http://nucleus.gooru.org/api/nucleus-auth/v1/users
 ```
 
-###Create child user account
-
-**Rest API details**
-
-| Name | Summary |
-|------------------------|--------|
-| HTTP Method | POST |
-| End Point | /api/nucleus-auth/{version}/users |
-| Auth | Required |
-| Authorization Header | Authorization: Token [anonymous access token]
-| Request Body Type | JSON |
-| Response Code | 201 Created |
-
-**Response body json fields**
-
-| Key name       | Nullable | comment                            |
-|----------------|----------|------------------------------------|
-| username       | No       | character must be between 4 and 20 |
-| parent_email_id| No       |                                    |
-| password       | No       | character must be between 5 and 14 |
-| user_category  | No       |                                    |
-| grade          | Yes      |                                    |
-
-
-**Authorization Token**
-```
-Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==
-```
-
-**Request Body**
-
-```json
-{
-    "username": "gooruChild",
-    "parent_email_id": "mygooru@gmail.com",
-    "password": "mygooru123",
-    "birth_date": "11/12/2005",
-    "user_category": "student"
-}
-```
-
-**Location Header**
-
-```
-Location: /users/31d1de5e-88e1-440f-9ecb-b66a0ac39250
-```
-
-**Response Body**
-
-```json
-{
-    "user_id": "31d1de5e-88e1-440f-9ecb-b66a0ac39250",
-    "username": "gooruChild",
-    "client_id": "ba956a97-ae15-11e5-a302-f8a963065976",
-    "provided_at": 1453379506086,
-    "cdn_urls": {
-        "profile.cdn": "//profile.gooru.org.com"
-    },
-    "access_token": "MzFkMWRlNWUtODhlMS00NDBmLTllY2ItYjY2YTBhYzM5MjUwOlRodSBKYW4gMjEgMTg6MDE6NDYgSVNUIDIwMTY6MTQ1MzM3OTUwNjA4Ng=="
-}
-```
-
-**CURL snippet**
-
-```posh
-curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4gMjEgMTY6MTE6MTcgSVNUIDIwMTY6MTQ1MzM3Mjg3NzQxMA==" -d '{
-    "username": "gooruChild",
-    "parent_email_id": "mygooru@gmail.com",
-    "password": "mygooru123",
-    "birth_date": "11/12/2005",
-    "user_category": "student"
-}' -X POST http://nucleus.gooru.org/api/nucleus-auth/v1/users
-```
 
 ##Update user account 
 
