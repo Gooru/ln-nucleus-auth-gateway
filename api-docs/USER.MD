@@ -543,6 +543,23 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNj
 Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw==
 
 ```
+**Response Body**
+
+```json
+{
+    "created_at": 1333284935000,
+    "email_id": "sachin.gurukul@gmail.com",
+    "firstname": "sachin",
+    "gender": "male",
+    "id": "df3f48c7-3ba3-4499-9eea-d07c067333b4",
+    "lastname": "vats",
+    "login_type": "credential",
+    "provision_type": "registered",
+    "updated_at": 1365127819000,
+    "user_category": "teacher",
+    "username": "sachin"
+}
+```
 
 **CURL snippet**
 
