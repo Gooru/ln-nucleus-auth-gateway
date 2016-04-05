@@ -10,6 +10,7 @@ Features
 - Change email address
 - Confirm email address
 - Resend confirmation email
+- Find users by id
 
 
 
@@ -516,3 +517,35 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw=="  -X POST  http://nucleus.gooru.org/api/nucleus-auth/v1/users/me/email-confirmation
 ```
 
+
+##Find users by id.
+
+**Rest API details**
+
+| Name | Summary |
+|------------------------|--------|
+| HTTP Method | GET |
+| End Point | /api/nucleus-auth/{version}/users |
+| Auth | Required |
+| Authorization Header | Authorization: Token [anonymous access token]
+| Response Code | 200 Successful |
+
+**Request Param**
+
+| Name      | Comment  |
+|---------- |----------|
+| ids  | It will accept multiple user ids in comma separator format. maximum 30 ids per request |
+
+
+**Authorization Token**
+
+```
+Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw==
+
+```
+
+**CURL snippet**
+
+```posh
+curl -i  -H "Content-Type: application/json" -H "Authorization: Token MTQ1OTgzOTA3MDM3NToyMWRmMDVhYS02MjY0LTRiNmQtYmZmMS03NDkyOGMwNzI2MjU6YmE5NTZhOTctYWUxNS0xMWU1LWEzMDItZjhhOTYzMDY1OTc2" -X GET http://nucleus.gooru.org/api/nucleus-auth/v1/users?ids=00030281-90ed-4d82-8f05-986b858642d2,00017c7a-7105-4dd8-b3fd-292102583ab8,0001cde4-39b2-4a9a-b795-1577d569e375
+```
