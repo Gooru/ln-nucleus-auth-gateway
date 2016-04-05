@@ -561,6 +561,14 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 }
 ```
 
+**Response  Attributes**
+
+| Name      | Comment  |
+|---------- |----------|
+| login_type  | support types are :  'google', 'wsfed', 'saml', and 'credential' |
+| provision_type  | support types are : 'google', 'wsfed', 'saml', and 'registered' |
+
+
 **CURL snippet**
 
 ```posh
