@@ -262,6 +262,8 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token OTVmMGRhNj
 | username  | Either  username or email id is mandatory |
 | email     | Either  username or email id is mandatory |
 
+
+
 **Authorization Token**
 ```
 Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4gMjEgMTc6Mjg6MTEgSVNUIDIwMTY6MTQ1MzM3NzQ5MTc4Mw==
@@ -275,6 +277,32 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
     "email_id": "mygooru@gmail.com"
 }
 ```
+
+**Response Body**
+
+```json
+{
+    "created_at": 1333284935000,
+    "email_id": "sachin.gurukul@gmail.com",
+    "firstname": "sachin",
+    "gender": "male",
+    "id": "df3f48c7-3ba3-4499-9eea-d07c067333b4",
+    "lastname": "vats",
+    "login_type": "credential",
+    "provision_type": "registered",
+    "updated_at": 1365127819000,
+    "user_category": "teacher",
+    "username": "sachin"
+}
+```
+
+**Response  Attributes**
+
+| Name      | Comment  |
+|---------- |----------|
+| login_type  | support types are :  'google', 'wsfed', 'saml', and 'credential' |
+| provision_type  | support types are : 'google', 'wsfed', 'saml', and 'registered' |
+
 **CURL snippet**
 
 ```posh
@@ -546,28 +574,27 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 **Response Body**
 
 ```json
+
 {
-    "created_at": 1333284935000,
-    "email_id": "sachin.gurukul@gmail.com",
-    "firstname": "sachin",
-    "gender": "male",
-    "id": "df3f48c7-3ba3-4499-9eea-d07c067333b4",
-    "lastname": "vats",
-    "login_type": "credential",
-    "provision_type": "registered",
-    "updated_at": 1365127819000,
-    "user_category": "teacher",
-    "username": "sachin"
+    "users": [{
+        "firstname": "Daniel",
+        "id": "00017c7a-7105-4dd8-b3fd-292102583ab8",
+        "lastname": "Leffman",
+        "username": "danleffman"
+    }, {
+        "firstname": "first",
+        "id": "0001cde4-39b2-4a9a-b795-1577d569e375",
+        "lastname": "last",
+        "username": "ebeystrum@parmaschools.org"
+    }, {
+        "firstname": "Kadie",
+        "id": "00030281-90ed-4d82-8f05-986b858642d2",
+        "lastname": "Busby",
+        "username": "KadieB"
+    }]
 }
+
 ```
-
-**Response  Attributes**
-
-| Name      | Comment  |
-|---------- |----------|
-| login_type  | support types are :  'google', 'wsfed', 'saml', and 'credential' |
-| provision_type  | support types are : 'google', 'wsfed', 'saml', and 'registered' |
-
 
 **CURL snippet**
 
