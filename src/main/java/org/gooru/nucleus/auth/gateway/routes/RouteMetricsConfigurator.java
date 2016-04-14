@@ -12,20 +12,21 @@ import org.slf4j.LoggerFactory;
 
 class RouteMetricsConfigurator implements RouteConfigurator {
 
-  static final Logger LOG = LoggerFactory.getLogger("org.gooru.nucleus.auth.gateway.bootstrap.ServerVerticle");
+    static final Logger LOG = LoggerFactory.getLogger("org.gooru.nucleus.auth.gateway.bootstrap.ServerVerticle");
 
-  @Override
-  public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
+    @Override
+    public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
 
-    final MetricsService metricsService = MetricsService.create(vertx);
+        final MetricsService metricsService = MetricsService.create(vertx);
 
-    // Send a metrics events as per period defined, once we convert it to milliseconds
-    final int metricsPeriodicitySeconds = config.getInteger(ConfigConstants.METRICS_PERIODICITY);
+        // Send a metrics events as per period defined, once we convert it to
+        // milliseconds
+        final int metricsPeriodicitySeconds = config.getInteger(ConfigConstants.METRICS_PERIODICITY);
 
-    vertx.setPeriodic(metricsPeriodicitySeconds * 1000, t -> {
-      JsonObject metrics = metricsService.getMetricsSnapshot(vertx);
-      vertx.eventBus().publish(MessagebusEndpoints.MBEP_METRICS, metrics);
-    });
-  }
+        vertx.setPeriodic(metricsPeriodicitySeconds * 1000, t -> {
+            JsonObject metrics = metricsService.getMetricsSnapshot(vertx);
+            vertx.eventBus().publish(MessagebusEndpoints.MBEP_METRICS, metrics);
+        });
+    }
 
 }

@@ -9,20 +9,22 @@ import org.slf4j.LoggerFactory;
 
 class RouteInternalConfigurator implements RouteConfigurator {
 
-  static final Logger LOG = LoggerFactory.getLogger("org.gooru.nucleus.auth.gateway.bootstrap.ServerVerticle");
+    static final Logger LOG = LoggerFactory.getLogger("org.gooru.nucleus.auth.gateway.bootstrap.ServerVerticle");
 
-  @Override
-  public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
-    router.route("/banner").handler(routingContext -> {
-      JsonObject result = new JsonObject().put("Organisation", "gooru.org").put("Product", "auth").put("purpose", "authentication")
-                                          .put("mission", "Honor the human right to education");
-      routingContext.response().end(result.toString());
-    });
+    @Override
+    public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
+        router.route("/banner").handler(
+            routingContext -> {
+                JsonObject result =
+                    new JsonObject().put("Organisation", "gooru.org").put("Product", "auth")
+                        .put("purpose", "authentication").put("mission", "Honor the human right to education");
+                routingContext.response().end(result.toString());
+            });
 
-    final MetricsService metricsService = MetricsService.create(vertx);
-    router.route("/metrics").handler(routingContext -> {
-      JsonObject ebMetrics = metricsService.getMetricsSnapshot(vertx);
-      routingContext.response().end(ebMetrics.toString());
-    });
-  }
+        final MetricsService metricsService = MetricsService.create(vertx);
+        router.route("/metrics").handler(routingContext -> {
+            JsonObject ebMetrics = metricsService.getMetricsSnapshot(vertx);
+            routingContext.response().end(ebMetrics.toString());
+        });
+    }
 }

@@ -16,32 +16,35 @@ import org.slf4j.LoggerFactory;
 
 class RouteAuthorizeConfigurator implements RouteConfigurator {
 
-  private static final Logger LOG = LoggerFactory.getLogger("org.gooru.nucleus.auth.gateway.bootstrap.ServerVerticle");
+    private static final Logger LOG = LoggerFactory
+        .getLogger("org.gooru.nucleus.auth.gateway.bootstrap.ServerVerticle");
 
-  private EventBus eb = null;
-  private long mbusTimeout;
+    private EventBus eb = null;
+    private long mbusTimeout;
 
-  @Override
-  public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
-    eb = vertx.eventBus();
-    mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, RouteConstants.DEFAULT_TIMEOUT);
-    router.post(RouteConstants.EP_NUCLUES_AUTH_AUTHORIZE).handler(this::authorize);
+    @Override
+    public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
+        eb = vertx.eventBus();
+        mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, RouteConstants.DEFAULT_TIMEOUT);
+        router.post(RouteConstants.EP_NUCLUES_AUTH_AUTHORIZE).handler(this::authorize);
 
-  }
-
-  private void authorize(RoutingContext routingContext) {
-    HttpServerRequest request = routingContext.request();
-    DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.AUTHORIZE);
-    String host = request.getHeader(HttpConstants.HEADER_HOST);
-    String referer = request.getHeader(HttpConstants.HEADER_REFERER);
-    if (host != null) {
-      options.addHeader(MessageConstants.MSG_HEADER_REQUEST_DOMAIN, host);
-    } else if (referer != null) {
-      options.addHeader(MessageConstants.MSG_HEADER_REQUEST_DOMAIN, referer);
     }
 
-    eb.send(MessagebusEndpoints.MBEP_AUTHORIZE, RouteRequestUtility.getBodyForMessage(routingContext), options,
-      reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
-  }
+    private void authorize(RoutingContext routingContext) {
+        HttpServerRequest request = routingContext.request();
+        DeliveryOptions options =
+            new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP,
+                CommandConstants.AUTHORIZE);
+        String host = request.getHeader(HttpConstants.HEADER_HOST);
+        String referer = request.getHeader(HttpConstants.HEADER_REFERER);
+        if (host != null) {
+            options.addHeader(MessageConstants.MSG_HEADER_REQUEST_DOMAIN, host);
+        } else if (referer != null) {
+            options.addHeader(MessageConstants.MSG_HEADER_REQUEST_DOMAIN, referer);
+        }
+
+        eb.send(MessagebusEndpoints.MBEP_AUTHORIZE, RouteRequestUtility.getBodyForMessage(routingContext), options,
+            reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
+    }
 
 }
