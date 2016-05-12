@@ -580,7 +580,8 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
         "firstname": "Daniel",
         "id": "00017c7a-7105-4dd8-b3fd-292102583ab8",
         "lastname": "Leffman",
-        "username": "danleffman"
+        "username": "danleffman",
+        "thumbnail_path" : "00017c7a-7105-4dd8-b3fd-292102583ab8.png"
     }, {
         "firstname": "first",
         "id": "0001cde4-39b2-4a9a-b795-1577d569e375",
@@ -595,6 +596,7 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 }
 
 ```
+- If there is no thumbnail image for user, "thumbnail_path" will not present in response. 
 
 **CURL snippet**
 
