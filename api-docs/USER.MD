@@ -160,7 +160,8 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
         "code": "MA#MA6",
         "name": "Math 6"
     }],
-    "about_me": "I am currently a Research Assistant"
+    "about_me": "I am currently a Research Assistant",
+    "roster_global_userid" : "408769"
 }
 ```
 
@@ -178,7 +179,8 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
         "code": "MA#MA6",
         "name": "Math 6"
     }],
-    "about_me": "I am currently a Research Assistant"
+    "about_me": "I am currently a Research Assistant",
+    "roster_global_userid" : "408769"
 }
 ```
 
