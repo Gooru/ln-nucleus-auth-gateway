@@ -235,7 +235,8 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
     "lastname": "learning",
     "updated_at": "2016-01-21T11:58:11Z",
     "user_category": "teacher",
-    "username": "gooru"
+    "username": "gooru",
+    "roster_global_userid" : "40th"
 }
 ```
 **CURL snippet**
