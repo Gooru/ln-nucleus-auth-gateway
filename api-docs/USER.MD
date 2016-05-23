@@ -136,6 +136,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYm
 | thumbnail_path    | Yes      |                                    |
 | about_me          | Yes      |                                    |
 | course            | Yes      |                                    |
+| roster_global_userid | Yes   |                                    |
 
 
 **Authorization Token**
