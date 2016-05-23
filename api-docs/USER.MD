@@ -203,7 +203,8 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYm
             "name": "Math 6"
         }
     ],
-    "about_me": "I am currently a Research Assistant"
+    "about_me": "I am currently a Research Assistant",
+    "roster_global_userid" : "408769"
 }' -X PUT http://nucleus.gooru.org/api/nucleus-auth/v1/users/me
 ```
 
