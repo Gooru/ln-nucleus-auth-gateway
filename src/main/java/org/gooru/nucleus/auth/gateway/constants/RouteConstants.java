@@ -30,6 +30,7 @@ public class RouteConstants {
     private static final String GOOGLE_DRIVE = "google-drive";
     private static final String CALLBACK = "callback";
     private static final String REFRESH_TOKEN = "refresh-token";
+    private static final String AUTH_CLIENT = "auth-clients";
 
     // Misc helpers
     private static final String SEP = "/";
@@ -67,6 +68,8 @@ public class RouteConstants {
 
     public static final String EP_NUCLUES_AUTH_GOOGLE_DRIVE_REFRESH_TOKEN = API_BASE_ROUTE + GOOGLE_DRIVE + SEP
         + REFRESH_TOKEN;
+
+    public static final String EP_NUCLUES_AUTH_CLIENT = API_BASE_ROUTE + AUTH_CLIENT;
 
     public static final long DEFAULT_TIMEOUT = 30000L;
 
