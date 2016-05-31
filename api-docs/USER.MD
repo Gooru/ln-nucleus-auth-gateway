@@ -136,6 +136,7 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYm
 | thumbnail_path    | Yes      |                                    |
 | about_me          | Yes      |                                    |
 | course            | Yes      |                                    |
+| roster_global_userid | Yes   |                                    |
 
 
 **Authorization Token**
@@ -159,7 +160,8 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
         "code": "MA#MA6",
         "name": "Math 6"
     }],
-    "about_me": "I am currently a Research Assistant"
+    "about_me": "I am currently a Research Assistant",
+    "roster_global_userid" : "408769"
 }
 ```
 
@@ -177,7 +179,8 @@ Authorization: Token YWFkYTZhYmMtZWIxMS00NTUwLTk4MWYtM2EzNmE1M2I0OTA3OlRodSBKYW4
         "code": "MA#MA6",
         "name": "Math 6"
     }],
-    "about_me": "I am currently a Research Assistant"
+    "about_me": "I am currently a Research Assistant",
+    "roster_global_userid" : "408769"
 }
 ```
 
@@ -200,7 +203,8 @@ curl -i  -H "Content-Type: application/json" -H "Authorization: Token YWFkYTZhYm
             "name": "Math 6"
         }
     ],
-    "about_me": "I am currently a Research Assistant"
+    "about_me": "I am currently a Research Assistant",
+    "roster_global_userid" : "408769"
 }' -X PUT http://nucleus.gooru.org/api/nucleus-auth/v1/users/me
 ```
 
@@ -234,7 +238,8 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
     "lastname": "learning",
     "updated_at": "2016-01-21T11:58:11Z",
     "user_category": "teacher",
-    "username": "gooru"
+    "username": "gooru",
+    "roster_global_userid" : "40th"
 }
 ```
 **CURL snippet**
@@ -580,7 +585,8 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
         "firstname": "Daniel",
         "id": "00017c7a-7105-4dd8-b3fd-292102583ab8",
         "lastname": "Leffman",
-        "username": "danleffman"
+        "username": "danleffman",
+        "thumbnail_path" : "00017c7a-7105-4dd8-b3fd-292102583ab8.png"
     }, {
         "firstname": "first",
         "id": "0001cde4-39b2-4a9a-b795-1577d569e375",
@@ -595,6 +601,7 @@ Authorization: Token OTVmMGRhNjktZmIwZS00MDFhLThjOWMtMzdhY2RiYTU1ZmYwOlRodSBKYW4
 }
 
 ```
+- If there is no thumbnail image for user, "thumbnail_path" will not present in response. 
 
 **CURL snippet**
 
