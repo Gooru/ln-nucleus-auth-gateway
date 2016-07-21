@@ -19,4 +19,5 @@ public class MessagebusEndpoints {
     public static final String MBEP_METRICS = "org.gooru.nucleus.auth.message.bus.metrics";
     public static final String MBEP_GOOGLE_DRIVE = "org.gooru.nucleus.auth.message.bus.google.drive";
     public static final String MBEP_AUTH_CLIENT = "org.gooru.nucleus.auth.message.bus.auth.client";
+    public static final String MBEP_INTERNAL = "org.gooru.nucleus.auth.message.bus.internal";
 }

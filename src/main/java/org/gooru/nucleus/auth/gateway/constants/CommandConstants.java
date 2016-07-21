@@ -28,6 +28,9 @@ public class CommandConstants {
     public static final String RESEND_CONFIRMATION_EMAIL = "resend.confirmation.email";
     public static final String CONFIRMATION_EMAIL = "confirm.email";
     
+    public static final String USER_DETAILS = "user.details";
+    public static final String LOGIN_AS_USER = "login.as.user";
+    
     // Auth client command
     public static final String CREATE_AUTH_CLIENT = "create.auth.client";
 
