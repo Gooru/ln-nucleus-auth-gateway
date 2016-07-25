@@ -45,11 +45,11 @@ class RouteInternalConfigurator implements RouteConfigurator {
             routingContext.response().end(ebMetrics.toString());
         });
         
-        router.post(RouteConstants.EP_INTERNAL_USER_DETAILS).handler(this::userDetails);
-        router.post(RouteConstants.EP_INTERNAL_LOGIN_AS_USER).handler(this::loginAsUser);
+        router.post(RouteConstants.EP_INTERNAL_AUTHENTICATE).handler(this::authenticate);
+        router.post(RouteConstants.EP_INTERNAL_IMPERSONATE).handler(this::impersonate);
     }
     
-    private void userDetails(RoutingContext routingContext) {
+    private void authenticate(RoutingContext routingContext) {
         HttpServerRequest request = routingContext.request();
         String authorization = request.getHeader(HttpConstants.HEADER_AUTH);
         String basicAuthCredentials = null;
@@ -59,12 +59,12 @@ class RouteInternalConfigurator implements RouteConfigurator {
         
         DeliveryOptions options =
             new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP,
-                CommandConstants.USER_DETAILS).addHeader(MessageConstants.MSG_HEADER_BASIC_AUTH, basicAuthCredentials);;
+                CommandConstants.INTERNAL_AUTHENTICATE).addHeader(MessageConstants.MSG_HEADER_BASIC_AUTH, basicAuthCredentials);;
         eb.send(MessagebusEndpoints.MBEP_INTERNAL, RouteRequestUtility.getBodyForMessage(routingContext), options,
             reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
     }
     
-    private void loginAsUser(RoutingContext routingContext) {
+    private void impersonate(RoutingContext routingContext) {
         HttpServerRequest request = routingContext.request();
         String auth = request.getHeader(HttpConstants.HEADER_AUTH);
         String credentials = null;
@@ -73,7 +73,7 @@ class RouteInternalConfigurator implements RouteConfigurator {
         }
         DeliveryOptions options =
             new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP,
-                CommandConstants.LOGIN_AS_USER).addHeader(MessageConstants.MSG_HEADER_BASIC_AUTH, credentials);
+                CommandConstants.INTERNAL_IMPERSONATE).addHeader(MessageConstants.MSG_HEADER_BASIC_AUTH, credentials);
         eb.send(MessagebusEndpoints.MBEP_INTERNAL, RouteRequestUtility.getBodyForMessage(routingContext), options,
             reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
     }
