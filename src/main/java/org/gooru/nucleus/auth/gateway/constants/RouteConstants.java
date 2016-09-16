@@ -9,6 +9,7 @@ public class RouteConstants {
     private static final String API_VERSION = "v1";
     private static final String API_BASE_ROUTE = "/api/nucleus-auth/" + API_VERSION + "/";
     public static final String API_NUCLUES_AUTH_ROUTE = "/api/nucleus-auth/*";
+    private static final String API_INTERNAL_BASE_ROUTE = "/api/internal/" + API_VERSION + "/";
 
     // GLA 2.0 Authentication API base route path
     private static final String API_GLA_VERSION_BASE_ROUTE = "/api/nucleus-auth/";
@@ -70,6 +71,12 @@ public class RouteConstants {
         + REFRESH_TOKEN;
 
     public static final String EP_NUCLUES_AUTH_CLIENT = API_BASE_ROUTE + AUTH_CLIENT;
+    
+    //Internal Routes
+    // /api/internal/v1/user-details
+    public static final String EP_INTERNAL_AUTHENTICATE = API_INTERNAL_BASE_ROUTE + "authenticate";
+    // /api/internal/v1/login-as-user
+    public static final String EP_INTERNAL_IMPERSONATE = API_INTERNAL_BASE_ROUTE + "impersonate";
 
     public static final long DEFAULT_TIMEOUT = 30000L;
 
