@@ -30,6 +30,7 @@ public class CommandConstants {
     
     public static final String INTERNAL_AUTHENTICATE = "internal.authenticate";
     public static final String INTERNAL_IMPERSONATE = "internal.impersonate";
+    public static final String INTERNAL_LTI_SSO = "internal.lti.sso";
     
     // Auth client command
     public static final String CREATE_AUTH_CLIENT = "create.auth.client";
