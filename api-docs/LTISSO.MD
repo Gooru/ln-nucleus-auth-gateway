@@ -24,6 +24,7 @@ Features
 | reference_id    | No       | User Id of the client user         |
 | client_id       | No       | Client ID of the client            |
 | client_key      | No       | Client Key of the client           |
+| user_category   | Yes      | Category of the user               |
 
 
 **Authorization**
@@ -44,7 +45,8 @@ Authorization: Basic YmE5NTZhOTctYWUxNS0xMWU1LWEzMDItZjhhOTYzMDY1OTc2OmMyaGxaV0p
         "firstname": "gooru",
         "lastname": "my",
         "reference_id": "123456789",
-        "email_id" : "user@gooru.org"
+        "email_id" : "user@gooru.org",
+        "user_category", "student"
     }
 }
 ```
@@ -73,5 +75,5 @@ Authorization: Basic YmE5NTZhOTctYWUxNS0xMWU1LWEzMDItZjhhOTYzMDY1OTc2OmMyaGxaV0p
 **CURL snippet**
 
 ```posh
-curl -i  -H "Content-Type: application/json"  -d '{"client_key" : "c2hlZWJhbkBnb29ydWxlYXJuaW5nLm9yZw==", "client_id" : "ba956a97-ae15-11e5-a302-f8a963065976", "user" : {"firstname" : "gooru", "lastname" : "my",  "reference_id" : "123456789", "email_id" : "user@gooru.org"}}' -X POST http://nucleus.gooru.org/api/nucleus-auth/v1/authorize
+curl -i  -H "Content-Type: application/json"  -d '{"client_key" : "c2hlZWJhbkBnb29ydWxlYXJuaW5nLm9yZw==", "client_id" : "ba956a97-ae15-11e5-a302-f8a963065976", "user" : {"firstname" : "gooru", "lastname" : "my",  "reference_id" : "123456789", "email_id" : "user@gooru.org", "user_category", "student"}}' -X POST http://nucleus.gooru.org/api/nucleus-auth/v1/authorize
 ```
