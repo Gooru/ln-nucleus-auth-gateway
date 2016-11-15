@@ -77,6 +77,8 @@ public class RouteConstants {
     public static final String EP_INTERNAL_AUTHENTICATE = API_INTERNAL_BASE_ROUTE + "authenticate";
     // /api/internal/v1/login-as-user
     public static final String EP_INTERNAL_IMPERSONATE = API_INTERNAL_BASE_ROUTE + "impersonate";
+    // /api/internal/v1/sso
+    public static final String EP_INTERNAL_SSO = API_INTERNAL_BASE_ROUTE + "sso";
 
     public static final long DEFAULT_TIMEOUT = 30000L;
 
