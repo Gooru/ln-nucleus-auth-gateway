@@ -20,7 +20,10 @@ class AuthMessageBusJsonResponseContextHolder implements AuthResponseContextHold
         if (!isAuthorized) {
             return null;
         }
-        return message.body().toString();
+        JsonObject responseBody = (JsonObject) message.body();
+        JsonObject userContext = responseBody.getJsonObject(MessageConstants.MSG_HTTP_BODY)
+            .getJsonObject(MessageConstants.MSG_HTTP_RESPONSE);
+        return userContext != null ? userContext.toString() : null;
     }
 
     public AuthMessageBusJsonResponseContextHolder(Message<Object> message) {

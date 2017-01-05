@@ -35,7 +35,7 @@ class RouteGoogleDriveConfigurator implements RouteConfigurator {
     private void connectGoogleDrive(RoutingContext context) {
         DeliveryOptions options =
             new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP,
-                CommandConstants.CONNECT_GOOGLE_DRIVE);
+                MessageConstants.MSG_OP_GOOGLE_DRIVE_CONNECT);
         eb.send(MessagebusEndpoints.MBEP_GOOGLE_DRIVE, RouteRequestUtility.getBodyForMessage(context), options,
             reply -> RouteResponseUtility.responseHandler(context, reply, LOG));
     }
@@ -43,7 +43,7 @@ class RouteGoogleDriveConfigurator implements RouteConfigurator {
     private void googleDriveCallback(RoutingContext context) {
         DeliveryOptions options =
             new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP,
-                CommandConstants.GOOGLE_DRIVE_CALLBACK);
+                MessageConstants.MSG_OP_GOOGLE_DRIVE_CALLBACK);
         eb.send(MessagebusEndpoints.MBEP_GOOGLE_DRIVE, RouteRequestUtility.getBodyForMessage(context), options,
             reply -> RouteResponseUtility.responseHandler(context, reply, LOG));
     }
@@ -51,7 +51,7 @@ class RouteGoogleDriveConfigurator implements RouteConfigurator {
     private void googleDriveRefreshToken(RoutingContext context) {
         DeliveryOptions options =
             new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP,
-                CommandConstants.GOOGLE_DRIVE_REFRESH_TOKEN);
+                MessageConstants.MSG_OP_GOOGLE_DRIVE_REFRESH_TOKEN);
         eb.send(MessagebusEndpoints.MBEP_GOOGLE_DRIVE, RouteRequestUtility.getBodyForMessage(context), options,
             reply -> RouteResponseUtility.responseHandler(context, reply, LOG));
     }
@@ -59,7 +59,7 @@ class RouteGoogleDriveConfigurator implements RouteConfigurator {
     private void deleteDriveRefreshToken(RoutingContext context) {
         DeliveryOptions options =
             new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP,
-                CommandConstants.GOOGLE_DRIVE_DELETE_REFRESH_TOKEN);
+                MessageConstants.MSG_OP_GOOGLE_DRIVE_DELETE_REFRESH_TOKEN);
         eb.send(MessagebusEndpoints.MBEP_GOOGLE_DRIVE, RouteRequestUtility.getBodyForMessage(context), options,
             reply -> RouteResponseUtility.responseHandler(context, reply, LOG));
     }
