@@ -1,8 +1,9 @@
 package org.gooru.nucleus.auth.gateway.constants;
 
-public class MessageConstants {
+public final class MessageConstants {
 
     public static final String MSG_HEADER_OP = "mb.operation";
+    public static final String MSG_API_VERSION = "api.version";
     public static final String MSG_HEADER_TOKEN = "access.token";
     public static final String MSG_HEADER_BASIC_AUTH = "basic.auth";
     public static final String MSG_OP_STATUS = "mb.operation.status";
@@ -22,5 +23,35 @@ public class MessageConstants {
     public static final String MSG_HEADER_REQUEST_DOMAIN = "http.request.domain";
     public static final String MSG_HEADER_API_KEY = "http.api.key";
     public static final String MSG_USER_IDS = "ids";
+    
+    public static final String MSG_OP_ANONYMOUS_SIGNIN = "anonymous.signin";
+    public static final String MSG_OP_USER_SIGNIN = "user.signin";
+    public static final String MSG_OP_USER_SIGNOUT = "user.signout";
+    public static final String MSG_OP_USER_TOKEN_CHECK = "user.token.check";
+    public static final String MSG_OP_USER_TOKEN_DETAILS = "user.token.details";
+    public static final String MSG_OP_USER_UPDATE = "user.update";
+    public static final String MSG_OP_USER_GET = "user.get";
+    public static final String MSG_OP_USER_PASSWORD_RESET_TRIGGER = "user.password.reset.trigger";
+    public static final String MSG_OP_USER_PASSWORD_UPDATE = "user.password.update";
+    
+    public static final String MSG_OP_USER_SIGNUP = "user.signup";
+    
+    public static final String MSG_OP_INTERNAL_AUTHENTICATE = "internal.authenticate";
+    public static final String MSG_OP_INTERNAL_IMPERSONATE = "internal.impersonate";
+    public static final String MSG_OP_INTERNAL_LTI_SSO = "internal.lti.sso";
+    
+    //GoogleDrive
+    public static final String MSG_OP_GOOGLE_DRIVE_CONNECT = "google.drive.connect";
+    public static final String MSG_OP_GOOGLE_DRIVE_CALLBACK = "google.drive.callback";
+    public static final String MSG_OP_GOOGLE_DRIVE_REFRESH_TOKEN = "google.drive.refresh.token";
+    public static final String MSG_OP_GOOGLE_DRIVE_DELETE_REFRESH_TOKEN = "google.drive.delete.refresh.token";
+
+    // Authorize command
+    public static final String MSG_OP_USER_AUTHORIZE = "authorize";
+    
+    private MessageConstants() {
+        throw new AssertionError();
+    }
 
 }
+

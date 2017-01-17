@@ -1,11 +1,11 @@
 package org.gooru.nucleus.auth.gateway.routes;
 
-import org.gooru.nucleus.auth.gateway.constants.CommandConstants;
 import org.gooru.nucleus.auth.gateway.constants.ConfigConstants;
 import org.gooru.nucleus.auth.gateway.constants.HttpConstants;
 import org.gooru.nucleus.auth.gateway.constants.MessageConstants;
 import org.gooru.nucleus.auth.gateway.constants.MessagebusEndpoints;
 import org.gooru.nucleus.auth.gateway.constants.RouteConstants;
+import org.gooru.nucleus.auth.gateway.routes.utils.DeliveryOptionsBuilder;
 import org.gooru.nucleus.auth.gateway.routes.utils.RouteRequestUtility;
 import org.gooru.nucleus.auth.gateway.routes.utils.RouteResponseUtility;
 import org.slf4j.Logger;
@@ -56,11 +56,11 @@ class RouteInternalConfigurator implements RouteConfigurator {
             basicAuthCredentials = authorization.substring(HttpConstants.BASIC.length()).trim();
         }
 
-        DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout)
-            .addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.INTERNAL_AUTHENTICATE)
+        DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
+            .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_INTERNAL_AUTHENTICATE)
             .addHeader(MessageConstants.MSG_HEADER_BASIC_AUTH, basicAuthCredentials);
         ;
-        eb.send(MessagebusEndpoints.MBEP_INTERNAL, RouteRequestUtility.getBodyForMessage(routingContext), options,
+        eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext), options,
             reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
     }
 
@@ -71,10 +71,10 @@ class RouteInternalConfigurator implements RouteConfigurator {
         if (auth != null && auth.startsWith(HttpConstants.BASIC)) {
             credentials = auth.substring(HttpConstants.BASIC.length()).trim();
         }
-        DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout)
-            .addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.INTERNAL_IMPERSONATE)
+        DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
+            .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_INTERNAL_IMPERSONATE)
             .addHeader(MessageConstants.MSG_HEADER_BASIC_AUTH, credentials);
-        eb.send(MessagebusEndpoints.MBEP_INTERNAL, RouteRequestUtility.getBodyForMessage(routingContext), options,
+        eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext), options,
             reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
     }
 
@@ -86,10 +86,10 @@ class RouteInternalConfigurator implements RouteConfigurator {
             basicAuthCredentials = authorization.substring(HttpConstants.BASIC.length()).trim();
         }
 
-        DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout)
-            .addHeader(MessageConstants.MSG_HEADER_OP, CommandConstants.INTERNAL_LTI_SSO)
+        DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
+            .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_INTERNAL_LTI_SSO)
             .addHeader(MessageConstants.MSG_HEADER_BASIC_AUTH, basicAuthCredentials);
-        eb.send(MessagebusEndpoints.MBEP_INTERNAL, RouteRequestUtility.getBodyForMessage(routingContext), options,
+        eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext), options,
             reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
     }
 }
