@@ -44,7 +44,7 @@ public final class RouteConstants {
     public static final String EP_NUCLUES_AUTH_AUTHORIZE = API_BASE_ROUTE + AUTHORIZE;
 
     public static final String EP_NUCLUES_USER_SIGNUP = API_BASE_ROUTE + SIGNUP;
-    public static final String EP_NUCLUES_USER_UPDATE = API_BASE_ROUTE + USERS + SEP + COLON + USER_ID;
+    public static final String EP_NUCLUES_USER_UPDATE = API_BASE_ROUTE + USERS;
     public static final String EP_NUCLUES_USER_RESET_PASSWORD_TRIGGER = API_BASE_ROUTE + USERS + SEP + RESET_PASSWORD;
     public static final String EP_NUCLUES_USER_PASSWORD_UPDATE =
         API_BASE_ROUTE + USERS + SEP + COLON + USER_ID + SEP + PASSWORD;
