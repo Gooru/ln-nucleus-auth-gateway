@@ -45,7 +45,7 @@ public class RouteAuthConfigurator implements RouteConfigurator {
             String accessToken = null;
             if (authorization != null && authorization.startsWith(HttpConstants.TOKEN)) {
                 accessToken = authorization.substring(HttpConstants.TOKEN.length()).trim();
-            } 
+            }
 
             if (accessToken == null) {
                 response.setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
@@ -68,7 +68,8 @@ public class RouteAuthConfigurator implements RouteConfigurator {
                         if (responseHolder.isAuthorized()) {
                             if ((!request.method().name().equals(HttpMethod.GET.name())
                                 && (request.method().name().equals(HttpMethod.POST.name())
-                                    && !request.uri().endsWith(RouteConstants.SIGNUP)))
+                                    && !request.uri().endsWith(RouteConstants.SIGNUP)
+                                    && !request.uri().endsWith(RouteConstants.RESET_PASSWORD)))
                                 && responseHolder.isAnonymous()) {
                                 routingContext.response().setStatusCode(HttpConstants.HttpStatus.FORBIDDEN.getCode())
                                     .setStatusMessage(HttpConstants.HttpStatus.FORBIDDEN.getMessage()).end();

@@ -19,9 +19,8 @@ public final class RouteConstants {
     public static final String TOKEN = "token";
     public static final String AUTHORIZE = "authorize";
     private static final String USERS = "users";
-    private static final String USER_ID = "userId";
-    private static final String PASSWORD = "password";
-    private static final String RESET_PASSWORD = "password-reset";
+    public static final String RESET_PASSWORD = "reset-password";
+    private static final String CHANGE_PASSWORD = "change-password";
     private static final String GOOGLE_DRIVE = "google-drive";
     private static final String CALLBACK = "callback";
     private static final String REFRESH_TOKEN = "refresh-token";
@@ -44,10 +43,9 @@ public final class RouteConstants {
     public static final String EP_NUCLUES_AUTH_AUTHORIZE = API_BASE_ROUTE + AUTHORIZE;
 
     public static final String EP_NUCLUES_USER_SIGNUP = API_BASE_ROUTE + SIGNUP;
-    public static final String EP_NUCLUES_USER_UPDATE = API_BASE_ROUTE + USERS + SEP + COLON + USER_ID;
-    public static final String EP_NUCLUES_USER_RESET_PASSWORD_TRIGGER = API_BASE_ROUTE + USERS + SEP + RESET_PASSWORD;
-    public static final String EP_NUCLUES_USER_PASSWORD_UPDATE =
-        API_BASE_ROUTE + USERS + SEP + COLON + USER_ID + SEP + PASSWORD;
+    public static final String EP_NUCLUES_USER_UPDATE = API_BASE_ROUTE + USERS;
+    public static final String EP_NUCLUES_USER_RESET_PASSWORD = API_BASE_ROUTE + USERS + SEP + RESET_PASSWORD;
+    public static final String EP_NUCLUES_USER_CHANGE_PASSWORD = API_BASE_ROUTE + USERS + SEP + CHANGE_PASSWORD;
 
     public static final String EP_NUCLUES_AUTH_GOOGLE_CONNECT_DRIVE = API_BASE_ROUTE + GOOGLE_DRIVE;
     public static final String EP_NUCLUES_AUTH_GOOGLE_DRIVE_CALLBACK = API_BASE_ROUTE + GOOGLE_DRIVE + SEP + CALLBACK;
