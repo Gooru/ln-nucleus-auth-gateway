@@ -28,8 +28,9 @@ class RouteUserConfigurator implements RouteConfigurator {
         mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, RouteConstants.DEFAULT_TIMEOUT);
         router.post(RouteConstants.EP_NUCLUES_USER_SIGNUP).handler(this::createUser);
         router.put(RouteConstants.EP_NUCLUES_USER_UPDATE).handler(this::updateUser);
-        router.put(RouteConstants.EP_NUCLUES_USER_PASSWORD_UPDATE).handler(this::updatePassword);
-        router.post(RouteConstants.EP_NUCLUES_USER_RESET_PASSWORD_TRIGGER).handler(this::resetPassword);
+        router.put(RouteConstants.EP_NUCLUES_USER_RESET_PASSWORD).handler(this::resetPassword);
+        router.post(RouteConstants.EP_NUCLUES_USER_RESET_PASSWORD).handler(this::triggerResetPassword);
+        router.put(RouteConstants.EP_NUCLUES_USER_CHANGE_PASSWORD).handler(this::changePassword);
     }
 
     private void createUser(RoutingContext routingContext) {
@@ -46,16 +47,23 @@ class RouteUserConfigurator implements RouteConfigurator {
             reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
     }
 
-    private void updatePassword(RoutingContext routingContext) {
+    private void resetPassword(RoutingContext routingContext) {
         DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
-            .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_USER_PASSWORD_UPDATE);
+            .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_USER_PASSWORD_RESET);
         eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext), options,
             reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
     }
 
-    private void resetPassword(RoutingContext routingContext) {
+    private void triggerResetPassword(RoutingContext routingContext) {
         DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
             .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_USER_PASSWORD_RESET_TRIGGER);
+        eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext), options,
+            reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
+    }
+    
+    private void changePassword(RoutingContext routingContext) {
+        DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
+            .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_USER_PASSWORD_CHANGE);
         eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext), options,
             reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
     }

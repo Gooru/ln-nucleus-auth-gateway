@@ -32,7 +32,8 @@ public final class MessageConstants {
     public static final String MSG_OP_USER_UPDATE = "user.update";
     public static final String MSG_OP_USER_GET = "user.get";
     public static final String MSG_OP_USER_PASSWORD_RESET_TRIGGER = "user.password.reset.trigger";
-    public static final String MSG_OP_USER_PASSWORD_UPDATE = "user.password.update";
+    public static final String MSG_OP_USER_PASSWORD_RESET = "user.password.reset";
+    public static final String MSG_OP_USER_PASSWORD_CHANGE = "user.password.change";
     
     public static final String MSG_OP_USER_SIGNUP = "user.signup";
     
@@ -47,7 +48,7 @@ public final class MessageConstants {
     public static final String MSG_OP_GOOGLE_DRIVE_DELETE_REFRESH_TOKEN = "google.drive.delete.refresh.token";
 
     // Authorize command
-    public static final String MSG_OP_USER_AUTHORIZE = "authorize";
+    public static final String MSG_OP_USER_AUTHORIZE = "user.authorize";
     
     private MessageConstants() {
         throw new AssertionError();
