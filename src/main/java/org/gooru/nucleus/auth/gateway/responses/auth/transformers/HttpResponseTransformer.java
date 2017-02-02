@@ -65,7 +65,7 @@ public class HttpResponseTransformer implements ResponseTransformer {
         // Then initialize the headers
         processHeaders(messageBody);
         JsonObject httpBodyContainer = messageBody.getJsonObject(MessageConstants.MSG_HTTP_BODY);
-        
+
         // Now delegate the body handling
         String result = message.headers().get(MessageConstants.MSG_OP_STATUS);
         if (result != null && result.equalsIgnoreCase(MessageConstants.MSG_OP_STATUS_SUCCESS)) {
@@ -78,7 +78,7 @@ public class HttpResponseTransformer implements ResponseTransformer {
             LOG.error("Invalid or incorrect message header passed on for operation");
             throw new IllegalStateException("Invalid or incorrect message header passed on for operation");
         }
-        
+
         // Now that we are done, mark it as transformed
         this.transformed = true;
     }
