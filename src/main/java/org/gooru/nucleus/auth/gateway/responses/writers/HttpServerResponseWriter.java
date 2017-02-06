@@ -1,9 +1,7 @@
 package org.gooru.nucleus.auth.gateway.responses.writers;
 
-import io.vertx.core.AsyncResult;
-import io.vertx.core.eventbus.Message;
-import io.vertx.core.http.HttpServerResponse;
-import io.vertx.ext.web.RoutingContext;
+import java.nio.charset.StandardCharsets;
+import java.util.Map;
 
 import org.gooru.nucleus.auth.gateway.constants.HttpConstants;
 import org.gooru.nucleus.auth.gateway.responses.auth.transformers.ResponseTransformer;
@@ -11,8 +9,10 @@ import org.gooru.nucleus.auth.gateway.responses.auth.transformers.ResponseTransf
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
+import io.vertx.core.AsyncResult;
+import io.vertx.core.eventbus.Message;
+import io.vertx.core.http.HttpServerResponse;
+import io.vertx.ext.web.RoutingContext;
 
 public class HttpServerResponseWriter implements ResponseWriter {
     static final Logger LOG = LoggerFactory.getLogger(ResponseWriter.class);
@@ -59,10 +59,11 @@ public class HttpServerResponseWriter implements ResponseWriter {
 
     private void writeHttpBody(HttpServerResponse response) {
         final String responseBody =
-            ((transformer.transformedBody() != null) && (!transformer.transformedBody().isEmpty())) ? transformer
-                .transformedBody().toString() : null;
+            ((transformer.transformedBody() != null) && (!transformer.transformedBody().isEmpty())) ?
+                transformer.transformedBody().toString() : null;
         if (responseBody != null) {
-            response.putHeader(HttpConstants.HEADER_CONTENT_LENGTH, Integer.toString(responseBody.getBytes(StandardCharsets.UTF_8).length));
+            response.putHeader(HttpConstants.HEADER_CONTENT_LENGTH,
+                Integer.toString(responseBody.getBytes(StandardCharsets.UTF_8).length));
             response.end(responseBody);
         } else {
             response.end();

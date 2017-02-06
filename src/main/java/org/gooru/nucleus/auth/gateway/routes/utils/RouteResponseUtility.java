@@ -1,11 +1,11 @@
 package org.gooru.nucleus.auth.gateway.routes.utils;
 
+import org.gooru.nucleus.auth.gateway.responses.writers.ResponseWriterBuilder;
+import org.slf4j.Logger;
+
 import io.vertx.core.AsyncResult;
 import io.vertx.core.eventbus.Message;
 import io.vertx.ext.web.RoutingContext;
-
-import org.gooru.nucleus.auth.gateway.responses.writers.ResponseWriterBuilder;
-import org.slf4j.Logger;
 
 public final class RouteResponseUtility {
 

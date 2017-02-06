@@ -7,7 +7,7 @@ import io.vertx.core.http.HttpServerRequest;
 
 /**
  * @author szgooru
- * Created On: 03-Jan-2017
+ *         Created On: 03-Jan-2017
  */
 public final class RouteAuthUtility {
 

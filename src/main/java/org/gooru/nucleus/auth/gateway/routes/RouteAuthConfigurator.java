@@ -1,10 +1,6 @@
 package org.gooru.nucleus.auth.gateway.routes;
 
-import org.gooru.nucleus.auth.gateway.constants.ConfigConstants;
-import org.gooru.nucleus.auth.gateway.constants.HttpConstants;
-import org.gooru.nucleus.auth.gateway.constants.MessageConstants;
-import org.gooru.nucleus.auth.gateway.constants.MessagebusEndpoints;
-import org.gooru.nucleus.auth.gateway.constants.RouteConstants;
+import org.gooru.nucleus.auth.gateway.constants.*;
 import org.gooru.nucleus.auth.gateway.responses.auth.AuthResponseContextHolder;
 import org.gooru.nucleus.auth.gateway.responses.auth.AuthResponseContextHolderBuilder;
 import org.gooru.nucleus.auth.gateway.routes.utils.RouteAuthUtility;
@@ -66,16 +62,15 @@ public class RouteAuthConfigurator implements RouteConfigurator {
                         AuthResponseContextHolder responseHolder =
                             new AuthResponseContextHolderBuilder(reply.result()).build();
                         if (responseHolder.isAuthorized()) {
-                            if ((!request.method().name().equals(HttpMethod.GET.name())
-                                && (request.method().name().equals(HttpMethod.POST.name())
-                                    && !request.uri().endsWith(RouteConstants.SIGNUP)
-                                    && !request.uri().endsWith(RouteConstants.RESET_PASSWORD)))
-                                && responseHolder.isAnonymous()) {
+                            if ((!request.method().name().equals(HttpMethod.GET.name()) && (
+                                request.method().name().equals(HttpMethod.POST.name()) && !request.uri()
+                                    .endsWith(RouteConstants.SIGNUP) && !request.uri()
+                                    .endsWith(RouteConstants.RESET_PASSWORD))) && responseHolder.isAnonymous()) {
                                 routingContext.response().setStatusCode(HttpConstants.HttpStatus.FORBIDDEN.getCode())
                                     .setStatusMessage(HttpConstants.HttpStatus.FORBIDDEN.getMessage()).end();
                             } else {
-                                routingContext.put(MessageConstants.MSG_USER_CONTEXT_HOLDER,
-                                    responseHolder.getUserContext());
+                                routingContext
+                                    .put(MessageConstants.MSG_USER_CONTEXT_HOLDER, responseHolder.getUserContext());
                                 routingContext.next();
                             }
                         } else {

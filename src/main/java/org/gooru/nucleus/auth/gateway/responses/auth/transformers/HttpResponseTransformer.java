@@ -1,14 +1,14 @@
 package org.gooru.nucleus.auth.gateway.responses.auth.transformers;
 
-import io.vertx.core.eventbus.Message;
-import io.vertx.core.json.JsonObject;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.gooru.nucleus.auth.gateway.constants.MessageConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
-import java.util.Map;
+import io.vertx.core.eventbus.Message;
+import io.vertx.core.json.JsonObject;
 
 public class HttpResponseTransformer implements ResponseTransformer {
     private static final Logger LOG = LoggerFactory.getLogger(ResponseTransformer.class);

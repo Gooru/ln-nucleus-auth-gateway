@@ -23,7 +23,7 @@ public final class MessageConstants {
     public static final String MSG_HEADER_REQUEST_DOMAIN = "http.request.domain";
     public static final String MSG_HEADER_API_KEY = "http.api.key";
     public static final String MSG_USER_IDS = "ids";
-    
+
     public static final String MSG_OP_ANONYMOUS_SIGNIN = "anonymous.signin";
     public static final String MSG_OP_USER_SIGNIN = "user.signin";
     public static final String MSG_OP_USER_SIGNOUT = "user.signout";
@@ -34,13 +34,13 @@ public final class MessageConstants {
     public static final String MSG_OP_USER_PASSWORD_RESET_TRIGGER = "user.password.reset.trigger";
     public static final String MSG_OP_USER_PASSWORD_RESET = "user.password.reset";
     public static final String MSG_OP_USER_PASSWORD_CHANGE = "user.password.change";
-    
+
     public static final String MSG_OP_USER_SIGNUP = "user.signup";
-    
+
     public static final String MSG_OP_INTERNAL_AUTHENTICATE = "internal.authenticate";
     public static final String MSG_OP_INTERNAL_IMPERSONATE = "internal.impersonate";
     public static final String MSG_OP_INTERNAL_LTI_SSO = "internal.lti.sso";
-    
+
     //GoogleDrive
     public static final String MSG_OP_GOOGLE_DRIVE_CONNECT = "google.drive.connect";
     public static final String MSG_OP_GOOGLE_DRIVE_CALLBACK = "google.drive.callback";
@@ -49,7 +49,7 @@ public final class MessageConstants {
 
     // Authorize command
     public static final String MSG_OP_USER_AUTHORIZE = "user.authorize";
-    
+
     private MessageConstants() {
         throw new AssertionError();
     }

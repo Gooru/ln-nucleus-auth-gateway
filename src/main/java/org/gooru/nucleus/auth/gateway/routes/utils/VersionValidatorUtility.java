@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * @author szgooru Created On: 02-Jan-2017
- *
  */
 public final class VersionValidatorUtility {
     private static final Logger LOGGER = LoggerFactory.getLogger(VersionValidatorUtility.class);

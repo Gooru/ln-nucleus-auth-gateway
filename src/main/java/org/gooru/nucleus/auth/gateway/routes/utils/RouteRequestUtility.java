@@ -1,13 +1,13 @@
 package org.gooru.nucleus.auth.gateway.routes.utils;
 
+import java.util.Map.Entry;
+
+import org.gooru.nucleus.auth.gateway.constants.MessageConstants;
+
 import io.vertx.core.MultiMap;
 import io.vertx.core.http.HttpMethod;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
-
-import org.gooru.nucleus.auth.gateway.constants.MessageConstants;
-
-import java.util.Map.Entry;
 
 public final class RouteRequestUtility {
 
