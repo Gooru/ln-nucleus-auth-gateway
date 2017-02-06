@@ -9,7 +9,11 @@ import org.gooru.nucleus.auth.gateway.constants.MessageConstants;
 
 import java.util.Map.Entry;
 
-public class RouteRequestUtility {
+public final class RouteRequestUtility {
+
+    private RouteRequestUtility() {
+        throw new AssertionError();
+    }
 
     public static JsonObject getBodyForMessage(RoutingContext routingContext) {
 

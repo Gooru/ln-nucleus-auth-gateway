@@ -22,7 +22,7 @@ import io.vertx.ext.web.RoutingContext;
 
 class RouteInternalConfigurator implements RouteConfigurator {
 
-    static final Logger LOG = LoggerFactory.getLogger("org.gooru.nucleus.auth.gateway.bootstrap.ServerVerticle");
+    private static final Logger LOG = LoggerFactory.getLogger("org.gooru.nucleus.auth.gateway.bootstrap.ServerVerticle");
     private EventBus eb = null;
     private long mbusTimeout;
 
@@ -54,14 +54,15 @@ class RouteInternalConfigurator implements RouteConfigurator {
         String basicAuthCredentials = null;
         if (authorization != null && authorization.startsWith(HttpConstants.BASIC)) {
             basicAuthCredentials = authorization.substring(HttpConstants.BASIC.length()).trim();
+            DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
+                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_INTERNAL_AUTHENTICATE)
+                .addHeader(MessageConstants.MSG_HEADER_BASIC_AUTH, basicAuthCredentials);
+            eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext), options,
+                reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
+        } else {
+            // TODO: Send 401 Unauthorized
         }
 
-        DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
-            .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_INTERNAL_AUTHENTICATE)
-            .addHeader(MessageConstants.MSG_HEADER_BASIC_AUTH, basicAuthCredentials);
-        ;
-        eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext), options,
-            reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
     }
 
     private void impersonate(RoutingContext routingContext) {
@@ -70,12 +71,14 @@ class RouteInternalConfigurator implements RouteConfigurator {
         String credentials = null;
         if (auth != null && auth.startsWith(HttpConstants.BASIC)) {
             credentials = auth.substring(HttpConstants.BASIC.length()).trim();
+            DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
+                .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_INTERNAL_IMPERSONATE)
+                .addHeader(MessageConstants.MSG_HEADER_BASIC_AUTH, credentials);
+            eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext), options,
+                reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
+        } else {
+            // TODO : Send 401 Unauthorized
         }
-        DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
-            .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_INTERNAL_IMPERSONATE)
-            .addHeader(MessageConstants.MSG_HEADER_BASIC_AUTH, credentials);
-        eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext), options,
-            reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
     }
 
     private void sso(RoutingContext routingContext) {
@@ -84,12 +87,15 @@ class RouteInternalConfigurator implements RouteConfigurator {
         String basicAuthCredentials = null;
         if (authorization != null && authorization.startsWith(HttpConstants.BASIC)) {
             basicAuthCredentials = authorization.substring(HttpConstants.BASIC.length()).trim();
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_INTERNAL_LTI_SSO)
+                    .addHeader(MessageConstants.MSG_HEADER_BASIC_AUTH, basicAuthCredentials);
+            eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext),
+                options, reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
+        } else {
+            // TODO: Send 401 Unauthorized
         }
 
-        DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
-            .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_INTERNAL_LTI_SSO)
-            .addHeader(MessageConstants.MSG_HEADER_BASIC_AUTH, basicAuthCredentials);
-        eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext), options,
-            reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
     }
 }

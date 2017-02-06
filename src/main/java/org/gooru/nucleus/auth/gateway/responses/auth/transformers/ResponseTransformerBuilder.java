@@ -4,7 +4,11 @@ import org.gooru.nucleus.auth.gateway.exceptions.HttpResponseWrapperException;
 
 import io.vertx.core.eventbus.Message;
 
-public class ResponseTransformerBuilder {
+public final class ResponseTransformerBuilder {
+    private ResponseTransformerBuilder() {
+        throw new AssertionError();
+    }
+
     public static ResponseTransformer build(Message<Object> message) {
         return new HttpResponseTransformer(message);
     }

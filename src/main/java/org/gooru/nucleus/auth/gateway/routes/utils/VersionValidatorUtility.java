@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.gooru.nucleus.auth.gateway.routes.utils;
 
@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
  * @author szgooru Created On: 02-Jan-2017
  *
  */
-public class VersionValidatorUtility {
+public final class VersionValidatorUtility {
     private static final Logger LOGGER = LoggerFactory.getLogger(VersionValidatorUtility.class);
     private static final String API_VERSION_DEPRECATED = "API version is deprecated";
     private static final String API_VERSION_NOT_SUPPORTED = "API version is not supported";
@@ -30,7 +30,6 @@ public class VersionValidatorUtility {
     public static void validateVersion(String version) {
         LOGGER.info("Version in API call is : {}", version);
         if (supportedVersions.contains(version)) {
-            return;
         } else if (deprecatedVersions.contains(version)) {
             throw new HttpResponseWrapperException(HttpConstants.HttpStatus.GONE, API_VERSION_DEPRECATED);
         } else {

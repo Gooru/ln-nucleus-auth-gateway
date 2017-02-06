@@ -17,7 +17,7 @@ import java.util.Map;
 public class HttpServerResponseWriter implements ResponseWriter {
     static final Logger LOG = LoggerFactory.getLogger(ResponseWriter.class);
     private final RoutingContext routingContext;
-    ResponseTransformer transformer;
+    private final ResponseTransformer transformer;
 
     public HttpServerResponseWriter(RoutingContext routingContext, AsyncResult<Message<Object>> message) {
         this.routingContext = routingContext;
@@ -32,13 +32,13 @@ public class HttpServerResponseWriter implements ResponseWriter {
     @Override
     public void writeResponse() {
         final HttpServerResponse response = routingContext.response();
-        
+
         // First set the status code
         writeHttpStatus(response);
-        
+
         // Then set the headers
         writeHttpHeaders(response);
-        
+
         // Then it is turn of the body to be set and ending the response
         writeHttpBody(response);
     }
@@ -46,7 +46,7 @@ public class HttpServerResponseWriter implements ResponseWriter {
     private void writeHttpStatus(HttpServerResponse response) {
         response.setStatusCode(transformer.transformedStatus());
     }
-    
+
     private void writeHttpHeaders(HttpServerResponse response) {
         Map<String, String> headers = transformer.transformedHeaders();
         if (headers != null && !headers.isEmpty()) {
@@ -56,7 +56,7 @@ public class HttpServerResponseWriter implements ResponseWriter {
                 .forEach(headerName -> response.putHeader(headerName, headers.get(headerName)));
         }
     }
-    
+
     private void writeHttpBody(HttpServerResponse response) {
         final String responseBody =
             ((transformer.transformedBody() != null) && (!transformer.transformedBody().isEmpty())) ? transformer
