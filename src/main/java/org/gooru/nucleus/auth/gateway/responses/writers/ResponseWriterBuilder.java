@@ -6,7 +6,7 @@ import io.vertx.core.AsyncResult;
 import io.vertx.core.eventbus.Message;
 import io.vertx.ext.web.RoutingContext;
 
-public class ResponseWriterBuilder {
+public final class ResponseWriterBuilder {
 
     private ResponseWriterBuilder() {
         throw new AssertionError();

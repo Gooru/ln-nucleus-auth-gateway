@@ -1,8 +1,8 @@
 package org.gooru.nucleus.auth.gateway.responses.auth.transformers;
 
-import io.vertx.core.json.JsonObject;
-
 import java.util.Map;
+
+import io.vertx.core.json.JsonObject;
 
 public interface ResponseTransformer {
     void transform();

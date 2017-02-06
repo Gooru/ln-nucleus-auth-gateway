@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.gooru.nucleus.auth.gateway.routes.utils;
 
@@ -11,10 +11,9 @@ import io.vertx.ext.web.RoutingContext;
 
 /**
  * @author szgooru Created On: 02-Jan-2017
- *
  */
-public class DeliveryOptionsBuilder {
-    
+public final class DeliveryOptionsBuilder {
+
     private DeliveryOptionsBuilder() {
         throw new AssertionError();
     }

@@ -11,9 +11,9 @@ public final class RouteConstants {
 
     // Helper constants
     public static final String API_VERSION = "version";
-    private static final String API_BASE_ROUTE = "/api/nucleus-auth/" + COLON + API_VERSION + "/";
+    private static final String API_BASE_ROUTE = "/api/nucleus-auth/" + COLON + API_VERSION + '/';
     public static final String API_NUCLUES_AUTH_ROUTE = "/api/nucleus-auth/*";
-    private static final String API_INTERNAL_BASE_ROUTE = "/api/internal/" + COLON + API_VERSION + "/";
+    private static final String API_INTERNAL_BASE_ROUTE = "/api/internal/" + COLON + API_VERSION + '/';
 
     // Helper: Operations
     public static final String TOKEN = "token";
@@ -61,7 +61,7 @@ public final class RouteConstants {
     public static final String EP_INTERNAL_SSO = API_INTERNAL_BASE_ROUTE + "sso";
 
     public static final long DEFAULT_TIMEOUT = 30000L;
-    
+
     private RouteConstants() {
         throw new AssertionError();
     }

@@ -1,11 +1,11 @@
 package org.gooru.nucleus.auth.gateway.routes;
 
+import org.gooru.nucleus.auth.gateway.constants.ConfigConstants;
+
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.BodyHandler;
-
-import org.gooru.nucleus.auth.gateway.constants.ConfigConstants;
 
 public class RouteGlobalConfigurator implements RouteConfigurator {
 

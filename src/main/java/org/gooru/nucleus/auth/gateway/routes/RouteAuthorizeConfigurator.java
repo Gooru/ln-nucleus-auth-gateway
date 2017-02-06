@@ -1,5 +1,12 @@
 package org.gooru.nucleus.auth.gateway.routes;
 
+import org.gooru.nucleus.auth.gateway.constants.*;
+import org.gooru.nucleus.auth.gateway.routes.utils.DeliveryOptionsBuilder;
+import org.gooru.nucleus.auth.gateway.routes.utils.RouteRequestUtility;
+import org.gooru.nucleus.auth.gateway.routes.utils.RouteResponseUtility;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import io.vertx.core.Vertx;
 import io.vertx.core.eventbus.DeliveryOptions;
 import io.vertx.core.eventbus.EventBus;
@@ -7,13 +14,6 @@ import io.vertx.core.http.HttpServerRequest;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
-
-import org.gooru.nucleus.auth.gateway.constants.*;
-import org.gooru.nucleus.auth.gateway.routes.utils.DeliveryOptionsBuilder;
-import org.gooru.nucleus.auth.gateway.routes.utils.RouteRequestUtility;
-import org.gooru.nucleus.auth.gateway.routes.utils.RouteResponseUtility;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 class RouteAuthorizeConfigurator implements RouteConfigurator {
 

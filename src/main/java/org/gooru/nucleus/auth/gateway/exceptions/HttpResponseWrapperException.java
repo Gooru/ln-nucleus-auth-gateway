@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package org.gooru.nucleus.auth.gateway.exceptions;
 
@@ -9,7 +9,6 @@ import io.vertx.core.json.JsonObject;
 
 /**
  * @author szgooru Created On: 02-Jan-2017
- *
  */
 public class HttpResponseWrapperException extends RuntimeException {
     private final HttpConstants.HttpStatus status;
