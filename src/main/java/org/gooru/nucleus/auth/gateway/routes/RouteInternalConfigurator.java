@@ -58,7 +58,8 @@ class RouteInternalConfigurator implements RouteConfigurator {
             eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext),
                 options, reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
         } else {
-            // TODO: Send 401 Unauthorized
+            routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
+            .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage()).end();
         }
 
     }
@@ -76,7 +77,8 @@ class RouteInternalConfigurator implements RouteConfigurator {
             eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext),
                 options, reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
         } else {
-            // TODO : Send 401 Unauthorized
+            routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
+            .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage()).end();
         }
     }
 
@@ -93,7 +95,8 @@ class RouteInternalConfigurator implements RouteConfigurator {
             eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext),
                 options, reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
         } else {
-            // TODO: Send 401 Unauthorized
+            routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
+            .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage()).end();
         }
 
     }
