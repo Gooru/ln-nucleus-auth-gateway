@@ -27,8 +27,8 @@ public final class MessageConstants {
     public static final String MSG_OP_ANONYMOUS_SIGNIN = "anonymous.signin";
     public static final String MSG_OP_USER_SIGNIN = "user.signin";
     public static final String MSG_OP_USER_SIGNOUT = "user.signout";
-    public static final String MSG_OP_USER_TOKEN_CHECK = "user.token.check";
-    public static final String MSG_OP_USER_TOKEN_DETAILS = "user.token.details";
+    public static final String MSG_OP_ACCESS_TOKEN_CHECK = "access.token.check";
+    public static final String MSG_OP_ACCESS_TOKEN_DETAILS = "access.token.details";
     public static final String MSG_OP_USER_UPDATE = "user.update";
     public static final String MSG_OP_USER_GET = "user.get";
     public static final String MSG_OP_USER_PASSWORD_RESET_TRIGGER = "user.password.reset.trigger";

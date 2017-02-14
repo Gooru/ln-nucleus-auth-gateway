@@ -71,7 +71,7 @@ class RouteAuthenticationConfigurator implements RouteConfigurator {
 
     private void getAccessToken(RoutingContext routingContext) {
         DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
-            .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_USER_TOKEN_DETAILS);
+            .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_ACCESS_TOKEN_DETAILS);
         String authorization = routingContext.request().getHeader(HttpConstants.HEADER_AUTH);
         String token = authorization.substring(HttpConstants.TOKEN.length()).trim();
         options.addHeader(MessageConstants.MSG_HEADER_TOKEN, token);

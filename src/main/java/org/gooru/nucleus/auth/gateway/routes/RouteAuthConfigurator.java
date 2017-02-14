@@ -55,7 +55,7 @@ public class RouteAuthConfigurator implements RouteConfigurator {
                 // hence it is here
                 routingContext.put(MessageConstants.MSG_HEADER_TOKEN, accessToken);
                 DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout)
-                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_USER_TOKEN_CHECK)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_ACCESS_TOKEN_CHECK)
                     .addHeader(MessageConstants.MSG_HEADER_TOKEN, accessToken);
                 eBus.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, null, options, reply -> {
                     if (reply.succeeded()) {
