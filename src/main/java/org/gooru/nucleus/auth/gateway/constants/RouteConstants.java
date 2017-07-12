@@ -59,6 +59,8 @@ public final class RouteConstants {
     public static final String EP_INTERNAL_IMPERSONATE = API_INTERNAL_BASE_ROUTE + "impersonate";
     // /api/internal/:version/sso
     public static final String EP_INTERNAL_SSO = API_INTERNAL_BASE_ROUTE + "sso";
+    // /api/internal/:version/sso/wsfed
+    public static final String EP_INTERNAL_SSO_WSFED = API_INTERNAL_BASE_ROUTE + "sso/wsfed";
 
     public static final long DEFAULT_TIMEOUT = 30000L;
 

@@ -1,4 +1,4 @@
-package org.gooru.nucleus.auth.gateway.routes;
+    package org.gooru.nucleus.auth.gateway.routes;
 
 import org.gooru.nucleus.auth.gateway.constants.*;
 import org.gooru.nucleus.auth.gateway.routes.utils.DeliveryOptionsBuilder;
@@ -43,6 +43,7 @@ class RouteInternalConfigurator implements RouteConfigurator {
         router.post(RouteConstants.EP_INTERNAL_AUTHENTICATE).handler(this::authenticate);
         router.post(RouteConstants.EP_INTERNAL_IMPERSONATE).handler(this::impersonate);
         router.post(RouteConstants.EP_INTERNAL_SSO).handler(this::sso);
+        router.post(RouteConstants.EP_INTERNAL_SSO_WSFED).handler(this::ssoWsfed);
     }
 
     private void authenticate(RoutingContext routingContext) {
@@ -98,6 +99,23 @@ class RouteInternalConfigurator implements RouteConfigurator {
             routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
             .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage()).end();
         }
-
+    }
+    
+    private void ssoWsfed(RoutingContext routingContext) {
+        HttpServerRequest request = routingContext.request();
+        String authorization = request.getHeader(HttpConstants.HEADER_AUTH);
+        String basicAuthCredentials = null;
+        if (authorization != null && authorization.startsWith(HttpConstants.BASIC)) {
+            basicAuthCredentials = authorization.substring(HttpConstants.BASIC.length()).trim();
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_INTERNAL_WSFED_SSO)
+                    .addHeader(MessageConstants.MSG_HEADER_BASIC_AUTH, basicAuthCredentials);
+            eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext),
+                options, reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
+        } else {
+            routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
+            .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage()).end();
+        }
     }
 }
