@@ -1,15 +1,19 @@
 package org.gooru.nucleus.auth.gateway.routes.utils;
 
+import java.util.Map.Entry;
+
+import org.gooru.nucleus.auth.gateway.constants.MessageConstants;
+
 import io.vertx.core.MultiMap;
 import io.vertx.core.http.HttpMethod;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
 
-import org.gooru.nucleus.auth.gateway.constants.MessageConstants;
+public final class RouteRequestUtility {
 
-import java.util.Map.Entry;
-
-public class RouteRequestUtility {
+    private RouteRequestUtility() {
+        throw new AssertionError();
+    }
 
     public static JsonObject getBodyForMessage(RoutingContext routingContext) {
 

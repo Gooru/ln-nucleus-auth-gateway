@@ -1,5 +1,12 @@
 package org.gooru.nucleus.auth.gateway.routes;
 
+import org.gooru.nucleus.auth.gateway.constants.*;
+import org.gooru.nucleus.auth.gateway.routes.utils.DeliveryOptionsBuilder;
+import org.gooru.nucleus.auth.gateway.routes.utils.RouteRequestUtility;
+import org.gooru.nucleus.auth.gateway.routes.utils.RouteResponseUtility;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import io.vertx.core.Vertx;
 import io.vertx.core.eventbus.DeliveryOptions;
 import io.vertx.core.eventbus.EventBus;
@@ -8,16 +15,10 @@ import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
 
-import org.gooru.nucleus.auth.gateway.constants.*;
-import org.gooru.nucleus.auth.gateway.routes.utils.RouteRequestUtility;
-import org.gooru.nucleus.auth.gateway.routes.utils.RouteResponseUtility;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 class RouteAuthorizeConfigurator implements RouteConfigurator {
 
-    private static final Logger LOG = LoggerFactory
-        .getLogger("org.gooru.nucleus.auth.gateway.bootstrap.ServerVerticle");
+    private static final Logger LOG =
+        LoggerFactory.getLogger("org.gooru.nucleus.auth.gateway.bootstrap.ServerVerticle");
 
     private EventBus eb = null;
     private long mbusTimeout;
@@ -32,9 +33,8 @@ class RouteAuthorizeConfigurator implements RouteConfigurator {
 
     private void authorize(RoutingContext routingContext) {
         HttpServerRequest request = routingContext.request();
-        DeliveryOptions options =
-            new DeliveryOptions().setSendTimeout(mbusTimeout).addHeader(MessageConstants.MSG_HEADER_OP,
-                CommandConstants.AUTHORIZE);
+        DeliveryOptions options = DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
+            .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_USER_AUTHORIZE);
         String host = request.getHeader(HttpConstants.HEADER_HOST);
         String referer = request.getHeader(HttpConstants.HEADER_REFERER);
         if (host != null) {
@@ -43,7 +43,7 @@ class RouteAuthorizeConfigurator implements RouteConfigurator {
             options.addHeader(MessageConstants.MSG_HEADER_REQUEST_DOMAIN, referer);
         }
 
-        eb.send(MessagebusEndpoints.MBEP_AUTHORIZE, RouteRequestUtility.getBodyForMessage(routingContext), options,
+        eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext), options,
             reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
     }
 

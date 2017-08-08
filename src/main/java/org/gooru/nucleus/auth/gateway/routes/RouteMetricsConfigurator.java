@@ -1,14 +1,14 @@
 package org.gooru.nucleus.auth.gateway.routes;
 
-import io.vertx.core.Vertx;
-import io.vertx.core.json.JsonObject;
-import io.vertx.ext.dropwizard.MetricsService;
-import io.vertx.ext.web.Router;
-
 import org.gooru.nucleus.auth.gateway.constants.ConfigConstants;
 import org.gooru.nucleus.auth.gateway.constants.MessagebusEndpoints;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import io.vertx.core.Vertx;
+import io.vertx.core.json.JsonObject;
+import io.vertx.ext.dropwizard.MetricsService;
+import io.vertx.ext.web.Router;
 
 class RouteMetricsConfigurator implements RouteConfigurator {
 

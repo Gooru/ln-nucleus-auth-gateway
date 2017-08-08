@@ -1,13 +1,13 @@
 package org.gooru.nucleus.auth.gateway.routes;
 
+import org.gooru.nucleus.auth.gateway.constants.HttpConstants;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
-
-import org.gooru.nucleus.auth.gateway.constants.HttpConstants;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class RouteFailureConfigurator implements RouteConfigurator {
 
@@ -16,9 +16,9 @@ public class RouteFailureConfigurator implements RouteConfigurator {
     @Override
     public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
 
-        router.put().failureHandler(frc -> handleFailures(frc));
+        router.put().failureHandler(this::handleFailures);
 
-        router.put().failureHandler(frc -> handleFailures(frc));
+        router.post().failureHandler(this::handleFailures);
     }
 
     private void handleFailures(RoutingContext frc) {
