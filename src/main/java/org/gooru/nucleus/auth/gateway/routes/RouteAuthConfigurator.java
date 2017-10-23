@@ -65,7 +65,9 @@ public class RouteAuthConfigurator implements RouteConfigurator {
                             if ((!request.method().name().equals(HttpMethod.GET.name()) && (
                                 request.method().name().equals(HttpMethod.POST.name()) && !request.uri()
                                     .endsWith(RouteConstants.SIGNUP) && !request.uri()
-                                    .endsWith(RouteConstants.RESET_PASSWORD))) && responseHolder.isAnonymous()) {
+                                    .endsWith(RouteConstants.RESET_PASSWORD) && !request.uri()
+                                    .endsWith(RouteConstants.REDIRECT))) && responseHolder.isAnonymous()) {
+                                LOG.debug("forbidden");
                                 routingContext.response().setStatusCode(HttpConstants.HttpStatus.FORBIDDEN.getCode())
                                     .setStatusMessage(HttpConstants.HttpStatus.FORBIDDEN.getMessage()).end();
                             } else {
