@@ -36,6 +36,7 @@ public final class MessageConstants {
     public static final String MSG_OP_USER_PASSWORD_CHANGE = "user.password.change";
 
     public static final String MSG_OP_USER_SIGNUP = "user.signup";
+    public static final String MSG_OP_DOMAIN_BASED_REDIRECT = "domain.based.redirect";
 
     public static final String MSG_OP_INTERNAL_AUTHENTICATE = "internal.authenticate";
     public static final String MSG_OP_INTERNAL_IMPERSONATE = "internal.impersonate";
