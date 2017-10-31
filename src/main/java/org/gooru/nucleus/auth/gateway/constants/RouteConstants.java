@@ -24,6 +24,7 @@ public final class RouteConstants {
     private static final String GOOGLE_DRIVE = "google-drive";
     private static final String CALLBACK = "callback";
     private static final String REFRESH_TOKEN = "refresh-token";
+    public static final String REDIRECT = "redirect";
 
     // Actual End Point Constants: Note that constant values may be duplicated
     // but we are going to have individual constant values to work with for each
@@ -46,6 +47,7 @@ public final class RouteConstants {
     public static final String EP_NUCLUES_USER_UPDATE = API_BASE_ROUTE + USERS;
     public static final String EP_NUCLUES_USER_RESET_PASSWORD = API_BASE_ROUTE + USERS + SEP + RESET_PASSWORD;
     public static final String EP_NUCLUES_USER_CHANGE_PASSWORD = API_BASE_ROUTE + USERS + SEP + CHANGE_PASSWORD;
+    public static final String EP_DOMAIN_BASED_REDIRECT = API_BASE_ROUTE + REDIRECT;
 
     public static final String EP_NUCLUES_AUTH_GOOGLE_CONNECT_DRIVE = API_BASE_ROUTE + GOOGLE_DRIVE;
     public static final String EP_NUCLUES_AUTH_GOOGLE_DRIVE_CALLBACK = API_BASE_ROUTE + GOOGLE_DRIVE + SEP + CALLBACK;
