@@ -35,6 +35,7 @@ class RouteAuthenticationConfigurator implements RouteConfigurator {
         router.delete(RouteConstants.EP_NUCLEUS_USER_SIGNOUT).handler(this::deleteAccessToken);
         router.get(RouteConstants.EP_NUCLUES_AUTH_TOKEN).handler(this::getAccessToken);
         router.post(RouteConstants.EP_DOMAIN_BASED_REDIRECT).handler(this::domainBasedRedirect);
+        router.post(RouteConstants.EP_INIT_LOGIN).handler(this::initLogin);
     }
 
     private void createAccessToken(RoutingContext routingContext) {
@@ -81,11 +82,18 @@ class RouteAuthenticationConfigurator implements RouteConfigurator {
     }
     
     private void domainBasedRedirect(RoutingContext routingContext) {
-        LOG.debug("request for domain based redirect");
         DeliveryOptions options =
             DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout);
         options.addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_DOMAIN_BASED_REDIRECT);
         eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext), options,
             reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
+    }
+    
+    private void initLogin(RoutingContext routingContext) {
+    	DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout);
+            options.addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_INIT_LOGIN);
+            eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext), options,
+                reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
     }
 }
