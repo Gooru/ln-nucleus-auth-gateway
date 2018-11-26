@@ -6,6 +6,7 @@ public final class MessageConstants {
     public static final String MSG_API_VERSION = "api.version";
     public static final String MSG_HEADER_TOKEN = "access.token";
     public static final String MSG_HEADER_BASIC_AUTH = "basic.auth";
+    public static final String MSG_HEADER_NONCE_TOKEN = "nonce.token";
     public static final String MSG_OP_STATUS = "mb.operation.status";
     public static final String MSG_OP_STATUS_SUCCESS = "success";
     public static final String MSG_OP_STATUS_ERROR = "error";
@@ -38,11 +39,13 @@ public final class MessageConstants {
     public static final String MSG_OP_USER_SIGNUP = "user.signup";
     public static final String MSG_OP_DOMAIN_BASED_REDIRECT = "domain.based.redirect";
     public static final String MSG_OP_INIT_LOGIN = "init.login";
+    
 
     public static final String MSG_OP_INTERNAL_AUTHENTICATE = "internal.authenticate";
     public static final String MSG_OP_INTERNAL_IMPERSONATE = "internal.impersonate";
     public static final String MSG_OP_INTERNAL_LTI_SSO = "internal.lti.sso";
     public static final String MSG_OP_INTERNAL_WSFED_SSO = "internal.lti.sso.wsfed";
+    public static final String MSG_OP_INTERNAL_TENANT_RELAM = "internal.tenant.relam";
 
     //GoogleDrive
     public static final String MSG_OP_GOOGLE_DRIVE_CONNECT = "google.drive.connect";
