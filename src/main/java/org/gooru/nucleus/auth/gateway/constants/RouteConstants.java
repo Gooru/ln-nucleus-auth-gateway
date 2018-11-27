@@ -27,7 +27,7 @@ public final class RouteConstants {
     public static final String REDIRECT = "redirect";
     public static final String INIT_LOGIN = "initlogin";
     private static final String TENANT_RELAM="tenant-relam";
-    public static final String SHORT_NAME = "short_name";
+    public static final String SHORT_NAME = "shortname";
     
 
     // Actual End Point Constants: Note that constant values may be duplicated
@@ -70,7 +70,7 @@ public final class RouteConstants {
     // /api/internal/:version/sso/wsfed
     public static final String EP_INTERNAL_SSO_WSFED = API_INTERNAL_BASE_ROUTE + "sso/wsfed";
 
-    // /api/internal/:version/tenant-relam/{tenant-id}
+    // /api/internal/:version/tenant-relam/{shortname}
     public static final String EP_INTERNAL_TENANT_RELAM = API_INTERNAL_BASE_ROUTE + TENANT_RELAM + SEP + COLON + SHORT_NAME;
     
     public static final long DEFAULT_TIMEOUT = 30000L;
