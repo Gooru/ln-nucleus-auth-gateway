@@ -26,7 +26,7 @@ public final class RouteConstants {
     private static final String REFRESH_TOKEN = "refresh-token";
     public static final String REDIRECT = "redirect";
     public static final String INIT_LOGIN = "initlogin";
-    private static final String TENANT_RELAM="tenant-relam";
+    private static final String TENANT_REALM="tenant-realm";
     public static final String SHORT_NAME = "shortname";
     
 
@@ -70,8 +70,8 @@ public final class RouteConstants {
     // /api/internal/:version/sso/wsfed
     public static final String EP_INTERNAL_SSO_WSFED = API_INTERNAL_BASE_ROUTE + "sso/wsfed";
 
-    // /api/internal/:version/tenant-relam/{shortname}
-    public static final String EP_INTERNAL_TENANT_RELAM = API_INTERNAL_BASE_ROUTE + TENANT_RELAM + SEP + COLON + SHORT_NAME;
+    // /api/internal/:version/tenant-realm/{shortname}
+    public static final String EP_INTERNAL_TENANT_REALM = API_INTERNAL_BASE_ROUTE + TENANT_REALM + SEP + COLON + SHORT_NAME;
     
     public static final long DEFAULT_TIMEOUT = 30000L;
 

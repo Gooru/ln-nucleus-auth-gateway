@@ -48,7 +48,7 @@ class RouteInternalConfigurator implements RouteConfigurator {
         router.post(RouteConstants.EP_INTERNAL_IMPERSONATE).handler(this::impersonate);
         router.post(RouteConstants.EP_INTERNAL_SSO).handler(this::sso);
         router.post(RouteConstants.EP_INTERNAL_SSO_WSFED).handler(this::ssoWsfed);
-        router.get(RouteConstants.EP_INTERNAL_TENANT_RELAM).handler(this::tenantRelam);
+        router.get(RouteConstants.EP_INTERNAL_TENANT_REALM).handler(this::tenantRealm);
     }
 
     private void authenticate(RoutingContext routingContext) {
@@ -124,11 +124,11 @@ class RouteInternalConfigurator implements RouteConfigurator {
         }
     }
 
-    private void tenantRelam(RoutingContext routingContext) {
+    private void tenantRealm(RoutingContext routingContext) {
         String shortName = routingContext.request().getParam(RouteConstants.SHORT_NAME);
         DeliveryOptions options =
             DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout);
-        options.addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_INTERNAL_TENANT_RELAM)
+        options.addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_INTERNAL_TENANT_REALM)
             .addHeader(RouteConstants.SHORT_NAME, shortName);
         eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext), options,
             reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
