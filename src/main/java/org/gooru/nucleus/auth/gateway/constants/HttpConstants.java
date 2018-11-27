@@ -14,7 +14,8 @@ public final class HttpConstants {
     public static final String HEADER_REFERER = "referer";
     public static final String BASIC = "Basic";
     public static final String TOKEN = "Token";
-
+    public static final String NONCE = "Nonce";
+    
     public enum HttpStatus {
 
         SUCCESS(200, "Successful"),

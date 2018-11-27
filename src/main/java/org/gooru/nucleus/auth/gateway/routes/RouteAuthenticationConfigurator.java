@@ -55,6 +55,10 @@ class RouteAuthenticationConfigurator implements RouteConfigurator {
             options.addHeader(MessageConstants.MSG_HEADER_BASIC_AUTH, basicAuthCredentials);
             options.addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_USER_SIGNIN);
         } else {
+            if (authorization != null && authorization.startsWith(HttpConstants.NONCE)) {
+                String nonce = authorization.substring(HttpConstants.NONCE.length()).trim();
+                options.addHeader(MessageConstants.MSG_HEADER_NONCE_TOKEN, nonce);
+            }
             options.addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_ANONYMOUS_SIGNIN);
         }
         eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext), options,
@@ -80,7 +84,7 @@ class RouteAuthenticationConfigurator implements RouteConfigurator {
         eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext), options,
             reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
     }
-    
+
     private void domainBasedRedirect(RoutingContext routingContext) {
         DeliveryOptions options =
             DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout);
@@ -88,12 +92,13 @@ class RouteAuthenticationConfigurator implements RouteConfigurator {
         eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext), options,
             reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
     }
-    
+
     private void initLogin(RoutingContext routingContext) {
-    	DeliveryOptions options =
-                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout);
-            options.addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_INIT_LOGIN);
-            eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext), options,
-                reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
+        DeliveryOptions options =
+            DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout);
+        options.addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_INIT_LOGIN);
+        eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext), options,
+            reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
     }
+
 }

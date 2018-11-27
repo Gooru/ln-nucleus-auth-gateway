@@ -1,6 +1,10 @@
-    package org.gooru.nucleus.auth.gateway.routes;
+package org.gooru.nucleus.auth.gateway.routes;
 
-import org.gooru.nucleus.auth.gateway.constants.*;
+import org.gooru.nucleus.auth.gateway.constants.ConfigConstants;
+import org.gooru.nucleus.auth.gateway.constants.HttpConstants;
+import org.gooru.nucleus.auth.gateway.constants.MessageConstants;
+import org.gooru.nucleus.auth.gateway.constants.MessagebusEndpoints;
+import org.gooru.nucleus.auth.gateway.constants.RouteConstants;
 import org.gooru.nucleus.auth.gateway.routes.utils.DeliveryOptionsBuilder;
 import org.gooru.nucleus.auth.gateway.routes.utils.RouteRequestUtility;
 import org.gooru.nucleus.auth.gateway.routes.utils.RouteResponseUtility;
@@ -44,6 +48,7 @@ class RouteInternalConfigurator implements RouteConfigurator {
         router.post(RouteConstants.EP_INTERNAL_IMPERSONATE).handler(this::impersonate);
         router.post(RouteConstants.EP_INTERNAL_SSO).handler(this::sso);
         router.post(RouteConstants.EP_INTERNAL_SSO_WSFED).handler(this::ssoWsfed);
+        router.get(RouteConstants.EP_INTERNAL_TENANT_REALM).handler(this::tenantRealm);
     }
 
     private void authenticate(RoutingContext routingContext) {
@@ -60,7 +65,7 @@ class RouteInternalConfigurator implements RouteConfigurator {
                 options, reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
         } else {
             routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
-            .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage()).end();
+                .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage()).end();
         }
 
     }
@@ -79,7 +84,7 @@ class RouteInternalConfigurator implements RouteConfigurator {
                 options, reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
         } else {
             routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
-            .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage()).end();
+                .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage()).end();
         }
     }
 
@@ -97,10 +102,10 @@ class RouteInternalConfigurator implements RouteConfigurator {
                 options, reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
         } else {
             routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
-            .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage()).end();
+                .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage()).end();
         }
     }
-    
+
     private void ssoWsfed(RoutingContext routingContext) {
         HttpServerRequest request = routingContext.request();
         String authorization = request.getHeader(HttpConstants.HEADER_AUTH);
@@ -115,7 +120,17 @@ class RouteInternalConfigurator implements RouteConfigurator {
                 options, reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
         } else {
             routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
-            .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage()).end();
+                .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage()).end();
         }
+    }
+
+    private void tenantRealm(RoutingContext routingContext) {
+        String shortName = routingContext.request().getParam(RouteConstants.SHORT_NAME);
+        DeliveryOptions options =
+            DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout);
+        options.addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_INTERNAL_TENANT_REALM)
+            .addHeader(RouteConstants.SHORT_NAME, shortName);
+        eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext), options,
+            reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
     }
 }
