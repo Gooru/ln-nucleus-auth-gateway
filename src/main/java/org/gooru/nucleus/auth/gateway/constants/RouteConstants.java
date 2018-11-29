@@ -26,6 +26,9 @@ public final class RouteConstants {
     private static final String REFRESH_TOKEN = "refresh-token";
     public static final String REDIRECT = "redirect";
     public static final String INIT_LOGIN = "initlogin";
+    private static final String TENANT_REALM="tenant-realm";
+    public static final String SHORT_NAME = "shortname";
+    
 
     // Actual End Point Constants: Note that constant values may be duplicated
     // but we are going to have individual constant values to work with for each
@@ -37,7 +40,7 @@ public final class RouteConstants {
     public static final String SIGNIN = "signin";
     private static final String SIGNOUT = "signout";
     public static final String SIGNUP = "signup";
-
+    
     public static final String EP_NUCLEUS_USER_SIGNIN = API_BASE_ROUTE + SIGNIN;
     public static final String EP_NUCLEUS_USER_SIGNOUT = API_BASE_ROUTE + SIGNOUT;
     public static final String EP_NUCLUES_AUTH_TOKEN = API_BASE_ROUTE + TOKEN;
@@ -50,6 +53,7 @@ public final class RouteConstants {
     public static final String EP_NUCLUES_USER_CHANGE_PASSWORD = API_BASE_ROUTE + USERS + SEP + CHANGE_PASSWORD;
     public static final String EP_DOMAIN_BASED_REDIRECT = API_BASE_ROUTE + REDIRECT;
     public static final String EP_INIT_LOGIN = API_BASE_ROUTE + INIT_LOGIN;
+    
 
     public static final String EP_NUCLUES_AUTH_GOOGLE_CONNECT_DRIVE = API_BASE_ROUTE + GOOGLE_DRIVE;
     public static final String EP_NUCLUES_AUTH_GOOGLE_DRIVE_CALLBACK = API_BASE_ROUTE + GOOGLE_DRIVE + SEP + CALLBACK;
@@ -66,6 +70,9 @@ public final class RouteConstants {
     // /api/internal/:version/sso/wsfed
     public static final String EP_INTERNAL_SSO_WSFED = API_INTERNAL_BASE_ROUTE + "sso/wsfed";
 
+    // /api/internal/:version/tenant-realm/{shortname}
+    public static final String EP_INTERNAL_TENANT_REALM = API_INTERNAL_BASE_ROUTE + TENANT_REALM + SEP + COLON + SHORT_NAME;
+    
     public static final long DEFAULT_TIMEOUT = 30000L;
 
     private RouteConstants() {
