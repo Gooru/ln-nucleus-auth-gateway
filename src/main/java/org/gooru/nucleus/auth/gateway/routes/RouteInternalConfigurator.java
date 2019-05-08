@@ -49,6 +49,7 @@ class RouteInternalConfigurator implements RouteConfigurator {
         router.post(RouteConstants.EP_INTERNAL_SSO).handler(this::sso);
         router.post(RouteConstants.EP_INTERNAL_SSO_WSFED).handler(this::ssoWsfed);
         router.get(RouteConstants.EP_INTERNAL_TENANT_REALM).handler(this::tenantRealm);
+        router.post(RouteConstants.EP_INTERNAL_SSO_OAUTH2).handler(this::ssoOauth2);
     }
 
     private void authenticate(RoutingContext routingContext) {
@@ -132,5 +133,23 @@ class RouteInternalConfigurator implements RouteConfigurator {
             .addHeader(RouteConstants.SHORT_NAME, shortName);
         eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext), options,
             reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
+    }
+    
+    private void ssoOauth2(RoutingContext routingContext) {
+        HttpServerRequest request = routingContext.request();
+        String authorization = request.getHeader(HttpConstants.HEADER_AUTH);
+        String basicAuthCredentials = null;
+        if (authorization != null && authorization.startsWith(HttpConstants.BASIC)) {
+            basicAuthCredentials = authorization.substring(HttpConstants.BASIC.length()).trim();
+            DeliveryOptions options =
+                DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
+                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_INTERNAL_OAUTH2_SSO)
+                    .addHeader(MessageConstants.MSG_HEADER_BASIC_AUTH, basicAuthCredentials);
+            eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, RouteRequestUtility.getBodyForMessage(routingContext),
+                options, reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
+        } else {
+            routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
+                .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage()).end();
+        }
     }
 }

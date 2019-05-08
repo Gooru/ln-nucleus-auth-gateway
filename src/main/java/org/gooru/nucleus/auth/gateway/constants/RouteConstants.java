@@ -28,6 +28,8 @@ public final class RouteConstants {
     public static final String INIT_LOGIN = "initlogin";
     private static final String TENANT_REALM="tenant-realm";
     public static final String SHORT_NAME = "shortname";
+    private static final String OAUTH2 = "oauth2";
+    private static final String SSO = "sso";
     
 
     // Actual End Point Constants: Note that constant values may be duplicated
@@ -69,9 +71,10 @@ public final class RouteConstants {
     public static final String EP_INTERNAL_SSO = API_INTERNAL_BASE_ROUTE + "sso";
     // /api/internal/:version/sso/wsfed
     public static final String EP_INTERNAL_SSO_WSFED = API_INTERNAL_BASE_ROUTE + "sso/wsfed";
-
     // /api/internal/:version/tenant-realm/{shortname}
-    public static final String EP_INTERNAL_TENANT_REALM = API_INTERNAL_BASE_ROUTE + TENANT_REALM + SEP + COLON + SHORT_NAME;
+    public static final String EP_INTERNAL_TENANT_REALM = API_INTERNAL_BASE_ROUTE + TENANT_REALM + SEP + COLON + SHORT_NAME;  
+    // /api/internal/:version/sso/oauth2
+    public static final String EP_INTERNAL_SSO_OAUTH2 = API_INTERNAL_BASE_ROUTE + SSO + SEP + OAUTH2;
     
     public static final long DEFAULT_TIMEOUT = 30000L;
 
