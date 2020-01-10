@@ -19,75 +19,71 @@ import io.vertx.ext.web.RoutingContext;
 
 public class RouteAuthConfigurator implements RouteConfigurator {
 
-    private static final Logger LOG =
-        LoggerFactory.getLogger("org.gooru.nucleus.auth.gateway.bootstrap.ServerVerticle");
+	private static final Logger LOG = LoggerFactory
+			.getLogger("org.gooru.nucleus.auth.gateway.bootstrap.ServerVerticle");
 
-    private long mbusTimeout;
-    private EventBus eBus = null;
+	private long mbusTimeout;
+	private EventBus eBus = null;
 
-    @Override
-    public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
-        eBus = vertx.eventBus();
-        mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, RouteConstants.DEFAULT_TIMEOUT);
-        router.route(RouteConstants.API_NUCLUES_AUTH_ROUTE).handler(this::validateAccessToken);
-    }
+	@Override
+	public void configureRoutes(Vertx vertx, Router router, JsonObject config) {
+		eBus = vertx.eventBus();
+		mbusTimeout = config.getLong(ConfigConstants.MBUS_TIMEOUT, RouteConstants.DEFAULT_TIMEOUT);
+		router.route(RouteConstants.API_NUCLUES_AUTH_ROUTE).handler(this::validateAccessToken);
+	}
 
-    private void validateAccessToken(RoutingContext routingContext) {
-        HttpServerRequest request = routingContext.request();
-        HttpServerResponse response = routingContext.response();
+	private void validateAccessToken(RoutingContext routingContext) {
+		HttpServerRequest request = routingContext.request();
+		HttpServerResponse response = routingContext.response();
 
-        if (RouteAuthUtility.isAuthCheckRequired(request)) {
-            String authorization = request.getHeader(HttpConstants.HEADER_AUTH);
-            String accessToken = null;
-            if (authorization != null && authorization.startsWith(HttpConstants.TOKEN)) {
-                accessToken = authorization.substring(HttpConstants.TOKEN.length()).trim();
-            }
+		if (RouteAuthUtility.isAuthCheckRequired(request)) {
+			String authorization = request.getHeader(HttpConstants.HEADER_AUTH);
+			String accessToken = null;
+			if (authorization != null && authorization.startsWith(HttpConstants.TOKEN)) {
+				accessToken = authorization.substring(HttpConstants.TOKEN.length()).trim();
+			}
 
-            if (accessToken == null) {
-                response.setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
-                    .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage()).end();
-            } else {
-                // If the session token is present, we send it to Message Bus
-                // for validation. We stash it on to routing context for good
-                // measure. We could
-                // have done that later in success callback but we want to avoid
-                // closure from callback for success to this local context,
-                // hence it is here
-                routingContext.put(MessageConstants.MSG_HEADER_TOKEN, accessToken);
-                DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout)
-                    .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_ACCESS_TOKEN_CHECK)
-                    .addHeader(MessageConstants.MSG_HEADER_TOKEN, accessToken);
-                eBus.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, null, options, reply -> {
-                    if (reply.succeeded()) {
-                        AuthResponseContextHolder responseHolder =
-                            new AuthResponseContextHolderBuilder(reply.result()).build();
-                        if (responseHolder.isAuthorized()) {
-                            if ((!request.method().name().equals(HttpMethod.GET.name()) && (
-                                request.method().name().equals(HttpMethod.POST.name()) && !request.uri()
-                                    .endsWith(RouteConstants.SIGNUP) && !request.uri()
-                                    .endsWith(RouteConstants.RESET_PASSWORD) && !request.uri()
-                                    .endsWith(RouteConstants.REDIRECT) && !request.uri()
-                                    .endsWith(RouteConstants.INIT_LOGIN))) && responseHolder.isAnonymous()) {
-                                LOG.debug("forbidden");
-                                routingContext.response().setStatusCode(HttpConstants.HttpStatus.FORBIDDEN.getCode())
-                                    .setStatusMessage(HttpConstants.HttpStatus.FORBIDDEN.getMessage()).end();
-                            } else {
-                                routingContext
-                                    .put(MessageConstants.MSG_USER_CONTEXT_HOLDER, responseHolder.getUserContext());
-                                routingContext.next();
-                            }
-                        } else {
-                            routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
-                                .setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage()).end();
-                        }
-                    } else {
-                        LOG.error("Not able to send message", reply.cause());
-                        routingContext.response().setStatusCode(HttpConstants.HttpStatus.ERROR.getCode()).end();
-                    }
-                });
-            }
-        } else {
-            routingContext.next();
-        }
-    }
+			if (accessToken == null) {
+				response.setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
+						.setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage()).end();
+			} else {
+				// If the session token is present, we send it to Message Bus
+				// for validation. We stash it on to routing context for good
+				// measure. We could
+				// have done that later in success callback but we want to avoid
+				// closure from callback for success to this local context,
+				// hence it is here
+				routingContext.put(MessageConstants.MSG_HEADER_TOKEN, accessToken);
+				DeliveryOptions options = new DeliveryOptions().setSendTimeout(mbusTimeout)
+						.addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_ACCESS_TOKEN_CHECK)
+						.addHeader(MessageConstants.MSG_HEADER_TOKEN, accessToken);
+				eBus.send(MessagebusEndpoints.MBEP_AUTH_HANDLER, null, options, reply -> {
+					if (reply.succeeded()) {
+						AuthResponseContextHolder responseHolder = new AuthResponseContextHolderBuilder(reply.result())
+								.build();
+						if (responseHolder.isAuthorized()) {
+							if (!AnonymousACLVerifier.hasPermit(routingContext.request())
+									&& responseHolder.isAnonymous()) {
+								LOG.debug("forbidden");
+								routingContext.response().setStatusCode(HttpConstants.HttpStatus.FORBIDDEN.getCode())
+										.setStatusMessage(HttpConstants.HttpStatus.FORBIDDEN.getMessage()).end();
+							} else {
+								routingContext.put(MessageConstants.MSG_USER_CONTEXT_HOLDER,
+										responseHolder.getUserContext());
+								routingContext.next();
+							}
+						} else {
+							routingContext.response().setStatusCode(HttpConstants.HttpStatus.UNAUTHORIZED.getCode())
+									.setStatusMessage(HttpConstants.HttpStatus.UNAUTHORIZED.getMessage()).end();
+						}
+					} else {
+						LOG.error("Not able to send message", reply.cause());
+						routingContext.response().setStatusCode(HttpConstants.HttpStatus.ERROR.getCode()).end();
+					}
+				});
+			}
+		} else {
+			routingContext.next();
+		}
+	}
 }

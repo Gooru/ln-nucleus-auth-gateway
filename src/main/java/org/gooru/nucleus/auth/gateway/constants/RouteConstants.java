@@ -30,7 +30,7 @@ public final class RouteConstants {
     public static final String SHORT_NAME = "shortname";
     private static final String OAUTH2 = "oauth2";
     private static final String SSO = "sso";
-    
+    public static final String ACCOUNTS = "accounts";
 
     // Actual End Point Constants: Note that constant values may be duplicated
     // but we are going to have individual constant values to work with for each
@@ -55,7 +55,7 @@ public final class RouteConstants {
     public static final String EP_NUCLUES_USER_CHANGE_PASSWORD = API_BASE_ROUTE + USERS + SEP + CHANGE_PASSWORD;
     public static final String EP_DOMAIN_BASED_REDIRECT = API_BASE_ROUTE + REDIRECT;
     public static final String EP_INIT_LOGIN = API_BASE_ROUTE + INIT_LOGIN;
-    
+    public static final String EP_USER_ACCOUNTS = API_BASE_ROUTE + USERS + SEP + ACCOUNTS;
 
     public static final String EP_NUCLUES_AUTH_GOOGLE_CONNECT_DRIVE = API_BASE_ROUTE + GOOGLE_DRIVE;
     public static final String EP_NUCLUES_AUTH_GOOGLE_DRIVE_CALLBACK = API_BASE_ROUTE + GOOGLE_DRIVE + SEP + CALLBACK;
