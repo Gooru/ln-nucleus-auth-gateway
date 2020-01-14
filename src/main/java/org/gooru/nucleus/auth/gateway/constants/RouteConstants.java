@@ -30,7 +30,7 @@ public final class RouteConstants {
     public static final String SHORT_NAME = "shortname";
     private static final String OAUTH2 = "oauth2";
     private static final String SSO = "sso";
-    private static final String ACCOUNTS = "accounts";
+    public static final String ACCOUNTS = "accounts";
 
     // Actual End Point Constants: Note that constant values may be duplicated
     // but we are going to have individual constant values to work with for each
