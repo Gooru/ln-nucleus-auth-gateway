@@ -35,6 +35,7 @@ public final class MessageConstants {
     public static final String MSG_OP_USER_PASSWORD_RESET_TRIGGER = "user.password.reset.trigger";
     public static final String MSG_OP_USER_PASSWORD_RESET = "user.password.reset";
     public static final String MSG_OP_USER_PASSWORD_CHANGE = "user.password.change";
+    public static final String MSG_OP_GET_USER_ACCOUNTS = "get.user.accounts";
 
     public static final String MSG_OP_USER_SIGNUP = "user.signup";
     public static final String MSG_OP_DOMAIN_BASED_REDIRECT = "domain.based.redirect";
