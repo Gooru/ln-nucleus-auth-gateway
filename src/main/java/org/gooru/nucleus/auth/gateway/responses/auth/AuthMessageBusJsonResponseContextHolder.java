@@ -38,7 +38,7 @@ class AuthMessageBusJsonResponseContextHolder implements AuthResponseContextHold
 
     @Override
     public boolean isAnonymous() {
-        JsonObject jsonObject = (JsonObject) message.body();
+        JsonObject jsonObject = new JsonObject(getUserContext());
         String userId = jsonObject.getString(MessageConstants.MSG_USER_ID);
         return !(userId != null && !userId.isEmpty() && !userId.equalsIgnoreCase(MessageConstants.MSG_USER_ANONYMOUS));
     }
