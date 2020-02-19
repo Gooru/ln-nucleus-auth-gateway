@@ -28,7 +28,7 @@ final class AnonymousACLVerifier {
   static {
     Map<String, List<String>> routes = new HashMap<>();
     routes.put(RouteConstants.SIGNUP, Arrays.asList(HttpMethod.POST.name()));
-    routes.put(RouteConstants.RESET_PASSWORD, Arrays.asList(HttpMethod.PUT.name()));
+    routes.put(RouteConstants.RESET_PASSWORD, Arrays.asList(HttpMethod.POST.name()));
     routes.put(RouteConstants.REDIRECT, Arrays.asList(HttpMethod.POST.name()));
     routes.put(RouteConstants.INIT_LOGIN, Arrays.asList(HttpMethod.POST.name()));
     routes.put(RouteConstants.ACCOUNTS, Arrays.asList(HttpMethod.POST.name()));
