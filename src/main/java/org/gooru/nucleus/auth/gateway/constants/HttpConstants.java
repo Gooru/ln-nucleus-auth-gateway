@@ -15,6 +15,7 @@ public final class HttpConstants {
     public static final String BASIC = "Basic";
     public static final String TOKEN = "Token";
     public static final String NONCE = "Nonce";
+    public static final String REFRESH_TOKEN = "RefreshToken";
     
     public enum HttpStatus {
 
