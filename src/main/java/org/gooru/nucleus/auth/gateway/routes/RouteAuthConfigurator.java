@@ -1,13 +1,15 @@
 package org.gooru.nucleus.auth.gateway.routes;
 
-import org.gooru.nucleus.auth.gateway.constants.*;
+import org.gooru.nucleus.auth.gateway.constants.ConfigConstants;
+import org.gooru.nucleus.auth.gateway.constants.HttpConstants;
+import org.gooru.nucleus.auth.gateway.constants.MessageConstants;
+import org.gooru.nucleus.auth.gateway.constants.MessagebusEndpoints;
+import org.gooru.nucleus.auth.gateway.constants.RouteConstants;
 import org.gooru.nucleus.auth.gateway.responses.auth.AuthResponseContextHolder;
 import org.gooru.nucleus.auth.gateway.responses.auth.AuthResponseContextHolderBuilder;
 import org.gooru.nucleus.auth.gateway.routes.utils.RouteAuthUtility;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import io.netty.handler.codec.http.HttpMethod;
 import io.vertx.core.Vertx;
 import io.vertx.core.eventbus.DeliveryOptions;
 import io.vertx.core.eventbus.EventBus;
