@@ -29,7 +29,8 @@ class RouteAuthenticationConfigurator implements RouteConfigurator {
     router.post(RouteConstants.EP_NUCLUES_AUTH_TOKEN).handler(this::createAccessToken);
     router.delete(RouteConstants.EP_NUCLUES_AUTH_TOKEN).handler(this::deleteAccessToken);
     router.get(RouteConstants.EP_NUCLUES_AUTH_TOKEN).handler(this::getAccessToken);
-
+    router.delete(RouteConstants.EP_NUCLUES_AUTH_REVOKE_REFRESH_TOKEN).handler(this::deleteRefreshToken);
+    
     router.post(RouteConstants.EP_NUCLEUS_USER_SIGNIN).handler(this::createAccessToken);
     router.delete(RouteConstants.EP_NUCLEUS_USER_SIGNOUT).handler(this::deleteAccessToken);
     router.get(RouteConstants.EP_NUCLUES_AUTH_TOKEN).handler(this::getAccessToken);
@@ -108,6 +109,18 @@ class RouteAuthenticationConfigurator implements RouteConfigurator {
     DeliveryOptions options =
         DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout);
     options.addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_INIT_LOGIN);
+    eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER,
+        RouteRequestUtility.getBodyForMessage(routingContext), options,
+        reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));
+  }
+  
+  private void deleteRefreshToken(RoutingContext routingContext) {
+    DeliveryOptions options =
+        DeliveryOptionsBuilder.buildWithApiVersion(routingContext).setSendTimeout(mbusTimeout)
+            .addHeader(MessageConstants.MSG_HEADER_OP, MessageConstants.MSG_OP_REFRESH_TOKEN_REVOKE);
+    String authorization = routingContext.request().getHeader(HttpConstants.HEADER_AUTH);
+    String token = authorization.substring(HttpConstants.TOKEN.length()).trim();
+    options.addHeader(MessageConstants.MSG_HEADER_TOKEN, token);
     eb.send(MessagebusEndpoints.MBEP_AUTH_HANDLER,
         RouteRequestUtility.getBodyForMessage(routingContext), options,
         reply -> RouteResponseUtility.responseHandler(routingContext, reply, LOG));

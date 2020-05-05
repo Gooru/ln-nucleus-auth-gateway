@@ -31,6 +31,8 @@ public final class RouteConstants {
     private static final String OAUTH2 = "oauth2";
     private static final String SSO = "sso";
     public static final String ACCOUNTS = "accounts";
+    public static final String REFRESH_TOKEN_REVOKE = "refresh-token/revoke";
+    
 
     // Actual End Point Constants: Note that constant values may be duplicated
     // but we are going to have individual constant values to work with for each
@@ -46,6 +48,7 @@ public final class RouteConstants {
     public static final String EP_NUCLEUS_USER_SIGNIN = API_BASE_ROUTE + SIGNIN;
     public static final String EP_NUCLEUS_USER_SIGNOUT = API_BASE_ROUTE + SIGNOUT;
     public static final String EP_NUCLUES_AUTH_TOKEN = API_BASE_ROUTE + TOKEN;
+    public static final String EP_NUCLUES_AUTH_REVOKE_REFRESH_TOKEN = API_BASE_ROUTE + REFRESH_TOKEN_REVOKE;
 
     public static final String EP_NUCLUES_AUTH_AUTHORIZE = API_BASE_ROUTE + AUTHORIZE;
 
